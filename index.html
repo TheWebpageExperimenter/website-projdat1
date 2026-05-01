@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Webpage Test</title>
+  <title>Webpage Experimenter 1</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +19,7 @@
       --aero-ocean:     #001a3a;
       --aero-navy:      #000d1f;
       --aero-teal:      #00e5c8;
+      --aero-blueceru   #0a6096;
       --aero-glass:     rgba(0,200,255,0.10);
       --aero-glass-hi:  rgba(255,255,255,0.18);
       --aero-glass-rim: rgba(0,220,255,0.35);
@@ -41,10 +42,11 @@
       font-family: var(--font-body);
       font-size: 1.05rem;
       color: #cceeff;
+      margin: 0;
       background:
-    radial-gradient(circle at 50% 0%, rgba(0,200,255,0.15), transparent 60%),
-    radial-gradient(circle at 20% 100%, rgba(0,100,255,0.12), transparent 60%),
-    linear-gradient(180deg, #000814 0%, #001d3d 40%, #000814 100%);;
+      radial-gradient(circle at 30% 20%, rgba(0,180,255,0.25), transparent 40%),
+      radial-gradient(circle at 70% 60%, rgba(0,120,255,0.2), transparent 50%),
+      linear-gradient(180deg, #02121f 0%, #031a2f 40%, #041c33 100%);
       overflow-x: hidden;
     }
 
@@ -68,22 +70,14 @@
       position: fixed;
       inset: 0;
       z-index: 0;
-      background-image:
-        repeating-linear-gradient(
-          60deg,
-          rgba(0,200,255,0.025) 0px,
-          transparent 3px,
-          transparent 40px,
-          rgba(0,200,255,0.015) 43px
-        ),
-        repeating-linear-gradient(
-          -60deg,
-          rgba(0,220,255,0.02) 0px,
-          transparent 3px,
-          transparent 40px,
-          rgba(0,220,255,0.01) 43px
-        );
-      animation: caustic 8s ease-in-out infinite alternate;
+       background:
+    repeating-linear-gradient(
+      110deg,
+      rgba(0,255,255,0.05) 0px,
+      transparent 6px,
+      transparent 60px
+    );
+      animation: waterFlow 8s linear infinite;
       pointer-events: none;
     }
 
@@ -92,17 +86,26 @@
       50%  { transform: scale(1.04) translateY(-8px) skewX(0.5deg); opacity:1; }
       100% { transform: scale(1)    translateY(4px)  skewX(-0.3deg); opacity:.8; }
     }
-
+  @keyframes waterFlow {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(80px); }
+  }
     /* bubbles */
     .bubble {
-      position: fixed;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.55), rgba(0,200,255,0.08));
-      border: 1px solid rgba(255,255,255,0.2);
-      pointer-events: none;
-      z-index: 0;
-      animation: rise linear infinite;
-    }
+  position: absolute;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), transparent 40%),
+    rgba(0,180,255,0.15);
+
+  box-shadow:
+    inset 0 0 15px rgba(255,255,255,0.8),
+    0 0 25px rgba(0,200,255,0.6);
+
+  backdrop-filter: none;
+  pointer-events: none;
+  animation: floatUp linear infinite;
+}
     @keyframes rise {
       0%   { transform: translateY(100vh) translateX(0)   scale(1);   opacity:0; }
       10%  { opacity: 0.6; }
@@ -133,8 +136,8 @@
   border-left-color: rgba(255,255,255,0.5);
 
   img.wininw {
-    width: 150%;
-    height: 150%;
+    width: 50%;
+    height: auto;
     padding: 0;
   }
 
@@ -1092,7 +1095,7 @@
           </div>
 
           <div class="hero-badge">&#x25C6; Best Microsoft Windows Operating System &#x25C6;</div>
-          <h1 class="hero-title"><img src="pngegg.png">Windows<span> 7</span></h1>
+          <h1 class="hero-title"><img class="wininw" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Unofficial_Windows_logo_variant_-_2002%E2%80%932012_%28Multicolored%29.svg/250px-Unofficial_Windows_logo_variant_-_2002%E2%80%932012_%28Multicolored%29.svg.png">Windows<span> 7</span></h1>
           <p class="hero-sub">Your PC Simplified</p>
           <p class="hero-url">&#x276F; Windows7.microsoft.com</p>
           <div class="d-flex flex-wrap gap-3">
