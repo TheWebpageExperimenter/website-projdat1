@@ -264,43 +264,88 @@
       color: rgba(0,200,255,0.6); letter-spacing: .12em; margin-bottom: 2.5rem;
     }
 
-    .btn-aero {
-      display: inline-block; padding: .75rem 2.4rem; border-radius: 8px;
-      font-family: var(--font-display); font-size: .7rem; font-weight: 700;
-      letter-spacing: .12em; text-transform: uppercase; cursor: pointer;
-      position: relative; overflow: hidden; transition: all .25s;
+    /* ── MECHANIZED BUTTON SYSTEM ── */
+    @keyframes btn-scan {
+      0%   { transform: translateX(-100%) skewX(-12deg); }
+      100% { transform: translateX(400%) skewX(-12deg); }
     }
+    @keyframes btn-flicker {
+      0%,100% { opacity:1; } 92% { opacity:1; } 93% { opacity:.7; } 94% { opacity:1; }
+    }
+
+    /* Shared mech base */
+    .btn-aero {
+      display: inline-block; padding: .75rem 2.4rem;
+      border-radius: 0;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      font-family: var(--font-mono); font-size: .68rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; cursor: pointer;
+      position: relative; overflow: hidden; transition: all .22s;
+    }
+    /* left notch pip */
+    .btn-aero::after {
+      content: '▶'; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+      font-size: .45rem; opacity: .6; transition: opacity .2s;
+    }
+    .btn-aero:hover::after { opacity: 1; }
+
+    /* scan shimmer */
+    .btn-aero .btn-scan {
+      position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
+      transform: translateX(-100%) skewX(-12deg);
+    }
+    .btn-aero:hover .btn-scan { animation: btn-scan .55s ease forwards; }
+
     .btn-aero-primary {
-      background: linear-gradient(180deg, rgba(0,160,255,0.85) 0%, rgba(0,80,200,0.90) 50%, rgba(0,50,160,0.85) 100%);
-      border: 1px solid rgba(0,220,255,0.6); border-top-color: rgba(255,255,255,0.6);
+      background:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 6px),
+        linear-gradient(180deg, rgba(0,180,255,0.92) 0%, rgba(0,90,210,0.95) 48%, rgba(0,55,170,0.90) 100%);
+      border: 1px solid rgba(0,220,255,0.7);
+      border-top: 1px solid rgba(180,240,255,0.8);
+      border-bottom: 1px solid rgba(0,100,200,0.8);
       color: #fff;
-      box-shadow: 0 0 20px rgba(0,150,255,0.5), inset 0 1px 0 rgba(255,255,255,0.55), inset 0 -1px 0 rgba(0,0,100,0.4);
-      text-shadow: 0 1px 3px rgba(0,0,100,0.5);
+      box-shadow: 0 0 18px rgba(0,160,255,0.45), 0 4px 14px rgba(0,0,80,0.6),
+                  inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(0,0,120,0.5);
+      text-shadow: 0 0 10px rgba(0,200,255,0.9), 0 1px 2px rgba(0,0,80,0.6);
+      animation: btn-flicker 8s infinite;
     }
     .btn-aero-primary::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.35), transparent);
-      border-radius: 7px 7px 0 0;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 42%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.04) 100%);
+      pointer-events: none;
     }
     .btn-aero-primary:hover {
       color: #fff;
-      box-shadow: 0 0 35px rgba(0,200,255,0.8), inset 0 1px 0 rgba(255,255,255,0.6);
+      background:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 6px),
+        linear-gradient(180deg, rgba(0,220,255,0.95) 0%, rgba(0,130,255,0.95) 48%, rgba(0,80,210,0.92) 100%);
+      box-shadow: 0 0 36px rgba(0,220,255,0.75), 0 0 70px rgba(0,150,255,0.3), 0 4px 20px rgba(0,0,80,0.7),
+                  inset 0 1px 0 rgba(255,255,255,0.6);
       transform: translateY(-2px);
     }
+
     .btn-aero-ghost {
-      background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(0,200,255,0.07));
-      border: 1px solid rgba(0,200,255,0.35); border-top-color: rgba(255,255,255,0.30);
-      color: rgba(200,240,255,0.9);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.20);
+      background:
+        repeating-linear-gradient(90deg, rgba(0,200,255,0.03) 0px, rgba(0,200,255,0.03) 1px, transparent 1px, transparent 6px),
+        linear-gradient(180deg, rgba(0,60,120,0.45) 0%, rgba(0,20,60,0.55) 100%);
+      border: 1px solid rgba(0,200,255,0.45);
+      border-top: 1px solid rgba(120,220,255,0.55);
+      color: rgba(160,230,255,0.9);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 0 8px rgba(0,200,255,0.15);
+      text-shadow: 0 0 8px rgba(0,200,255,0.6);
     }
     .btn-aero-ghost::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent);
-      border-radius: 7px 7px 0 0;
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 42%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, transparent 100%);
+      pointer-events: none;
     }
     .btn-aero-ghost:hover {
-      color: #fff; border-color: rgba(0,220,255,0.7);
-      box-shadow: 0 0 16px rgba(0,200,255,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+      color: #fff; border-color: rgba(0,240,255,0.8); border-top-color: rgba(200,250,255,0.8);
+      background:
+        repeating-linear-gradient(90deg, rgba(0,200,255,0.05) 0px, rgba(0,200,255,0.05) 1px, transparent 1px, transparent 6px),
+        linear-gradient(180deg, rgba(0,120,200,0.55) 0%, rgba(0,60,140,0.65) 100%);
+      box-shadow: 0 0 20px rgba(0,220,255,0.5), inset 0 1px 0 rgba(255,255,255,0.25);
     }
 
     .hero-scroll-arrow { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); z-index: 2; }
@@ -524,15 +569,120 @@
 
     .scanlines { position: fixed; inset: 0; z-index: 9999; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px); }
 
-    .hud-corner { position: fixed; width: 28px; height: 28px; z-index: 999; pointer-events: none; }
-    .hud-corner--tl { top: 80px; left: 14px; border-top: 2px solid rgba(0,200,255,0.5); border-left: 2px solid rgba(0,200,255,0.5); }
-    .hud-corner--tr { top: 80px; right: 14px; border-top: 2px solid rgba(0,200,255,0.5); border-right: 2px solid rgba(0,200,255,0.5); }
-    .hud-corner--bl { bottom: 14px; left: 14px; border-bottom: 2px solid rgba(0,200,255,0.5); border-left: 2px solid rgba(0,200,255,0.5); }
-    .hud-corner--br { bottom: 14px; right: 14px; border-bottom: 2px solid rgba(0,200,255,0.5); border-right: 2px solid rgba(0,200,255,0.5); }
+    /* ── MECHANIZED HUD OVERLAY ── */
+    .hud-corner { display: none; }
+
+    .mech-hud { position: fixed; inset: 0; z-index: 998; pointer-events: none; }
+
+    /* Corner brackets */
+    .mech-corner {
+      position: fixed; width: 54px; height: 54px; z-index: 999; pointer-events: none;
+    }
+    .mech-corner svg { width: 100%; height: 100%; }
+    .mech-corner--tl { top: 76px; left: 10px; }
+    .mech-corner--tr { top: 76px; right: 10px; transform: scaleX(-1); }
+    .mech-corner--bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+    .mech-corner--br { bottom: 10px; right: 10px; transform: scale(-1,-1); }
+
+    /* Side edge bars */
+    .hud-edge-l, .hud-edge-r {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      width: 3px; height: 220px; z-index: 999; pointer-events: none;
+      background: linear-gradient(180deg, transparent 0%, rgba(0,200,255,0.6) 30%, rgba(0,255,200,0.8) 50%, rgba(0,200,255,0.6) 70%, transparent 100%);
+    }
+    .hud-edge-l { left: 8px; }
+    .hud-edge-r { right: 8px; }
+    .hud-edge-l::before, .hud-edge-r::before {
+      content: ''; position: absolute; top: 50%; transform: translateY(-50%);
+      width: 8px; height: 2px;
+      background: rgba(0,255,200,0.9);
+    }
+    .hud-edge-l::before { left: 3px; }
+    .hud-edge-r::before { right: 3px; }
+
+    /* Status readout - top left */
+    .hud-status {
+      position: fixed; top: 84px; left: 70px; z-index: 999; pointer-events: none;
+      font-family: var(--font-mono); font-size: .58rem;
+      color: rgba(0,230,200,0.75); letter-spacing: .12em;
+      line-height: 1.7; text-shadow: 0 0 6px rgba(0,200,255,0.6);
+    }
+    .hud-status-line { display: flex; align-items: center; gap: 6px; }
+    .hud-status-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(0,255,180,0.9); box-shadow: 0 0 6px rgba(0,255,180,0.8);
+      animation: hud-blink 2.4s ease-in-out infinite;
+    }
+    .hud-status-dot.alt { background: rgba(0,200,255,0.9); animation-delay: 1.2s; }
+    @keyframes hud-blink {
+      0%,100% { opacity:1; } 50% { opacity:.25; }
+    }
+
+    /* Clock / coordinate readout - top right */
+    .hud-readout {
+      position: fixed; top: 84px; right: 70px; z-index: 999; pointer-events: none;
+      font-family: var(--font-mono); font-size: .58rem;
+      color: rgba(0,200,255,0.65); letter-spacing: .12em;
+      line-height: 1.7; text-align: right;
+      text-shadow: 0 0 6px rgba(0,200,255,0.5);
+    }
+
+    /* Scan line reticle in center - very subtle */
+    .hud-reticle {
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 60px; height: 60px; z-index: 997; pointer-events: none;
+      opacity: 0.18;
+    }
+    .hud-reticle::before, .hud-reticle::after {
+      content: ''; position: absolute;
+    }
+    .hud-reticle::before {
+      top: 50%; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,200,255,0.9) 30%, rgba(0,200,255,0.9) 70%, transparent);
+      transform: translateY(-50%);
+    }
+    .hud-reticle::after {
+      left: 50%; top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(180deg, transparent, rgba(0,200,255,0.9) 30%, rgba(0,200,255,0.9) 70%, transparent);
+      transform: translateX(-50%);
+    }
+
+    /* Bottom bar — data strip */
+    .hud-bottom-bar {
+      position: fixed; bottom: 16px; left: 70px; right: 70px; z-index: 999; pointer-events: none;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem;
+      font-family: var(--font-mono); font-size: .56rem; letter-spacing: .13em;
+      color: rgba(0,200,255,0.5); text-shadow: 0 0 5px rgba(0,200,255,0.4);
+    }
+    .hud-bottom-bar::before {
+      content: ''; position: absolute; top: -5px; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,200,255,0.35) 20%, rgba(0,255,200,0.5) 50%, rgba(0,200,255,0.35) 80%, transparent);
+    }
+    .hud-progress {
+      flex: 1; height: 2px; max-width: 120px;
+      background: rgba(0,200,255,0.12); border-radius: 1px; overflow: hidden;
+    }
+    .hud-progress-fill {
+      height: 100%; width: 65%;
+      background: linear-gradient(90deg, rgba(0,200,255,0.6), rgba(0,255,200,0.8));
+      box-shadow: 0 0 6px rgba(0,200,255,0.5);
+      animation: hud-scan 3s ease-in-out infinite alternate;
+    }
+    @keyframes hud-scan {
+      0% { width: 45%; } 100% { width: 88%; }
+    }
+
+    /* Sweep animation on corners */
+    @keyframes mech-pulse {
+      0%,100% { opacity:.7; filter: drop-shadow(0 0 3px rgba(0,200,255,0.5)); }
+      50%      { opacity:1;  filter: drop-shadow(0 0 8px rgba(0,255,200,0.8)); }
+    }
+    .mech-corner svg { animation: mech-pulse 3s ease-in-out infinite; }
 
     @media (max-width:576px) { .btn-aero-ghost { margin-left: 0 !important; margin-top: .75rem; } }
 
-    /* ── DOWNLOAD BUTTONS ── */
+    /* ── DOWNLOAD BUTTONS (MECH) ── */
     #download-win7 {
       background: linear-gradient(180deg, rgba(0,10,30,0.55) 0%, rgba(0,25,65,0.65) 100%);
       border-top: 1px solid rgba(0,200,255,0.18);
@@ -540,44 +690,72 @@
     }
     .btn-dl {
       display: inline-flex; align-items: center; gap: 1rem;
-      padding: .9rem 1.8rem; border-radius: 12px;
-      border: 1px solid transparent;
-      font-family: var(--font-display); text-decoration: none;
-      position: relative; overflow: hidden; transition: all .28s;
+      padding: .9rem 1.8rem;
+      border-radius: 0;
+      clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+      font-family: var(--font-mono); text-decoration: none;
+      position: relative; overflow: hidden; transition: all .25s;
       min-width: 280px;
-      box-shadow: 0 8px 28px rgba(0,10,50,0.6), inset 0 1px 0 rgba(255,255,255,0.30);
+      box-shadow: 0 8px 28px rgba(0,10,50,0.6), inset 0 1px 0 rgba(255,255,255,0.20);
     }
+    /* grid texture overlay */
     .btn-dl::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 48%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, transparent 100%);
-      border-radius: inherit; pointer-events: none;
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 8px),
+        repeating-linear-gradient(0deg,  rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 8px),
+        linear-gradient(180deg, rgba(255,255,255,0.16) 0%, transparent 45%);
     }
+    /* scan sweep on hover */
+    .btn-dl::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,0.16) 50%, transparent 62%);
+      transform: translateX(-120%) skewX(-14deg);
+      transition: none;
+    }
+    .btn-dl:hover::after { animation: btn-scan .5s ease forwards; }
     .btn-dl:hover { transform: translateY(-4px); }
+
+    /* corner tick marks */
+    .btn-dl .btn-dl-tick-tl, .btn-dl .btn-dl-tick-br {
+      position: absolute; width: 8px; height: 8px; pointer-events: none;
+    }
+    .btn-dl .btn-dl-tick-tl { top: 3px; left: 16px; border-top: 1px solid rgba(255,255,255,0.6); border-left: 1px solid rgba(255,255,255,0.6); }
+    .btn-dl .btn-dl-tick-br { bottom: 3px; right: 16px; border-bottom: 1px solid rgba(255,255,255,0.3); border-right: 1px solid rgba(255,255,255,0.3); }
+
     .btn-dl-primary {
-      background: linear-gradient(145deg, rgba(0,120,255,0.85), rgba(0,60,180,0.9));
-      border-color: rgba(0,200,255,0.55); border-top-color: rgba(255,255,255,0.50);
+      background: linear-gradient(150deg, rgba(0,140,255,0.88) 0%, rgba(0,70,200,0.93) 55%, rgba(0,40,160,0.90) 100%);
+      border: 1px solid rgba(0,200,255,0.6); border-top-color: rgba(160,230,255,0.7);
       color: #fff;
     }
-    .btn-dl-primary:hover { box-shadow: 0 0 36px rgba(0,160,255,0.7), inset 0 1px 0 rgba(255,255,255,0.40); color:#fff; }
+    .btn-dl-primary:hover { box-shadow: 0 0 36px rgba(0,160,255,0.75), 0 8px 30px rgba(0,0,80,0.7); color:#fff; }
     .btn-dl-teal {
-      background: linear-gradient(145deg, rgba(0,180,200,0.80), rgba(0,100,140,0.9));
-      border-color: rgba(0,230,200,0.55); border-top-color: rgba(255,255,255,0.50);
+      background: linear-gradient(150deg, rgba(0,190,210,0.85) 0%, rgba(0,110,150,0.92) 55%, rgba(0,70,110,0.90) 100%);
+      border: 1px solid rgba(0,230,200,0.55); border-top-color: rgba(160,255,240,0.65);
       color: #fff;
     }
-    .btn-dl-teal:hover { box-shadow: 0 0 36px rgba(0,230,200,0.55), inset 0 1px 0 rgba(255,255,255,0.40); color:#fff; }
+    .btn-dl-teal:hover { box-shadow: 0 0 36px rgba(0,230,200,0.6), 0 8px 30px rgba(0,0,80,0.7); color:#fff; }
     .btn-dl-green {
-      background: linear-gradient(145deg, rgba(0,180,100,0.80), rgba(0,90,60,0.9));
-      border-color: rgba(0,255,160,0.45); border-top-color: rgba(255,255,255,0.45);
+      background: linear-gradient(150deg, rgba(0,190,110,0.85) 0%, rgba(0,100,65,0.92) 55%, rgba(0,60,40,0.90) 100%);
+      border: 1px solid rgba(0,255,160,0.45); border-top-color: rgba(160,255,200,0.55);
       color: #fff;
     }
-    .btn-dl-green:hover { box-shadow: 0 0 36px rgba(0,255,140,0.5), inset 0 1px 0 rgba(255,255,255,0.40); color:#fff; }
+    .btn-dl-green:hover { box-shadow: 0 0 36px rgba(0,255,140,0.55), 0 8px 30px rgba(0,0,80,0.7); color:#fff; }
+    .btn-dl-purple {
+      background: linear-gradient(150deg, rgba(150,70,255,0.88) 0%, rgba(90,10,200,0.93) 55%, rgba(60,0,160,0.90) 100%);
+      border: 1px solid rgba(180,100,255,0.55); border-top-color: rgba(210,160,255,0.65);
+      color: #fff;
+    }
+    .btn-dl-purple:hover { box-shadow: 0 0 36px rgba(160,80,255,0.7), 0 8px 30px rgba(0,0,80,0.7); color:#fff; }
+
     .btn-dl-icon {
       font-size: 1.8rem; flex-shrink: 0;
-      text-shadow: 0 0 14px rgba(255,255,255,0.6);
+      text-shadow: 0 0 14px rgba(255,255,255,0.7);
+      position: relative; z-index: 1;
     }
-    .btn-dl-text { display: flex; flex-direction: column; line-height: 1.3; }
-    .btn-dl-label { font-size: .78rem; font-weight: 700; letter-spacing: .08em; color: #fff; }
-    .btn-dl-sub { font-size: .65rem; color: rgba(255,255,255,0.6); letter-spacing: .06em; margin-top: 2px; }
+    .btn-dl-text { display: flex; flex-direction: column; line-height: 1.3; position: relative; z-index: 1; }
+    .btn-dl-label { font-size: .75rem; font-weight: 700; letter-spacing: .10em; color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.4); }
+    .btn-dl-sub { font-size: .60rem; color: rgba(255,255,255,0.55); letter-spacing: .09em; margin-top: 3px; font-family: var(--font-mono); }
 
     /* ── PC CAROUSEL ── */
     #recommended-pcs {
@@ -587,18 +765,26 @@
       display: flex; justify-content: center; gap: .6rem; flex-wrap: wrap; margin-top: 1.4rem;
     }
     .pc-tab {
-      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,120,220,0.06));
-      border: 1px solid rgba(0,200,255,0.30); border-top-color: rgba(255,255,255,0.30);
-      color: rgba(180,230,255,0.85); font-family: var(--font-display);
-      font-size: .65rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-      padding: .45rem 1.4rem; border-radius: 20px; cursor: pointer; transition: all .2s;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+      background:
+        repeating-linear-gradient(90deg, rgba(0,200,255,0.03) 0px, rgba(0,200,255,0.03) 1px, transparent 1px, transparent 7px),
+        linear-gradient(180deg, rgba(0,30,80,0.6) 0%, rgba(0,10,40,0.7) 100%);
+      border: 1px solid rgba(0,200,255,0.30); border-top-color: rgba(120,220,255,0.40);
+      color: rgba(160,220,255,0.85); font-family: var(--font-mono);
+      font-size: .60rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+      padding: .45rem 1.4rem;
+      border-radius: 0;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      cursor: pointer; transition: all .2s;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
     }
     .pc-tab:hover, .pc-tab.active {
-      background: linear-gradient(135deg, rgba(0,180,255,0.30), rgba(0,80,200,0.25));
-      border-color: rgba(0,220,255,0.65); color: #fff;
-      box-shadow: 0 0 14px rgba(0,200,255,0.4), inset 0 1px 0 rgba(255,255,255,0.30);
-      text-shadow: 0 0 8px rgba(0,200,255,0.7);
+      background:
+        repeating-linear-gradient(90deg, rgba(0,200,255,0.06) 0px, rgba(0,200,255,0.06) 1px, transparent 1px, transparent 7px),
+        linear-gradient(180deg, rgba(0,140,255,0.35) 0%, rgba(0,70,200,0.40) 100%);
+      border-color: rgba(0,220,255,0.70); border-top-color: rgba(180,240,255,0.80);
+      color: #fff;
+      box-shadow: 0 0 16px rgba(0,200,255,0.45), inset 0 1px 0 rgba(255,255,255,0.25);
+      text-shadow: 0 0 8px rgba(0,220,255,0.9);
     }
     .pc-carousel-wrapper {
       position: relative; display: flex; align-items: center; gap: 0;
@@ -692,10 +878,74 @@
 
 <body>
   <div class="scanlines"></div>
-  <div class="hud-corner hud-corner--tl"></div>
-  <div class="hud-corner hud-corner--tr"></div>
-  <div class="hud-corner hud-corner--bl"></div>
-  <div class="hud-corner hud-corner--br"></div>
+
+  <!-- Mechanized HUD corners -->
+  <div class="mech-corner mech-corner--tl">
+    <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,220,255,0.75)" stroke-width="2" fill="none"/>
+      <polyline points="6,0 6,6 0,6" stroke="rgba(0,255,200,0.5)" stroke-width="1" fill="none"/>
+      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
+      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
+      <rect x="2" y="2" width="4" height="4" fill="rgba(0,255,200,0.6)"/>
+    </svg>
+  </div>
+  <div class="mech-corner mech-corner--tr">
+    <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,220,255,0.75)" stroke-width="2" fill="none"/>
+      <polyline points="6,0 6,6 0,6" stroke="rgba(0,255,200,0.5)" stroke-width="1" fill="none"/>
+      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
+      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
+      <rect x="2" y="2" width="4" height="4" fill="rgba(0,255,200,0.6)"/>
+    </svg>
+  </div>
+  <div class="mech-corner mech-corner--bl">
+    <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,220,255,0.75)" stroke-width="2" fill="none"/>
+      <polyline points="6,0 6,6 0,6" stroke="rgba(0,255,200,0.5)" stroke-width="1" fill="none"/>
+      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
+      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
+      <rect x="2" y="2" width="4" height="4" fill="rgba(0,255,200,0.6)"/>
+    </svg>
+  </div>
+  <div class="mech-corner mech-corner--br">
+    <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,220,255,0.75)" stroke-width="2" fill="none"/>
+      <polyline points="6,0 6,6 0,6" stroke="rgba(0,255,200,0.5)" stroke-width="1" fill="none"/>
+      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
+      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
+      <rect x="2" y="2" width="4" height="4" fill="rgba(0,255,200,0.6)"/>
+    </svg>
+  </div>
+
+  <!-- HUD side edges -->
+  <div class="hud-edge-l"></div>
+  <div class="hud-edge-r"></div>
+
+  <!-- HUD status readout top-left -->
+  <div class="hud-status">
+    <div class="hud-status-line"><span class="hud-status-dot"></span>SYS_ONLINE</div>
+    <div class="hud-status-line"><span class="hud-status-dot alt"></span>NT_6.1.7601</div>
+    <div class="hud-status-line" style="opacity:.5;">AERO::ACTIVE</div>
+  </div>
+
+  <!-- HUD clock readout top-right -->
+  <div class="hud-readout" id="hudReadout">
+    <div id="hudTime">--:--:--</div>
+    <div style="opacity:.55;">WIN7_TEAM</div>
+    <div style="opacity:.35;">V2.6.1</div>
+  </div>
+
+  <!-- HUD subtle reticle -->
+  <div class="hud-reticle"></div>
+
+  <!-- HUD bottom data bar -->
+  <div class="hud-bottom-bar">
+    <span>MEM::OK</span>
+    <div class="hud-progress"><div class="hud-progress-fill"></div></div>
+    <span id="hudDate">----</span>
+    <div class="hud-progress"><div class="hud-progress-fill" style="animation-delay:.9s;"></div></div>
+    <span>AERO::GL</span>
+  </div>
 
   <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">
     <div class="container">
@@ -737,8 +987,8 @@
           <p class="hero-sub">Your PC runs smoother more stable and Simplified</p>
           <p class="hero-url">&#x276F; Windows 7 can be the most legendary OS thats ever made unlike Windows 11</p>
           <div class="d-flex flex-wrap gap-3">
-            <a href="#whatwedo" class="btn-aero btn-aero-primary">Explore Features</a>
-            <a href="#contact" class="btn-aero btn-aero-ghost">Learn More</a>
+            <a href="#whatwedo" class="btn-aero btn-aero-primary">Explore Features<span class="btn-scan"></span></a>
+            <a href="#contact" class="btn-aero btn-aero-ghost">Learn More<span class="btn-scan"></span></a>
           </div>
         </div>
       </div>
@@ -763,18 +1013,27 @@
       <div class="d-flex flex-wrap gap-3 justify-content-center">
         <a href="https://web.archive.org/web/20160701202128/http://www.microsoft.com/en-us/software-download/windows7"
            target="_blank" rel="noopener" class="btn-dl btn-dl-primary">
+          <span class="btn-dl-tick-tl"></span><span class="btn-dl-tick-br"></span>
           <span class="btn-dl-icon"><i class="fab fa-windows"></i></span>
           <span class="btn-dl-text"><span class="btn-dl-label">Download Windows 7</span><span class="btn-dl-sub">Official Microsoft Archive</span></span>
         </a>
         <a href="https://archive.org/details/windows-7-ultimate-x-64-sp-1-fully-updated"
            target="_blank" rel="noopener" class="btn-dl btn-dl-teal">
+          <span class="btn-dl-tick-tl"></span><span class="btn-dl-tick-br"></span>
           <span class="btn-dl-icon"><i class="fas fa-sync-alt"></i></span>
           <span class="btn-dl-text"><span class="btn-dl-label">Download Windows 7 Fully Updated</span><span class="btn-dl-sub">SP1 + All Updates Included</span></span>
         </a>
         <a href="https://archive.org/details/windows-7-updated-2024-06-12"
            target="_blank" rel="noopener" class="btn-dl btn-dl-green">
+          <span class="btn-dl-tick-tl"></span><span class="btn-dl-tick-br"></span>
           <span class="btn-dl-icon"><i class="fas fa-microchip"></i></span>
           <span class="btn-dl-text"><span class="btn-dl-label">Download Windows 7 with Modern Hardware Support</span><span class="btn-dl-sub">Updated June 2024 — Intel/AMD Ready</span></span>
+        </a>
+        <a href="https://reloadedwin.neocities.org/"
+           target="_blank" rel="noopener" class="btn-dl btn-dl-purple">
+          <span class="btn-dl-tick-tl"></span><span class="btn-dl-tick-br"></span>
+          <span class="btn-dl-icon"><i class="fas fa-paint-brush"></i></span>
+          <span class="btn-dl-text"><span class="btn-dl-label">Download Windows 10 with Windows 7 Theme</span><span class="btn-dl-sub">ReloadedWin — Win7 Look on Win10</span></span>
         </a>
       </div>
       <p style="text-align:center;margin-top:1.5rem;font-family:var(--font-mono);font-size:.68rem;color:rgba(0,200,255,0.35);letter-spacing:.1em;">
@@ -1064,13 +1323,13 @@
           <div class="community-block"><p>Want to learn more about Windows 7? Explore the official Microsoft documentation, join the Windows Insider program, or visit community forums like Reddit's r/Windows7 for tips, tricks, and help from thousands of enthusiasts.</p></div>
         </div>
         <div class="col-lg-4">
-          <div class="feature-card">
+          <div class="feature-card" style="height:auto;">
             <div class="feature-icon"><i class="fab fa-windows"></i></div>
             <h3>Windows Insider</h3>
             <p>Get early access to new Windows features before they ship to the public.</p>
             <a href="https://insider.windows.com" target="_blank" rel="noopener" class="feature-link">Join Program <i class="fas fa-arrow-right"></i></a>
           </div>
-          <div class="mt-3 feature-card">
+          <div class="mt-3 feature-card" style="height:auto;">
             <div class="feature-icon"><i class="fab fa-reddit"></i></div>
             <h3>r/Windows7</h3>
             <p>A thriving community of Windows users sharing guides, fixes, and news.</p>
@@ -1204,8 +1463,19 @@
       btn.style.background = 'linear-gradient(180deg,rgba(0,200,120,0.85),rgba(0,100,60,0.9))';
       setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; this.reset(); }, 3000);
     });
+
+    // HUD live clock
+    (function hudClock() {
+      const timeEl = document.getElementById('hudTime');
+      const dateEl = document.getElementById('hudDate');
+      function tick() {
+        const n = new Date();
+        const pad = v => String(v).padStart(2,'0');
+        if (timeEl) timeEl.textContent = pad(n.getHours())+':'+pad(n.getMinutes())+':'+pad(n.getSeconds());
+        if (dateEl) dateEl.textContent = n.getFullYear()+'.'+pad(n.getMonth()+1)+'.'+pad(n.getDate());
+      }
+      tick(); setInterval(tick, 1000);
+    })();
   </script>
 </body>
 </html>
-
-
