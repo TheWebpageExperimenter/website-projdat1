@@ -31,18 +31,32 @@
       --nav-h:          68px;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    * { text-rendering: optimizeLegibility; }
+    *, *::before, *::after { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    html { 
+      scroll-behavior: smooth; 
+    }
+    * { 
+      text-rendering: optimizeLegibility; 
+    }
 
     #bg-video {
-      position: fixed; inset: 0;
-      width: 100%; height: 100%;
+      position: fixed; 
+      inset: 0;
+      width: 100%; 
+      height: 100%;
       object-fit: cover;
-      z-index: -2; pointer-events: none;
+      z-index: -2; 
+      pointer-events: none;
     }
+    
     #bg-video-overlay {
-      position: fixed; inset: 0; z-index: -1;
+      position: fixed; 
+      inset: 0; 
+      z-index: -1;
       background: rgba(0, 10, 30, 0.42);
       pointer-events: none;
     }
@@ -55,12 +69,16 @@
       background: transparent;
       overflow-x: hidden;
     }
-    body::before, body::after { display: none; }
+    
+    body::before, body::after { 
+      display: none; 
+    }
 
     @font-face {
       font-family: 'VoxelPoint';
       src: url('voxelpoint.ttf') format('truetype');
-      font-weight: normal; font-style: normal;
+      font-weight: normal; 
+      font-style: normal;
     }
 
     .bubble {
@@ -75,8 +93,9 @@
     }
 
     @keyframes rise {
-      0%   { transform: translateY(100vh) translateX(0) scale(1); 
-            opacity:0; 
+      0%   { 
+        transform: translateY(100vh) translateX(0) scale(1); 
+        opacity: 0; 
       }
       10%  { 
         opacity: 0.6; 
@@ -90,10 +109,25 @@
       }
     }
 
-    a { color: var(--aero-cyan); text-decoration: none; transition: color .2s; }
-    a:hover { color: #fff; }
-    h1,h2,h3,h4 { font-family: var(--font-display); }
-    p { line-height: 1.9; }
+    a { 
+      color: var(--aero-cyan); 
+      text-decoration: none; 
+      transition: color .2s; 
+    }
+    
+    a:hover { 
+      color: #fff; 
+    }
+    
+    h1,h2,h3,h4 { 
+      font-family: var(--font-display); 
+    }
+    
+    p { 
+      line-height: 1.9; 
+    }
+
+    /* ── and this is what you can transform your boring webpage into Frutiger Aero!! ── */
 
     .glass {
       position: relative;
@@ -127,17 +161,35 @@
       opacity: 0.9;
     }
 
-    /* ── NAV HUD ANIMATIONS ── */
+    /* ── Navbar Keyframes! ── */
     @keyframes nav-scan-h {
-      0%   { transform: translateX(-100%); opacity: 0; }
-      10%  { opacity: 1; }
-      90%  { opacity: 1; }
-      100% { transform: translateX(100vw); opacity: 0; }
+      0%   { 
+        transform: translateX(-100%); 
+        opacity: 0; 
+      }
+      10%  { 
+        opacity: 1; 
+      }
+      90%  { 
+        opacity: 1; 
+      }
+      100% { 
+        transform: translateX(100vw); 
+        opacity: 0; 
+      }
     }
     @keyframes nav-pip-blink {
-      0%,100% { opacity: 1; box-shadow: 0 0 6px rgba(0,255,200,0.9); }
-      50%     { opacity: .25; box-shadow: none; }
+      0%,100% { 
+        opacity: 1; 
+        box-shadow: 0 0 6px rgba(0,255,200,0.9); 
+      }
+      50%     { 
+        opacity: .25; 
+        box-shadow: none; 
+      }
     }
+    
+    /* ── More Navbar Keyframes! ── */
     @keyframes nav-seg-slide {
       0%   { width: 0; opacity: 0; }
       60%  { opacity: 1; }
@@ -148,13 +200,17 @@
       50%     { opacity: 1;   filter: drop-shadow(0 0 8px rgba(0,255,200,0.9)); }
     }
 
-    /* ── MAIN NAVBAR SHELL ── */
+    /* ── Navbar Shell (idk what it is) ── */
     .tm-navbar {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0; 
+      left: 0; 
+      right: 0;
       height: var(--nav-h);
       z-index: 1000;
-      /* near-transparent dark base */
+      
+      /* we gonna make it Frutiger Aero and minimalism one from here */
+      
       background:
         linear-gradient(180deg,
           rgba(0,8,24,0.55)  0%,
@@ -198,18 +254,26 @@
     /* ── LAYER 2: top glass shine strip ── */
     .tm-navbar::after {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 38%;
+      position: absolute; 
+      top: 0;
+      left: 0; 
+      right: 0; 
+      height: 38%;
       background: linear-gradient(180deg,
         rgba(255,255,255,0.10) 0%,
         rgba(255,255,255,0.03) 60%,
         transparent 100%);
-      pointer-events: none; z-index: 0;
+      pointer-events: none; 
+      z-index: 0;
     }
 
     /* ── LAYER 3: horizontal scan sweep line ── */
     .nav-scan-line {
-      position: absolute; top: 50%; left: 0;
-      width: 120px; height: 1px;
+      position: absolute; 
+      top: 50%; 
+      left: 0;
+      width: 120px; 
+      height: 1px;
       background: linear-gradient(90deg,
         transparent 0%,
         rgba(0,220,255,0.0) 10%,
@@ -217,12 +281,18 @@
         rgba(0,220,255,0.0) 90%,
         transparent 100%);
       animation: nav-scan-h 6s linear infinite;
-      pointer-events: none; z-index: 1;
+      pointer-events: none; 
+      z-index: 1;
     }
 
-    /* ── LAYER 4: bottom edge accent line ── */
+    /* ── we need is to edge the buttons lol ── */
     .nav-bottom-edge {
-      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      position: absolute; 
+      bottom: 0; 
+      left: 0; 
+      right: 0;
+      top: 0;
+      height: 1px;
       background: linear-gradient(90deg,
         transparent 0%,
         rgba(0,200,255,0.0) 5%,
@@ -234,10 +304,15 @@
       pointer-events: none; z-index: 2;
     }
 
-    /* ── LAYER 5: left HUD bracket ── */
+    /* ── make it hud stile from the movies ── */
     .nav-hud-left {
-      position: absolute; left: 0; top: 0; bottom: 0;
-      width: 6px; pointer-events: none; z-index: 2;
+      position: absolute; 
+      left: 0; 
+      top: 0; 
+      bottom: 0;
+      width: 6px; 
+      pointer-events: none; 
+      z-index: 2;
       background: linear-gradient(180deg,
         rgba(0,220,255,0.0) 0%,
         rgba(0,220,255,0.7) 30%,
@@ -246,10 +321,14 @@
         rgba(0,220,255,0.0) 100%);
     }
 
-    /* ── LAYER 6: right HUD bracket ── */
     .nav-hud-right {
-      position: absolute; right: 0; top: 0; bottom: 0;
-      width: 6px; pointer-events: none; z-index: 2;
+      position: absolute; 
+      right: 0; 
+      top: 0; 
+      bottom: 0;
+      width: 6px; 
+      pointer-events: none; 
+      z-index: 2;
       background: linear-gradient(180deg,
         rgba(0,220,255,0.0) 0%,
         rgba(0,220,255,0.7) 30%,
@@ -258,7 +337,6 @@
         rgba(0,220,255,0.0) 100%);
     }
 
-    /* ── LAYER 7: corner pip markers ── */
     .nav-corner {
       position: absolute; width: 28px; height: 28px;
       pointer-events: none; z-index: 3;
@@ -298,52 +376,73 @@
         0 8px 60px rgba(0,0,30,0.7);
     }
 
-    /* ── BRAND ── */
+    /* ── a brand lol ── */
     .navbar-brand {
-      font-family: var(--font-display); font-weight: 900; font-size: 1.2rem;
-      color: #fff !important; letter-spacing: .12em;
+      font-family: var(--font-display); 
+      font-weight: 900; 
+      font-size: 1.2rem;
+      color: #fff !important; 
+      letter-spacing: .12em;
       text-shadow: 0 0 10px rgba(0,220,255,0.95), 0 0 24px rgba(0,200,255,0.6);
-      display: flex; align-items: center; gap: 10px;
-      position: relative; z-index: 4;
+      display: flex; 
+      align-items: center; 
+      gap: 10px;
+      position: relative; 
+      z-index: 4;
     }
 
     .win7-logo-nav {
-      width: 28px; height: 28px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      width: 28px; 
+      height: 28px;
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 2px;
       filter: drop-shadow(0 0 6px rgba(0,200,255,0.9));
     }
     .win7-logo-nav span {
-      border-radius: 2px; display: block;
+      border-radius: 2px; 
+      display: block;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(0,0,0,0.2);
     }
+
+    /* ── wow 4 colored logos! ── */
     .win7-logo-nav span:nth-child(1) { background: linear-gradient(135deg,#ff4444,#cc0000); }
     .win7-logo-nav span:nth-child(2) { background: linear-gradient(135deg,#00aaff,#0055cc); }
     .win7-logo-nav span:nth-child(3) { background: linear-gradient(135deg,#33cc33,#007700); }
     .win7-logo-nav span:nth-child(4) { background: linear-gradient(135deg,#ffaa00,#cc6600); }
 
-    /* ── NAV LINKS ── */
+    /* ── now we need is the navigation links ── */
     .nav-link.tm-nav-link {
       color: rgba(180,235,255,0.88) !important;
-      font-family: var(--font-display); font-size: 1.025rem; font-weight: 600;
-      letter-spacing: .10em; text-transform: uppercase;
+      font-family: var(--font-display); 
+      font-size: 1.025rem; 
+      font-weight: 600;
+      letter-spacing: .10em; 
+      text-transform: uppercase;
       padding: .38rem .85rem !important;
       border-radius: 0;
-      /* mech clip shape */
       clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
       border: none;
       background: transparent;
-      position: relative; z-index: 4;
+      position: relative; 
+      z-index: 4;
       transition: all .2s;
     }
     /* tick marks on each link */
     .nav-link.tm-nav-link::before {
       content: '';
-      position: absolute; left: 5px; top: 50%; transform: translateY(-50%);
-      width: 3px; height: 3px; border-radius: 50%;
+      position: absolute; 
+      left: 5px; 
+      top: 50%; 
+      transform: translateY(-50%);
+      width: 3px; 
+      height: 3px; 
+      border-radius: 50%;
       background: rgba(0,200,255,0.5);
       box-shadow: 0 0 4px rgba(0,200,255,0.6);
       transition: all .2s;
     }
+    
     .nav-link.tm-nav-link:hover,
     .nav-link.tm-nav-link.active {
       color: #fff !important;
@@ -399,14 +498,26 @@
     }
 
     #hero {
-      min-height: 100vh; position: relative;
-      display: flex; align-items: center; overflow: hidden;
+      min-height: 100vh; 
+      position: relative;
+      display: flex; 
+      align-items: center; 
+      overflow: hidden;
     }
 
-    .light-rays { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .light-rays { 
+      position: absolute; 
+      inset: 0; 
+      overflow: hidden; 
+      pointer-events: none; 
+    }
+    
     .light-rays::before, .light-rays::after {
-      content: ''; position: absolute; top: -20%;
-      width: 300px; height: 130%;
+      content: ''; 
+      position: absolute; 
+      top: -20%;
+      width: 300px; 
+      height: 130%;
       background: linear-gradient(180deg, rgba(0,200,255,0.12) 0%, transparent 80%);
       transform-origin: top center;
       animation: rays 6s ease-in-out infinite alternate;
@@ -444,8 +555,8 @@
       border-top-color: rgba(255,255,255,0.55);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.40), 0 4px 16px rgba(0,20,80,0.5);
       color: var(--aero-cyan); 
-      font-family: var(--font-mono);
-      font-size: .66rem; 
+      font-family: var(--font-display);
+      font-size: .60rem; 
       letter-spacing: .18em; 
       text-transform: uppercase;
       padding: .35rem 1.2rem; 
@@ -461,7 +572,7 @@
       margin-bottom: .4rem; letter-spacing: .03em;
     }
 
-    /* ── HERO TITLE: flex row so logo aligns with text ── */
+    /* ── now wee need is the title, btw Windows is the trademarked so this is for educated purposes only. This shows the main line says "Welcome to the World of Windows 7!" ── */
     .hero-title {
       font-size: clamp(2.5rem, 7.5vw, 5.5rem);
       font-weight: 895;
@@ -2194,8 +2305,8 @@
       <p class="mb-0">
         &copy; 2026 Designed by <a href="#">TheWebpageExperimenter</a> &nbsp;|&nbsp;
         <a href="https://www.microsoft.com/windows" target="_blank" rel="noopener">Windows</a> &nbsp;|&nbsp;
-        Microsoft Windows and its Windows 7 is the trademarked by Microsoft Corporation, and it's not affiliated. This is a Educational Purposes only, 2026.
-        Windows 7 is an unsupported operating system, as it can lead to Security Problems. All rights reserved.
+        Microsoft Windows and its Windows 7 logo is the trademarked by Microsoft Corporation, <br>  and it's not affiliated. This is a Educational Purposes only, 2026. <br>
+        Windows 7 is an unsupported operating system, Use it at your risk or it can lead to Security Problems. <br> This Project was not related to or anything with Microsoft Corporation
       </p>
     </div>
   </footer>
