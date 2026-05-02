@@ -13,6 +13,8 @@
 
   <style>
     :root {
+      --aero-danger     #F75700;
+      --aero-red        #A60D0D;
       --aero-sky:       #00c8ff;
       --aero-cyan:      #00f0ff;
       --aero-deep:      #003860;
@@ -105,12 +107,17 @@
     }
 
     .tm-navbar {
-      position: fixed; top: 0; left: 0; right: 0;
-      height: var(--nav-h); z-index: 1000;
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0;
+      height: var(--nav-h); 
+      z-index: 1000;
       background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(0,120,255,0.18) 50%, rgba(0,40,120,0.35) 100%);
       border-bottom: 1px solid rgba(0,220,255,0.7);
       box-shadow: 0 0 30px rgba(0,200,255,0.3), inset 0 2px 0 rgba(35,118,162,0.9);
-      transition: all .35s; overflow: hidden;
+      transition: all .35s; 
+      overflow: hidden;
     }
     .tm-navbar::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 55%;
@@ -198,11 +205,17 @@
       animation: pulse-orb 4s ease-in-out infinite alternate; pointer-events: none;
     }
     @keyframes pulse-orb {
-      0%   { transform: translate(-40%,-50%) scale(1); opacity:.8; }
-      100% { transform: translate(-40%,-50%) scale(1.12); opacity:1; }
+      0%   { 
+        transform: translate(-40%,-50%) scale(1); opacity:.8; 
+      }
+      100% { 
+        transform: translate(-40%,-50%) scale(1.12); opacity:1; 
+      }
     }
 
-    .hero-content { position: relative; z-index: 2; }
+    .hero-content { 
+      position: relative; z-index: 2; 
+    }
 
     .hero-badge {
       display: inline-block;
@@ -210,9 +223,14 @@
       border: 1px solid rgba(0,220,255,0.50);
       border-top-color: rgba(255,255,255,0.55);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.40), 0 4px 16px rgba(0,20,80,0.5);
-      color: var(--aero-cyan); font-family: var(--font-mono);
-      font-size: .66rem; letter-spacing: .18em; text-transform: uppercase;
-      padding: .35rem 1.2rem; border-radius: 20px; margin-bottom: 1.5rem;
+      color: var(--aero-cyan); 
+      font-family: var(--font-mono);
+      font-size: .66rem; 
+      letter-spacing: .18em; 
+      text-transform: uppercase;
+      padding: .35rem 1.2rem; 
+      border-radius: 20px; 
+      margin-bottom: 1.5rem;
       text-shadow: 0 0 8px rgba(0,220,255,0.8);
     }
 
@@ -509,53 +527,146 @@
     .community-block {
       background: linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(0,100,200,0.06) 100%);
       border: 1px solid rgba(0,200,255,0.20); border-top-color: rgba(255,255,255,0.30);
-      border-left: 3px solid rgba(0,200,255,0.7); border-radius: 12px;
-      padding: 1.8rem 2rem; margin-bottom: 1.2rem; position: relative; overflow: hidden;
+      border-left: 3px solid rgba(0,200,255,0.7); 
+      border-radius: 12px;
+      padding: 1.8rem 2rem; 
+      margin-bottom: 1.2rem; 
+      position: relative; 
+      overflow: hidden;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 6px 20px rgba(0,10,40,0.4);
     }
-    .community-block::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 35%; background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent); pointer-events: none; }
-    .community-block p { margin: 0; color: rgba(170,220,250,0.9); font-size: .95rem; }
+    
+    .community-block::before { 
+      content: '';
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      right: 0;
+      height: 35%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent); 
+      pointer-events: none; 
+    }
+    
+    .community-block p { 
+      margin: 0;
+      color: rgba(170,220,250,0.9); 
+      font-size: .95rem; 
+    }
 
-    #contact { background: linear-gradient(180deg, rgba(0,15,40,0.4) 0%, rgba(0,5,20,0.5) 100%); }
+    #contact { 
+      background: linear-gradient(180deg, rgba(0,15,40,0.4) 0%, rgba(0,5,20,0.5) 100%); }
     .tm-input {
-      display: block; width: 100%; padding: .8rem 1.3rem; margin-bottom: 1.2rem;
+      display: block; 
+      width: 100%; 
+      padding: .8rem 1.3rem; 
+      margin-bottom: 1.2rem;
       background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,80,180,0.06));
-      border: 1px solid rgba(0,200,255,0.25); border-top-color: rgba(255,255,255,0.25);
-      border-radius: 8px; color: #fff; font-family: var(--font-body); font-size: .95rem;
+      border: 1px solid rgba(0,200,255,0.25); 
+      border-top-color: rgba(255,255,255,0.25);
+      border-radius: 8px; 
+      color: #fff; 
+      font-family: var(--font-body); 
+      font-size: .95rem;
       transition: all .2s;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 4px 12px rgba(0,10,40,0.4);
     }
-    .tm-input:focus { outline: none; border-color: rgba(0,220,255,0.6); border-top-color: rgba(255,255,255,0.45); box-shadow: 0 0 16px rgba(0,200,255,0.25), inset 0 1px 0 rgba(255,255,255,0.20); }
-    .tm-input::placeholder { color: rgba(0,200,255,0.35); }
+   
+    .tm-input:focus { 
+      outline: none; 
+      border-color: rgba(0,220,255,0.6); 
+      border-top-color: rgba(255,255,255,0.45); 
+      box-shadow: 0 0 16px rgba(0,200,255,0.25), 
+      inset 0 1px 0 rgba(255,255,255,0.20); 
+    }
+    
+    .tm-input::placeholder { 
+      color: rgba(0,200,255,0.35); 
+    }
+    
     .btn-submit {
       background: linear-gradient(180deg, rgba(0,180,255,0.85) 0%, rgba(0,80,200,0.9) 50%, rgba(0,50,160,0.85) 100%);
-      border: 1px solid rgba(0,220,255,0.55); border-top-color: rgba(255,255,255,0.55);
-      color: white; cursor: pointer; padding: .8rem 2.8rem;
-      font-family: var(--font-display); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; border-radius: 8px;
-      position: relative; overflow: hidden;
-      box-shadow: 0 0 20px rgba(0,150,255,0.4), inset 0 1px 0 rgba(255,255,255,0.50); transition: all .25s;
+      border: 1px solid rgba(0,220,255,0.55); 
+      border-top-color: rgba(255,255,255,0.55);
+      color: white; 
+      cursor: pointer; 
+      padding: .8rem 2.8rem;
+      font-family: var(--font-display); 
+      font-size: .72rem; 
+      letter-spacing: .12em; 
+      text-transform: uppercase; 
+      border-radius: 8px;
+      position: relative; 
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,150,255,0.4), inset 0 1px 0 rgba(255,255,255,0.50); 
+      transition: all .25s;
     }
-    .btn-submit::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%; background: linear-gradient(180deg, rgba(255,255,255,0.32), transparent); }
-    .btn-submit:hover { box-shadow: 0 0 30px rgba(0,200,255,0.7), inset 0 1px 0 rgba(255,255,255,0.55); transform: translateY(-2px); }
+    
+    .btn-submit::before { 
+      content: ''; 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      height: 50%; 
+      background: linear-gradient(180deg, rgba(255,255,255,0.32), transparent); 
+    }
+    
+    .btn-submit:hover { 
+      box-shadow: 0 0 30px rgba(0,200,255,0.7), 
+        inset 0 1px 0 rgba(255,255,255,0.55); 
+      transform: translateY(-2px); 
+    }
+    
     .contact-info-item {
-      display: flex; align-items: center; gap: 1.2rem; padding: 1rem 1.3rem;
+      display: flex; 
+      align-items: center;
+      gap: 1.2rem; 
+      padding: 1rem 1.3rem;
       background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,80,180,0.06));
-      border: 1px solid rgba(0,200,255,0.20); border-top-color: rgba(255,255,255,0.25);
-      border-radius: 10px; margin-bottom: 1rem; position: relative; overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 4px 14px rgba(0,10,40,0.4); transition: all .25s;
+      border: 1px solid rgba(0,200,255,0.20); 
+      border-top-color: rgba(255,255,255,0.25);
+      border-radius: 10px;
+      margin-bottom: 1rem; 
+      position: relative; 
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 4px 14px rgba(0,10,40,0.4); 
+      transition: all .25s;
     }
-    .contact-info-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.10), transparent); pointer-events: none; }
-    .contact-info-item:hover { border-color: rgba(0,220,255,0.45); box-shadow: 0 0 16px rgba(0,200,255,0.18), inset 0 1px 0 rgba(255,255,255,0.20); }
+    
+    .contact-info-item::before { 
+      content: ''; 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      height: 40%; 
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), transparent); 
+      pointer-events: none; 
+    }
+    
+    .contact-info-item:hover { 
+      border-color: rgba(0,220,255,0.45); 
+      box-shadow: 0 0 16px rgba(0,200,255,0.18), 
+        inset 0 1px 0 rgba(255,255,255,0.20);
+    }
+    
     .contact-info-item i {
-      width: 42px; height: 42px; border-radius: 10px;
+      width: 42px; 
+      height: 42px;
+      border-radius: 10px;
       background: linear-gradient(135deg, rgba(0,160,255,0.28), rgba(0,60,180,0.22));
       border: 1px solid rgba(0,200,255,0.35); border-top-color: rgba(255,255,255,0.40);
-      color: var(--aero-cyan); font-size: 1rem; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
+      color: var(--aero-cyan); font-size: 1rem;
+      flex-shrink: 0;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
       box-shadow: 0 0 10px rgba(0,200,255,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
       text-shadow: 0 0 8px rgba(0,200,255,0.7);
     }
-    .contact-info-item span { color: rgba(180,225,255,0.9); font-size: .9rem; }
+    .contact-info-item span { 
+      color: rgba(180,225,255,0.9); font-size: .9rem;
+    }
 
     footer {
       background: linear-gradient(180deg, rgba(0,10,30,0.9) 0%, rgba(0,5,15,0.97) 100%);
@@ -563,49 +674,107 @@
       text-align: center; font-size: .82rem; color: rgba(0,200,255,0.5);
       position: relative; z-index: 1;
     }
-    footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); }
-    footer a { color: rgba(0,200,255,0.5); }
-    footer a:hover { color: var(--aero-cyan); }
+    footer::before { 
+      content: ''; 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      height: 1px; 
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); 
+    }
+    
+    footer a { 
+      color: rgba(0,200,255,0.5); 
+    }
+    
+    footer a:hover { 
+      color: var(--aero-cyan); 
+    }
 
-    .scanlines { position: fixed; inset: 0; z-index: 9999; pointer-events: none; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px); }
+    .scanlines { 
+      position: fixed; 
+      inset: 0; 
+      z-index: 9999; 
+      pointer-events: none; 
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px); 
+    }
 
     /* ── MECHANIZED HUD OVERLAY ── */
-    .hud-corner { display: none; }
+    .hud-corner {
+      display: none; 
+    }
 
-    .mech-hud { position: fixed; inset: 0; z-index: 998; pointer-events: none; }
+    .mech-hud { 
+      position: fixed; inset: 0; z-index: 998; pointer-events: none; 
+    }
 
     /* Corner brackets */
     .mech-corner {
       position: fixed; width: 54px; height: 54px; z-index: 999; pointer-events: none;
     }
-    .mech-corner svg { width: 100%; height: 100%; }
-    .mech-corner--tl { top: 76px; left: 10px; }
-    .mech-corner--tr { top: 76px; right: 10px; transform: scaleX(-1); }
-    .mech-corner--bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
-    .mech-corner--br { bottom: 10px; right: 10px; transform: scale(-1,-1); }
+    .mech-corner svg { 
+      width: 100%; height: 100%; 
+    }
+    .mech-corner--tl { 
+      top: 76px; left: 10px; 
+    }
+    .mech-corner--tr {
+      top: 76px; right: 10px; transform: scaleX(-1); 
+    }
+    .mech-corner--bl { 
+      bottom: 10px; left: 10px; transform: scaleY(-1);
+    }
+    .mech-corner--br {
+      bottom: 10px; right: 10px; transform: scale(-1,-1); 
+    }
 
     /* Side edge bars */
     .hud-edge-l, .hud-edge-r {
-      position: fixed; top: 50%; transform: translateY(-50%);
-      width: 3px; height: 220px; z-index: 999; pointer-events: none;
+      position: fixed; 
+      top: 50%; 
+      transform: translateY(-50%);
+      width: 3px; 
+      height: 220px; 
+      z-index: 999; 
+      pointer-events: none;
       background: linear-gradient(180deg, transparent 0%, rgba(0,200,255,0.6) 30%, rgba(0,255,200,0.8) 50%, rgba(0,200,255,0.6) 70%, transparent 100%);
     }
-    .hud-edge-l { left: 8px; }
-    .hud-edge-r { right: 8px; }
+    .hud-edge-l { 
+      left: 8px;
+    }
+    .hud-edge-r { 
+      right: 8px; 
+    }
     .hud-edge-l::before, .hud-edge-r::before {
-      content: ''; position: absolute; top: 50%; transform: translateY(-50%);
-      width: 8px; height: 2px;
+      content: ''; 
+      position: absolute; 
+      top: 50%; 
+      transform: translateY(-50%);
+      width: 8px; 
+      height: 2px;
       background: rgba(0,255,200,0.9);
     }
-    .hud-edge-l::before { left: 3px; }
-    .hud-edge-r::before { right: 3px; }
+    .hud-edge-l::before {
+      left: 3px; 
+    }
+    .hud-edge-r::before {
+      right: 3px; 
+    }
 
     /* Status readout - top left */
     .hud-status {
-      position: fixed; top: 84px; left: 70px; z-index: 999; pointer-events: none;
-      font-family: var(--font-mono); font-size: .58rem;
-      color: rgba(0,230,200,0.75); letter-spacing: .12em;
-      line-height: 1.7; text-shadow: 0 0 6px rgba(0,200,255,0.6);
+      position: fixed; 
+      top: 84px; 
+      left: 70px; 
+      z-index: 999; 
+      pointer-events: none;
+      font-family: var(--font-mono); 
+      font-size: .58rem;
+      color: rgba(0,230,200,0.75); 
+      letter-spacing: .12em;
+      line-height: 1.7; 
+      text-shadow: 0 0 6px rgba(0,200,255,0.6);
     }
     .hud-status-line { display: flex; align-items: center; gap: 6px; }
     .hud-status-dot {
@@ -958,7 +1127,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarMain">
         <ul class="navbar-nav gap-1">
           <li class="nav-item"><a class="nav-link tm-nav-link" href="#hero">Home</a></li>
-          <li class="nav-item"><a class="nav-link tm-nav-link" href="#download-win7">Download</a></li>
+          <li class="nav-item"><a class="nav-link tm-nav-link" href="#download-win7">Downloads</a></li>
           <li class="nav-item"><a class="nav-link tm-nav-link" href="#recommended-pcs">PCs</a></li>
           <li class="nav-item"><a class="nav-link tm-nav-link" href="#whatwedo">Explore</a></li>
           <li class="nav-item"><a class="nav-link tm-nav-link" href="#reviews">Reviews</a></li>
@@ -1037,7 +1206,7 @@
         </a>
       </div>
       <p style="text-align:center;margin-top:1.5rem;font-family:var(--font-mono);font-size:.68rem;color:rgba(0,200,255,0.35);letter-spacing:.1em;">
-        CAUTION: Windows 7 has reached the end of support as of 2020. Updates will continue, but Security Patches may be limited. Use at your own risk. 
+        CAUTION: Windows 7 reached the end of support in 2020. Updates will continue, but Security Patches may be limited. Use at your own risk. 
       </p>
     </div>
   </section>
@@ -1195,8 +1364,8 @@
       <h2 class="section-title-alt">What is Windows 7</h2>
       <div class="tm-divider"></div>
       <p class="mb-5" style="max-width:780px; color:rgba(170,220,255,0.85);">
-        Windows 7 is a major release of the Windows NT operating system developed by Microsoft. It was released to manufacturing on July 22, 2009, and became generally available on October 22, 2009.
-        <a href="https://www.microsoft.com/windows" target="_blank" rel="noopener">Learn more at Microsoft.com</a>.
+        Windows 7 is a major release of the Windows NT operating system developed by Microsoft<br> It was released to manufacturing on July 22 2009 and became generally available on October 22 2009
+        <a href="https://www.microsoft.com/windows" target="_blank" rel="noopener">Learn more on Windows Webpage</a>.
       </p>
       <div class="row g-4">
         <div class="col-md-6 col-lg-3">
@@ -1297,15 +1466,18 @@
         <p style="color:rgba(160,210,245,0.7);">Download these apps directly from the Microsoft Store on Windows 7.</p>
       </div>
       <div class="app-grid">
-        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-dumbbell"></i><span>Fitness</span></div><div class="app-card-label">Health and Fitness</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
-        <div class="app-card"><div class="app-card-placeholder"><i class="fab fa-spotify"></i><span>Music</span></div><div class="app-card-label">Spotify</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-dumbbell"></i><span>Sidebar</span></div><div class="app-card-label">Sidebar Gadgets</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fab fa-spotify"></i><span>Music</span></div><div class="app-card-label">Spotify for Windows 7</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
         <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-code"></i><span>Dev Tools</span></div><div class="app-card-label">Visual Studio Code</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
-        <div class="app-card"><div class="app-card-placeholder"><i class="fab fa-steam"></i><span>Gaming</span></div><div class="app-card-label">Steam</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
-        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-laptop"></i><span>macOS VM</span></div><div class="app-card-label">VMware</div><div class="app-card-overlay"><i class="fas fa-book me-2"></i>View Guide</div></div>
-        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-chart-bar"></i><span>Compare</span></div><div class="app-card-label">PC vs Mac Specs</div><div class="app-card-overlay"><i class="fas fa-search me-2"></i>Compare</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fab fa-steam"></i><span>Gaming</span></div><div class="app-card-label">Steam for Windows 7</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-laptop"></i><span>VMware</span></div><div class="app-card-label">VMware Workstation</div><div class="app-card-overlay"><i class="fas fa-book me-2"></i>View Guide</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-chart-bar"></i><span>Office</span></div><div class="app-card-label">Microsoft Office 2010</div><div class="app-card-overlay"><i class="fas fa-search me-2"></i>Buy Office</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-chart-bar"></i><span>Movie Maker</span></div><div class="app-card-label">Windows Movie Maker</div><div class="app-card-overlay"><i class="fas fa-search me-2"></i>Compare</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-chart-bar"></i><span>Messenging</span></div><div class="app-card-label">Windows Live Messenging</div><div class="app-card-overlay"><i class="fas fa-search me-2"></i>Compare</div></div>
         <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-gamepad"></i><span>Gaming</span></div><div class="app-card-label">Xbox Game Pass</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
         <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-headphones"></i><span>Accessories</span></div><div class="app-card-label">Accessories</div><div class="app-card-overlay"><i class="fas fa-external-link-alt me-2"></i>Explore</div></div>
-        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-headphones"></i><span>Chrome</span></div><div class="app-card-label">Supermium Browser for Windows 7</div><div class="app-card-overlay"><i class="fas fa-external-link-alt me-2"></i>Supermium</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-web"></i><span>Chrome</span></div><div class="app-card-label">Supermium Browser for Windows 7</div><div class="app-card-overlay"><i class="fas fa-external-link-alt me-2"></i>Get Browser</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-web"></i><span>Firefox</span></div><div class="app-card-label">Firefox Browser for Windows 7</div><div class="app-card-overlay"><i class="fas fa-external-link-alt me-2"></i>Get Browser</div></div>
       </div>
     </div>
   </section>
