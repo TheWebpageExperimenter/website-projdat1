@@ -174,7 +174,7 @@
 
     .nav-link.tm-nav-link {
       color: rgba(200,240,255,0.90) !important;
-      font-family: var(--font-display); font-size: .65rem; font-weight: 600;
+      font-family: var(--font-display); font-size: 1.025rem; font-weight: 600;
       letter-spacing: .10em; text-transform: uppercase;
       padding: .4rem .9rem !important;
       border-radius: 6px; border: 1px solid transparent;
@@ -1087,6 +1087,208 @@
       .btn-dl { min-width: unset; width: 100%; }
       .pc-card { flex: 0 0 220px; }
     }
+
+    /* ── PC SPEC MODAL ── */
+    .pc-modal-backdrop {
+      display: none;
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(0,5,20,0.82);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .pc-modal-backdrop.open {
+      display: flex;
+    }
+    .pc-modal {
+      position: relative;
+      background: linear-gradient(145deg, rgba(0,20,60,0.97) 0%, rgba(0,40,100,0.95) 50%, rgba(0,15,45,0.98) 100%);
+      border: 1px solid rgba(0,220,255,0.55);
+      border-top-color: rgba(255,255,255,0.55);
+      border-left-color: rgba(255,255,255,0.25);
+      box-shadow: 0 0 0 1px rgba(0,200,255,0.15), 0 30px 80px rgba(0,0,30,0.9), 0 0 60px rgba(0,150,255,0.2), inset 0 2px 0 rgba(255,255,255,0.55);
+      border-radius: 18px;
+      width: 100%;
+      max-width: 860px;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      animation: modalIn .25s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes modalIn {
+      from { opacity:0; transform: scale(0.88) translateY(24px); }
+      to   { opacity:1; transform: scale(1) translateY(0); }
+    }
+    /* Glass shine top bar */
+    .pc-modal::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 42%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, transparent 100%);
+      border-radius: 18px 18px 0 0;
+      pointer-events: none; z-index: 0;
+    }
+    /* Modal title bar */
+    .pc-modal-titlebar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px 12px;
+      border-bottom: 1px solid rgba(0,200,255,0.22);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(0,50,120,0.12) 100%);
+      position: relative; z-index: 1; flex-shrink: 0;
+    }
+    .pc-modal-titlebar-left {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .pc-modal-winbtn-group {
+      display: flex; gap: 6px;
+    }
+    .pc-modal-winbtn {
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.25);
+      cursor: default;
+      flex-shrink: 0;
+    }
+    .pc-modal-winbtn.red   { background: #ff5f57; border-color: #e0443e; }
+    .pc-modal-winbtn.yellow{ background: #febc2e; border-color: #d4a01a; }
+    .pc-modal-winbtn.green { background: #28c840; border-color: #1aaa2e; }
+    .pc-modal-title {
+      font-family: var(--font-display); font-size: .78rem; font-weight: 700;
+      color: rgba(200,235,255,0.9); letter-spacing: .12em; text-transform: uppercase;
+      text-shadow: 0 0 8px rgba(0,200,255,0.5);
+    }
+    .pc-modal-close {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: linear-gradient(135deg, rgba(200,40,40,0.7), rgba(140,10,10,0.8));
+      border: 1px solid rgba(255,80,80,0.5); border-top-color: rgba(255,160,160,0.4);
+      color: #fff; font-size: 1rem; font-weight: 700;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 10px rgba(200,0,0,0.35), inset 0 1px 0 rgba(255,200,200,0.25);
+      transition: all .2s; line-height: 1; flex-shrink: 0;
+      font-family: system-ui, sans-serif;
+    }
+    .pc-modal-close:hover {
+      background: linear-gradient(135deg, rgba(255,60,60,0.9), rgba(200,20,20,0.9));
+      box-shadow: 0 0 18px rgba(255,50,50,0.7), inset 0 1px 0 rgba(255,200,200,0.35);
+      transform: scale(1.05);
+    }
+    /* Modal body */
+    .pc-modal-body {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      position: relative; z-index: 1;
+    }
+    /* LEFT: image panel */
+    .pc-modal-img-panel {
+      flex: 0 0 46%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 32px 24px;
+      background: linear-gradient(160deg, rgba(0,30,80,0.6) 0%, rgba(0,10,40,0.8) 100%);
+      border-right: 1px solid rgba(0,200,255,0.18);
+      gap: 20px;
+    }
+    .pc-modal-img {
+      width: 100%; max-width: 300px;
+      height: 200px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 18px rgba(0,180,255,0.55)) drop-shadow(0 4px 12px rgba(0,0,0,0.7));
+      border-radius: 10px;
+    }
+    /* Fallback icon when no image */
+    .pc-modal-icon-fallback {
+      font-size: 6rem; color: var(--aero-cyan);
+      text-shadow: 0 0 30px rgba(0,200,255,0.8), 0 0 70px rgba(0,150,255,0.4);
+    }
+    .pc-modal-img-label {
+      font-family: var(--font-mono); font-size: .6rem; letter-spacing: .16em;
+      color: rgba(0,200,255,0.5); text-transform: uppercase; text-align: center;
+    }
+    /* Win7 badge */
+    .pc-modal-win7-badge {
+      display: flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, rgba(0,100,220,0.35), rgba(0,40,120,0.45));
+      border: 1px solid rgba(0,180,255,0.35); border-top-color: rgba(255,255,255,0.25);
+      border-radius: 10px; padding: .5rem 1rem;
+      font-family: var(--font-mono); font-size: .62rem; color: rgba(180,230,255,0.9);
+      letter-spacing: .1em; box-shadow: 0 0 12px rgba(0,150,255,0.2);
+    }
+    .pc-modal-win7-badge .win7-logo-nav { width: 20px; height: 20px; }
+    /* RIGHT: info panel */
+    .pc-modal-info-panel {
+      flex: 1;
+      overflow-y: auto;
+      padding: 28px 28px 28px 24px;
+      scrollbar-width: thin; scrollbar-color: rgba(0,200,255,0.3) rgba(0,10,30,0.3);
+    }
+    .pc-modal-info-panel::-webkit-scrollbar { width: 4px; }
+    .pc-modal-info-panel::-webkit-scrollbar-thumb { background: rgba(0,200,255,0.35); border-radius: 2px; }
+    .pc-modal-pc-name {
+      font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
+      color: #fff; margin-bottom: .2rem;
+      text-shadow: 0 0 12px rgba(0,200,255,0.4);
+    }
+    .pc-modal-pc-sub {
+      font-family: var(--font-mono); font-size: .7rem; color: var(--aero-cyan);
+      opacity:.75; margin-bottom: 1.2rem; letter-spacing: .07em;
+    }
+    .pc-modal-specs-title {
+      font-family: var(--font-mono); font-size: .6rem; letter-spacing: .18em;
+      color: rgba(0,200,255,0.55); text-transform: uppercase; margin-bottom: .65rem;
+      border-bottom: 1px solid rgba(0,200,255,0.15); padding-bottom: .45rem;
+    }
+    .pc-modal-spec-row {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: .55rem 0;
+      border-bottom: 1px solid rgba(0,200,255,0.08);
+      font-size: .88rem; color: rgba(180,225,255,0.9);
+    }
+    .pc-modal-spec-row:last-child { border-bottom: none; }
+    .pc-modal-spec-row i {
+      color: var(--aero-cyan); font-size: .8rem; width: 16px;
+      flex-shrink: 0; margin-top: 3px;
+      text-shadow: 0 0 6px rgba(0,200,255,0.7);
+    }
+    .pc-modal-spec-label {
+      font-family: var(--font-mono); font-size: .62rem; color: rgba(0,200,255,0.5);
+      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 2px;
+    }
+    .pc-modal-win7-compat {
+      margin-top: 1.4rem;
+      background: linear-gradient(135deg, rgba(0,60,180,0.25), rgba(0,20,80,0.35));
+      border: 1px solid rgba(0,200,255,0.3); border-top-color: rgba(255,255,255,0.2);
+      border-radius: 12px; padding: 1rem 1.2rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+    .pc-modal-compat-title {
+      font-family: var(--font-mono); font-size: .62rem; letter-spacing: .15em;
+      color: rgba(0,200,255,0.6); text-transform: uppercase; margin-bottom: .65rem;
+    }
+    .pc-modal-compat-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: .38rem 0; font-size: .82rem; color: rgba(170,220,255,0.88);
+    }
+    .pc-modal-compat-row i.check { color: #00ffb0; text-shadow: 0 0 8px rgba(0,255,176,0.6); }
+    .pc-modal-compat-row i.warn  { color: #ffcc44; text-shadow: 0 0 8px rgba(255,200,60,0.6); }
+    .pc-modal-tag-row { margin-top: 1rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+
+    /* Mobile stacked layout */
+    @media (max-width: 640px) {
+      .pc-modal { border-radius: 14px; max-height: 95vh; }
+      .pc-modal-body { flex-direction: column; overflow-y: auto; }
+      .pc-modal-img-panel {
+        flex: none; padding: 22px 20px 16px;
+        border-right: none; border-bottom: 1px solid rgba(0,200,255,0.18);
+      }
+      .pc-modal-img { height: 140px; }
+      .pc-modal-icon-fallback { font-size: 4rem; }
+      .pc-modal-info-panel { overflow-y: visible; padding: 20px; }
+      .pc-modal-pc-name { font-size: 1.1rem; }
+    }
+
+    /* PC card clickable cursor */
+    .pc-card { cursor: pointer; }
   </style>
 </head>
 
@@ -1607,6 +1809,51 @@
   </video>
   <div id="bg-video-overlay"></div>
 
+  <!-- ===================== PC SPEC MODAL ===================== -->
+  <div class="pc-modal-backdrop" id="pcModal" role="dialog" aria-modal="true" aria-labelledby="pcModalTitle">
+    <div class="pc-modal" id="pcModalInner">
+      <!-- Title bar -->
+      <div class="pc-modal-titlebar">
+        <div class="pc-modal-titlebar-left">
+          <div class="pc-modal-winbtn-group">
+            <span class="pc-modal-winbtn red"></span>
+            <span class="pc-modal-winbtn yellow"></span>
+            <span class="pc-modal-winbtn green"></span>
+          </div>
+          <span class="pc-modal-title" id="pcModalTitle">PC Specifications</span>
+        </div>
+        <button class="pc-modal-close" id="pcModalClose" aria-label="Close">&#x2715;</button>
+      </div>
+      <!-- Body -->
+      <div class="pc-modal-body">
+        <!-- LEFT: image -->
+        <div class="pc-modal-img-panel" id="pcModalImgPanel">
+          <div class="pc-modal-icon-fallback" id="pcModalIconFallback"><i class="fas fa-desktop"></i></div>
+          <img id="pcModalImg" class="pc-modal-img" src="" alt="" style="display:none;" />
+          <div class="pc-modal-img-label" id="pcModalImgLabel">PC Image</div>
+          <div class="pc-modal-win7-badge">
+            <div class="win7-logo-nav">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            Runs on Windows 7
+          </div>
+        </div>
+        <!-- RIGHT: info -->
+        <div class="pc-modal-info-panel" id="pcModalInfoPanel">
+          <div class="pc-modal-pc-name" id="pcModalName">PC Name</div>
+          <div class="pc-modal-pc-sub" id="pcModalSub">Manufacturer · Year</div>
+          <div class="pc-modal-specs-title">// Hardware Specifications</div>
+          <div id="pcModalSpecsList"></div>
+          <div class="pc-modal-win7-compat">
+            <div class="pc-modal-compat-title">// Windows 7 Compatibility</div>
+            <div id="pcModalCompatList"></div>
+          </div>
+          <div class="pc-modal-tag-row" id="pcModalTagRow"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     (function spawnBubbles() {
@@ -1679,6 +1926,265 @@
       btn.textContent = '✓ Message Sent!';
       btn.style.background = 'linear-gradient(180deg,rgba(0,200,120,0.85),rgba(0,100,60,0.9))';
       setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; this.reset(); }, 3000);
+    });
+
+    // ===================== PC MODAL =====================
+    const pcData = {
+      'thinkpad-t430': {
+        name: 'ThinkPad T430',
+        sub: 'Lenovo · 2012',
+        type: 'laptop',
+        icon: 'fas fa-laptop',
+        img: null, // set to image path like 'pcs/thinkpad-t430.png' if you have one
+        specs: [
+          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Core i5-3320M (Ivy Bridge, 2.6GHz)' },
+          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 16 GB DDR3 (2 SO-DIMM slots)' },
+          { icon:'fas fa-hdd',       label:'Storage', value:'HDD / SSD upgradeable (2.5″ SATA)' },
+          { icon:'fas fa-display',   label:'Display', value:'14″ 1600×900 IPS or TN panel' },
+          { icon:'fas fa-wifi',      label:'Wireless',value:'Intel Centrino Advanced-N 6205' },
+          { icon:'fas fa-plug',      label:'Ports',   value:'USB 3.0, VGA, Mini DisplayPort, Dock connector' },
+        ],
+        compat: [
+          { ok:true,  text:'Full OEM Windows 7 driver support from Lenovo' },
+          { ok:true,  text:'Lenovo System Update tool available for Win7' },
+          { ok:true,  text:'Aero Glass works with Intel HD 4000 / NVIDIA NVS 5400' },
+          { ok:true,  text:'Trackpad, TrackPoint & fingerprint reader fully supported' },
+        ],
+        tag: { cls:'pc-tag-great', label:'Best Pick' },
+      },
+      'dell-optiplex-7010': {
+        name: 'Dell OptiPlex 7010',
+        sub: 'Dell · 2012–2013',
+        type: 'desktop',
+        icon: 'fas fa-desktop',
+        img: null,
+        specs: [
+          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Core i5/i7 3rd Gen Ivy Bridge' },
+          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 32 GB DDR3 (4 DIMM slots)' },
+          { icon:'fas fa-hdd',       label:'Storage', value:'SSD + HDD bays (SATA II/III)' },
+          { icon:'fas fa-display',   label:'GPU',     value:'Intel HD 2500/4000 or discrete PCIe GPU' },
+          { icon:'fas fa-ethernet',  label:'Network', value:'Intel 82579LM Gigabit LAN (Win7 driver ready)' },
+          { icon:'fas fa-plug',      label:'Ports',   value:'USB 3.0 × 4, DisplayPort, VGA, PS/2, PCIe slots' },
+        ],
+        compat: [
+          { ok:true,  text:'OEM Win7 drivers available directly from Dell support' },
+          { ok:true,  text:'Aero Glass supported via Intel HD or discrete GPU' },
+          { ok:true,  text:'Business-grade build, popular for enterprise Win7 deployments' },
+          { ok:true,  text:'BIOS has Legacy/CSM mode for Win7 install' },
+        ],
+        tag: { cls:'pc-tag-great', label:'Highly Recommended' },
+      },
+      'hp-elitebook-8470p': {
+        name: 'HP EliteBook 8470p',
+        sub: 'HP · 2012',
+        type: 'laptop',
+        icon: 'fas fa-laptop',
+        img: null,
+        specs: [
+          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Core i5/i7 Ivy Bridge (up to 2.9GHz)' },
+          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 16 GB DDR3 (2 SO-DIMM slots)' },
+          { icon:'fas fa-hdd',       label:'Storage', value:'mSATA SSD + 2.5″ HDD slot' },
+          { icon:'fas fa-display',   label:'Display', value:'14″ 1600×900 anti-glare panel' },
+          { icon:'fas fa-wifi',      label:'Wireless',value:'Intel Centrino Advanced-N 6205/6235' },
+          { icon:'fas fa-plug',      label:'Ports',   value:'USB 3.0 × 3, VGA, DisplayPort, SD card, Docking' },
+        ],
+        compat: [
+          { ok:true,  text:'HP official Windows 7 drivers available on HP support' },
+          { ok:true,  text:'HP Drive Encryption and HP ProtectTools work on Win7' },
+          { ok:true,  text:'Integrated fingerprint reader supported under Win7' },
+          { ok:true,  text:'Docking station fully functional with Win7' },
+        ],
+        tag: { cls:'pc-tag-good', label:'Great Choice' },
+      },
+      'hp-z230': {
+        name: 'HP Z230 Workstation',
+        sub: 'HP · 2013',
+        type: 'desktop',
+        icon: 'fas fa-desktop',
+        img: null,
+        specs: [
+          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Xeon E3-1200 v3 or Core i7 Haswell' },
+          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 32 GB ECC DDR3 (4 DIMM slots)' },
+          { icon:'fas fa-hdd',       label:'Storage', value:'PCIe SSD + multiple SATA bays' },
+          { icon:'fas fa-display',   label:'GPU',     value:'NVIDIA Quadro / AMD FirePro (PCIe x16)' },
+          { icon:'fas fa-ethernet',  label:'Network', value:'Intel I217LM Gigabit LAN' },
+          { icon:'fas fa-plug',      label:'Ports',   value:'USB 3.0 × 6, PCIe x16/x4/x1 slots, serial port' },
+        ],
+        compat: [
+          { ok:true,  text:'HP provides official Win7 drivers for Z230 workstation' },
+          { ok:true,  text:'ECC memory ensures maximum stability for Win7 workloads' },
+          { ok:true,  text:'Professional GPU cards fully Win7 compatible with WHQL drivers' },
+          { ok:true,  text:'Ideal for CAD, video editing, and server tasks under Win7' },
+        ],
+        tag: { cls:'pc-tag-good', label:'Workstation Grade' },
+      },
+      'dell-poweredge-t130': {
+        name: 'Dell PowerEdge T130',
+        sub: 'Dell · 2016',
+        type: 'server',
+        icon: 'fas fa-server',
+        img: null,
+        specs: [
+          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Xeon E3-1200 v5 (Skylake)' },
+          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 64 GB ECC DDR4 (4 DIMM slots)' },
+          { icon:'fas fa-hdd',       label:'Storage', value:'4 × SATA 3.5″ drive bays (RAID optional)' },
+          { icon:'fas fa-display',   label:'GPU',     value:'Integrated Matrox G200 (BMC), PCIe slot available' },
+          { icon:'fas fa-ethernet',  label:'Network', value:'Dual Intel I210 Gigabit LAN onboard' },
+          { icon:'fas fa-plug',      label:'Ports',   value:'USB 3.0 × 2 front/rear, VGA, PCIe x16, iDRAC port' },
+        ],
+        compat: [
+          { ok:true,  text:'Win7 installable with ACPI patches for Skylake platform' },
+          { ok:false, text:'Requires USB 3.0 driver injection during Win7 install' },
+          { ok:false, text:'Storage controller may need F6 RAID driver during setup' },
+          { ok:true,  text:'Excellent for running Win7 Server-class workloads once patched' },
+        ],
+        tag: { cls:'pc-tag-mod', label:'Needs Patching' },
+      },
+      'thinkpad-x220': {
+        name: 'ThinkPad X220',
+        sub: 'Lenovo · 2011',
+        type: 'laptop',
+        icon: 'fas fa-laptop',
+        img: null,
+        specs: [
+          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Core i5/i7 Sandy Bridge (up to 2.7GHz)' },
+          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 16 GB DDR3 (2 SO-DIMM slots)' },
+          { icon:'fas fa-hdd',       label:'Storage', value:'mSATA SSD + standard 2.5″ SATA slot' },
+          { icon:'fas fa-display',   label:'Display', value:'12.5″ 1366×768 IPS (X220i) or TN' },
+          { icon:'fas fa-wifi',      label:'Wireless',value:'Intel Centrino Advanced-N 6205 / Bluetooth 3.0' },
+          { icon:'fas fa-plug',      label:'Ports',   value:'USB 2.0 × 3, VGA, Mini DisplayPort, SD, Dock' },
+        ],
+        compat: [
+          { ok:true,  text:'A true Win7-era laptop — drivers ship with the OS install disk' },
+          { ok:true,  text:'Community favorite: extensive wiki and driver archive online' },
+          { ok:true,  text:'Aero Glass fully supported via Intel HD 3000 GPU' },
+          { ok:true,  text:'Legendary keyboard; widely praised for Win7 usability' },
+        ],
+        tag: { cls:'pc-tag-great', label:'Community Favorite' },
+      },
+      'custom-atx': {
+        name: 'Custom ATX Build',
+        sub: 'DIY · Intel 6th–8th Gen',
+        type: 'desktop',
+        icon: 'fas fa-desktop',
+        img: null,
+        specs: [
+          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Core i5/i7 Skylake / Kaby Lake / Coffee Lake' },
+          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 64 GB DDR4 (depends on motherboard)' },
+          { icon:'fas fa-hdd',       label:'Storage', value:'NVMe SSD (primary) + SATA SSD/HDD' },
+          { icon:'fas fa-display',   label:'GPU',     value:'NVIDIA GTX 10-series or AMD RX 500-series (Win7 driver available)' },
+          { icon:'fas fa-ethernet',  label:'Network', value:'Intel or Realtek 1GbE onboard (Win7 drivers exist)' },
+          { icon:'fas fa-plug',      label:'Ports',   value:'USB 3.1 × multiple, HDMI, DP, PCIe x16, M.2 slots' },
+        ],
+        compat: [
+          { ok:true,  text:'Use the Windows 7 Modern Hardware image for USB 3.x & NVMe support' },
+          { ok:false, text:'Skylake+ requires USB driver injection or modified ISO for install' },
+          { ok:false, text:'No official WDDM 1.0 driver for Intel Iris Xe; use discrete GPU' },
+          { ok:true,  text:'NVIDIA 474.xx is the last Win7-compatible driver for GTX/RTX series' },
+        ],
+        tag: { cls:'pc-tag-mod', label:'Modern Hardware' },
+      },
+    };
+
+    // Map each pc-card to a data key
+    const pcCardKeys = [
+      'thinkpad-t430',
+      'dell-optiplex-7010',
+      'hp-elitebook-8470p',
+      'hp-z230',
+      'dell-poweredge-t130',
+      'thinkpad-x220',
+      'custom-atx',
+    ];
+
+    const modal        = document.getElementById('pcModal');
+    const modalInner   = document.getElementById('pcModalInner');
+    const modalClose   = document.getElementById('pcModalClose');
+
+    function openPcModal(key) {
+      const d = pcData[key];
+      if (!d) return;
+
+      // Title bar
+      document.getElementById('pcModalTitle').textContent = d.name + ' — Specs';
+
+      // Image or icon
+      const imgEl      = document.getElementById('pcModalImg');
+      const iconEl     = document.getElementById('pcModalIconFallback');
+      const imgLabelEl = document.getElementById('pcModalImgLabel');
+
+      if (d.img) {
+        imgEl.src = d.img;
+        imgEl.alt = d.name;
+        imgEl.style.display = 'block';
+        iconEl.style.display = 'none';
+      } else {
+        imgEl.style.display = 'none';
+        iconEl.innerHTML = `<i class="${d.icon}"></i>`;
+        iconEl.style.display = 'block';
+      }
+      imgLabelEl.textContent = d.name;
+
+      // Name / sub
+      document.getElementById('pcModalName').textContent = d.name;
+      document.getElementById('pcModalSub').textContent  = d.sub;
+
+      // Specs
+      const specsList = document.getElementById('pcModalSpecsList');
+      specsList.innerHTML = d.specs.map(s => `
+        <div class="pc-modal-spec-row">
+          <i class="${s.icon}"></i>
+          <div>
+            <div class="pc-modal-spec-label">${s.label}</div>
+            <div>${s.value}</div>
+          </div>
+        </div>
+      `).join('');
+
+      // Compat
+      const compatList = document.getElementById('pcModalCompatList');
+      compatList.innerHTML = d.compat.map(c => `
+        <div class="pc-modal-compat-row">
+          <i class="${c.ok ? 'fas fa-check-circle check' : 'fas fa-exclamation-triangle warn'}"></i>
+          <span>${c.text}</span>
+        </div>
+      `).join('');
+
+      // Tag
+      document.getElementById('pcModalTagRow').innerHTML = `<span class="pc-card-tag ${d.tag.cls}">${d.tag.label}</span>`;
+
+      // Open
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePcModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Attach click handlers to pc-cards
+    document.querySelectorAll('.pc-card').forEach((card, idx) => {
+      const key = pcCardKeys[idx];
+      card.setAttribute('data-pc', key);
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', 'View specs for ' + (pcData[key]?.name || 'PC'));
+      card.addEventListener('click', () => openPcModal(key));
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPcModal(key); } });
+    });
+
+    // Close button
+    modalClose.addEventListener('click', closePcModal);
+
+    // Click backdrop (outside modal inner) to close
+    modal.addEventListener('click', e => {
+      if (!modalInner.contains(e.target)) closePcModal();
+    });
+
+    // Escape key to close
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closePcModal();
     });
 
     // HUD live clock
