@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The World of Windows 7</title>
+  <title>The Windows 7 Team</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     :root {
-      --aero-danger     #F75700;
-      --aero-red        #A60D0D;
       --aero-sky:       #00c8ff;
       --aero-cyan:      #00f0ff;
       --aero-deep:      #003860;
       --aero-ocean:     #001a3a;
       --aero-navy:      #000d1f;
       --aero-teal:      #00e5c8;
+      --aero-blueceru   #0a6096;
       --aero-glass:     rgba(0,200,255,0.10);
       --aero-glass-hi:  rgba(255,255,255,0.18);
       --aero-glass-rim: rgba(0,220,255,0.35);
@@ -33,16 +34,26 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    * { text-rendering: optimizeLegibility; }
 
-    #bg-video {
-      position: fixed; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: -2; pointer-events: none;
+    * {
+    text-rendering: optimizeLegibility;
     }
+    /* ── VIDEO BACKGROUND ── */
+    #bg-video {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* subtle dark overlay so text stays readable over the video */
     #bg-video-overlay {
-      position: fixed; inset: 0; z-index: -1;
+      position: fixed;
+      inset: 0;
+      z-index: -1;
       background: rgba(0, 10, 30, 0.42);
       pointer-events: none;
     }
@@ -55,39 +66,39 @@
       background: transparent;
       overflow-x: hidden;
     }
-    body::before, body::after { display: none; }
+
+    body::before { display: none; }
+    body::after  { display: none; }
 
     @font-face {
-      font-family: 'VoxelPoint';
-      src: url('voxelpoint.ttf') format('truetype');
-      font-weight: normal; font-style: normal;
-    }
-
+  font-family: 'VoxelPoint';
+  src: url('voxelpoint.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+    
+    /* bubbles */
     .bubble {
-      position: fixed; 
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), transparent 40%), rgba(0,180,255,0.15);
-      box-shadow: inset 0 0 15px rgba(255,255,255,0.8), 0 0 25px rgba(0,200,255,0.6);
-      backdrop-filter: none; 
-      pointer-events: none;
-      z-index: 0;
-      animation: floatUp linear infinite;
-    }
+  position: fixed;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), transparent 40%),
+    rgba(0,180,255,0.15);
 
+  box-shadow:
+    inset 0 0 15px rgba(255,255,255,0.8),
+    0 0 25px rgba(0,200,255,0.6);
+
+  backdrop-filter: none;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatUp linear infinite;
+}
     @keyframes rise {
-      0%   { transform: translateY(100vh) translateX(0) scale(1); 
-            opacity:0; 
-      }
-      10%  { 
-        opacity: 0.6; 
-      }
-      90%  { 
-        opacity: 0.3; 
-      }
-      100% { 
-        transform: translateY(-10vh) translateX(30px) scale(1.1); 
-        opacity:0; 
-      }
+      0%   { transform: translateY(100vh) translateX(0)   scale(1);   opacity:0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-10vh)  translateX(30px) scale(1.1); opacity:0; }
     }
 
     a { color: var(--aero-cyan); text-decoration: none; transition: color .2s; }
@@ -95,76 +106,149 @@
     h1,h2,h3,h4 { font-family: var(--font-display); }
     p { line-height: 1.9; }
 
+    /* ═══════════════════════════════════════════════
+       LIQUID GLASS MIXIN
+    ═══════════════════════════════════════════════ */
     .glass {
-      position: relative;
-      background: linear-gradient(145deg, rgba(255,255,255,0.25) 0%, rgba(0,200,255,0.12) 25%, rgba(0,80,200,0.18) 60%, rgba(255,255,255,0.08) 100%);
-      border: 1px solid rgba(0,220,255,0.55);
-      border-top-color: rgba(255,255,255,0.9);
-      border-left-color: rgba(255,255,255,0.5);
-      box-shadow: 0 0 0 1px rgba(0,200,255,0.2), 0 10px 40px rgba(0,0,40,0.8), 0 0 30px rgba(0,200,255,0.25), inset 0 2px 0 rgba(255,255,255,0.85), inset 0 -2px 0 rgba(0,200,255,0.3), inset 2px 0 0 rgba(255,255,255,0.35);
-      backdrop-filter: none;
-    }
+  position: relative;
+  background:
+    linear-gradient(145deg,
+      rgba(255,255,255,0.25) 0%,
+      rgba(0,200,255,0.12) 25%,
+      rgba(0,80,200,0.18) 60%,
+      rgba(255,255,255,0.08) 100%
+    );
+
+  border: 1px solid rgba(0,220,255,0.55);
+  border-top-color: rgba(255,255,255,0.9);
+  border-left-color: rgba(255,255,255,0.5);
+
+  img.textd {
+    width: 50%;
+    height: 50%;
+    padding: 0;
+  }
+
+  box-shadow:
+    0 0 0 1px rgba(0,200,255,0.2),
+    0 10px 40px rgba(0,0,40,0.8),
+    0 0 30px rgba(0,200,255,0.25),
+    inset 0 2px 0 rgba(255,255,255,0.85),
+    inset 0 -2px 0 rgba(0,200,255,0.3),
+    inset 2px 0 0 rgba(255,255,255,0.35);
+
+  backdrop-filter: none; /* REMOVE BLUR COMPLETELY */
+}
+
+    /* gloss highlight sweep */
     .glass::before {
-      content: ''; 
-      position: absolute; 
-      top: 0; 
-      left: 0;
-      right: 0; 
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
       height: 45%;
       border-radius: inherit;
-      background: linear-gradient(180deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.08) 60%, transparent 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.30) 0%,
+        rgba(255,255,255,0.08) 60%,
+        transparent 100%
+      );
       pointer-events: none;
     }
     .glass::after {
-      content: ''; 
-      position: absolute; 
-      bottom: 0; 
-      left: 0; 
-      right: 0; 
-      top: 0;
-      height: 40%;
-      background: linear-gradient(0deg, rgba(0,200,255,0.18), rgba(0,200,255,0.05), transparent);
-      opacity: 0.9;
-    }
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+
+  background: linear-gradient(
+    0deg,
+    rgba(0,200,255,0.18),
+    rgba(0,200,255,0.05),
+    transparent
+  );
+
+  opacity: 0.9;
+}
 
     .tm-navbar {
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      right: 0;
-      height: var(--nav-h); 
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
       z-index: 1000;
-      background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, rgba(0,120,255,0.15) 50%, rgba(0,40,120,0.17) 100%);
-      border-bottom: 1px solid rgba(0,220,255,0.4);
-      box-shadow: 0 0 30px rgba(0,200,255,0.3), inset 0 2px 0 rgba(35,118,162,0.6);
-      transition: all .35s; 
+      background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.25) 0%,
+      rgba(0,120,255,0.18) 50%,
+      rgba(0,40,120,0.35) 100%
+    );
+      border-bottom: 1px solid rgba(0,220,255,0.7);
+      box-shadow:
+    0 0 30px rgba(0,200,255,0.3),
+    inset 0 2px 0 rgba(35, 118, 162, 0.9);
+      transition: all .35s;
       overflow: hidden;
     }
+
+    /* gloss sweep on navbar */
     .tm-navbar::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 55%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.04) 100%);
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 55%;
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.22) 0%,
+        rgba(255,255,255,0.04) 100%
+      );
       pointer-events: none;
     }
+
+    /* scan line shimmer */
     .tm-navbar::after {
-      content: ''; position: absolute; inset: 0;
-      background: repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(0,200,255,0.015) 3px, rgba(0,200,255,0.015) 4px);
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 3px,
+        rgba(0,200,255,0.015) 3px,
+        rgba(0,200,255,0.015) 4px
+      );
       pointer-events: none;
     }
 
     .navbar-brand {
-      font-family: var(--font-display); font-weight: 900; font-size: 1.2rem;
-      color: #fff !important; letter-spacing: .12em;
-      text-shadow: 0 0 12px rgba(0,200,255,0.9), 0 0 28px rgba(0,200,255,0.5);
-      display: flex; align-items: center; gap: 10px; position: relative; z-index: 1;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: #fff !important;
+      letter-spacing: .12em;
+      text-shadow:
+        0 0 12px rgba(0,200,255,0.9),
+        0 0 28px rgba(0,200,255,0.5);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
     }
 
+    /* Windows 7 logo in navbar — 4-color pane svg */
     .win7-logo-nav {
       width: 28px; height: 28px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
       filter: drop-shadow(0 0 6px rgba(0,200,255,0.8));
     }
     .win7-logo-nav span {
-      border-radius: 2px; display: block;
+      border-radius: 2px;
+      display: block;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(0,0,0,0.2);
     }
     .win7-logo-nav span:nth-child(1) { background: linear-gradient(135deg,#ff4444,#cc0000); }
@@ -174,17 +258,27 @@
 
     .nav-link.tm-nav-link {
       color: rgba(200,240,255,0.90) !important;
-      font-family: var(--font-display); font-size: 1.025rem; font-weight: 600;
-      letter-spacing: .10em; text-transform: uppercase;
+      font-family: var(--font-display);
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .10em;
+      text-transform: uppercase;
       padding: .4rem .9rem !important;
-      border-radius: 6px; border: 1px solid transparent;
-      transition: all .2s; position: relative; z-index: 1;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: all .2s;
+      position: relative;
+      z-index: 1;
     }
-    .nav-link.tm-nav-link:hover, .nav-link.tm-nav-link.active {
+
+    .nav-link.tm-nav-link:hover,
+    .nav-link.tm-nav-link.active {
       color: #fff !important;
       background: linear-gradient(135deg, rgba(255,255,255,0.20), rgba(0,200,255,0.12));
       border-color: rgba(0,200,255,0.45);
-      box-shadow: 0 0 12px rgba(0,200,255,0.35), inset 0 1px 0 rgba(255,255,255,0.40);
+      box-shadow:
+        0 0 12px rgba(0,200,255,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.40);
       text-shadow: 0 0 8px rgba(0,200,255,0.8);
     }
 
@@ -195,209 +289,244 @@
       .navbar-collapse {
         background: rgba(0,20,60,0.97);
         border: 1px solid rgba(0,200,255,0.3);
-        border-radius: 10px; padding: 10px 16px; margin-top: 8px;
+        border-radius: 10px;
+        padding: 10px 16px;
+        margin-top: 8px;
       }
     }
 
     #hero {
-      min-height: 100vh; position: relative;
-      display: flex; align-items: center; overflow: hidden;
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
     }
 
-    .light-rays { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-    .light-rays::before, .light-rays::after {
-      content: ''; position: absolute; top: -20%;
-      width: 300px; height: 130%;
+    /* deep ocean light rays */
+    .light-rays {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .light-rays::before,
+    .light-rays::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      width: 300px;
+      height: 130%;
       background: linear-gradient(180deg, rgba(0,200,255,0.12) 0%, transparent 80%);
       transform-origin: top center;
       animation: rays 6s ease-in-out infinite alternate;
     }
     .light-rays::before { left: 25%; transform: skewX(-15deg); }
-    .light-rays::after  { left: 55%; transform: skewX(10deg); animation-delay: 2s; }
+    .light-rays::after  { left: 55%; transform: skewX(10deg);  animation-delay: 2s; }
+
     @keyframes rays {
       0%   { opacity:.4; transform: skewX(-15deg) scaleX(1); }
-      100% { opacity:.9; transform: skewX(-8deg) scaleX(1.3); }
+      100% { opacity:.9; transform: skewX(-8deg)  scaleX(1.3); }
     }
 
+    /* glowing orb */
     .hero-orb {
-      position: absolute; width: 700px; height: 700px; border-radius: 50%;
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
       background: radial-gradient(circle, rgba(0,150,255,0.20) 0%, rgba(0,80,200,0.08) 50%, transparent 75%);
-      top: 50%; left: 50%; transform: translate(-40%, -50%);
-      animation: pulse-orb 4s ease-in-out infinite alternate; pointer-events: none;
+      top: 50%; left: 50%;
+      transform: translate(-40%, -50%);
+      animation: pulse-orb 4s ease-in-out infinite alternate;
+      pointer-events: none;
     }
     @keyframes pulse-orb {
-      0%   { 
-        transform: translate(-40%,-50%) scale(1); opacity:.8; 
-      }
-      100% { 
-        transform: translate(-40%,-50%) scale(1.12); opacity:1; 
-      }
+      0%   { transform: translate(-40%,-50%) scale(1);    opacity:.8; }
+      100% { transform: translate(-40%,-50%) scale(1.12); opacity:1;  }
     }
 
-    .hero-content { 
-      position: relative; z-index: 2; 
+    .hero-content { position: relative; z-index: 2; }
+
+    /* BIG Windows 7 logo — 4-pane with gloss */
+    .win7-hero-logo {
+      width: 72px; height: 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+      margin-bottom: 1.8rem;
+      filter:
+        drop-shadow(0 0 14px rgba(0,180,255,0.8))
+        drop-shadow(0 0 30px rgba(0,180,255,0.4));
     }
+    .win7-hero-logo span {
+      border-radius: 4px;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        inset 0 2px 0 rgba(255,255,255,0.65),
+        inset 0 -2px 0 rgba(0,0,0,0.25),
+        0 2px 10px rgba(0,0,0,0.4);
+    }
+    .win7-hero-logo span::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 45%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.55), transparent);
+    }
+    .win7-hero-logo span:nth-child(1) { background: linear-gradient(135deg,#ff5555 0%,#cc1111 100%); }
+    .win7-hero-logo span:nth-child(2) { background: linear-gradient(135deg,#44bbff 0%,#0044cc 100%); }
+    .win7-hero-logo span:nth-child(3) { background: linear-gradient(135deg,#44dd44 0%,#008800 100%); }
+    .win7-hero-logo span:nth-child(4) { background: linear-gradient(135deg,#ffbb00 0%,#cc5500 100%); }
 
     .hero-badge {
       display: inline-block;
       background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(0,200,255,0.12));
       border: 1px solid rgba(0,220,255,0.50);
       border-top-color: rgba(255,255,255,0.55);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.40), 0 4px 16px rgba(0,20,80,0.5);
-      color: var(--aero-cyan); 
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.40),
+        0 4px 16px rgba(0,20,80,0.5);
+      color: var(--aero-cyan);
       font-family: var(--font-mono);
-      font-size: .66rem; 
-      letter-spacing: .18em; 
+      font-size: .66rem;
+      letter-spacing: .18em;
       text-transform: uppercase;
-      padding: .35rem 1.2rem; 
-      border-radius: 20px; 
+      padding: .35rem 1.2rem;
+      border-radius: 20px;
       margin-bottom: 1.5rem;
       text-shadow: 0 0 8px rgba(0,220,255,0.8);
     }
 
-    .hero-title-t2 {
-      font-size: clamp(0.5rem, 4.5vw, 2.5rem); font-weight: 885; line-height: 1.0;
+      .hero-title-t2 {
+      font-size: clamp(0.5rem, 4.5vw, 2.5rem);
+      font-weight: 885;
+      line-height: 1.0;
       color: #fff;
-      text-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,150,255,0.4), 0 2px 4px rgba(0,0,0,0.8);
-      margin-bottom: .4rem; letter-spacing: .03em;
+      text-shadow:
+        0 0 30px rgba(0,200,255,0.7),
+        0 0 60px rgba(0,150,255,0.4),
+        0 2px 4px rgba(0,0,0,0.8);
+      margin-bottom: .4rem;
+      letter-spacing: .03em;
     }
-
-    /* ── HERO TITLE: flex row so logo aligns with text ── */
+    
     .hero-title {
       font-size: clamp(2.5rem, 7.5vw, 5.5rem);
       font-weight: 895;
       line-height: 1.0;
       color: #fff;
-      text-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,150,255,0.4), 0 2px 4px rgba(0,0,0,0.8);
+      text-shadow:
+        0 0 30px rgba(0,200,255,0.7),
+        0 0 60px rgba(0,150,255,0.4),
+        0 2px 4px rgba(0,0,0,0.8);
       margin-bottom: .5rem;
       letter-spacing: .04em;
-      display: flex;
-      align-items: center;
-      gap: 0.25em;
     }
-
-    /* ── KEY FIX: size the logo image to exactly match the text cap-height ── */
-    .hero-title img.textw {
-      height: 0.85em;        /* scales with the clamp() font-size */
-      width: auto;
-      display: inline-block;
-      vertical-align: middle;
-      position: relative;
-      top: -0.04em;          /* subtle nudge up to sit on optical baseline */
-      filter: drop-shadow(0 0 10px rgba(0,200,255,0.5));
-      flex-shrink: 0;
-    }
-
     .hero-title span {
       color: var(--aero-cyan);
-      text-shadow: 0 0 20px rgba(0,255,255,1), 0 0 40px rgba(0,200,255,0.8), 0 0 70px rgba(0,150,255,0.5);
+      text-shadow:
+        0 0 20px rgba(0,255,255,1),
+        0 0 40px rgba(0,200,255,0.8),
+        0 0 70px rgba(0,150,255,0.5);
     }
 
     .hero-sub {
-      font-family: var(--font-body); font-size: clamp(1.1rem,2.5vw,1.7rem);
-      font-weight: 300; color: rgba(180,230,255,0.9);
-      letter-spacing: .06em; margin-bottom: .4rem;
+      font-family: var(--font-body);
+      font-size: clamp(1.1rem,2.5vw,1.7rem);
+      font-weight: 300;
+      color: rgba(180,230,255,0.9);
+      letter-spacing: .06em;
+      margin-bottom: .4rem;
     }
+
     .hero-url {
-      font-family: var(--font-mono); font-size: .82rem;
-      color: rgba(0,200,255,0.6); letter-spacing: .12em; margin-bottom: 2.5rem;
+      font-family: var(--font-mono);
+      font-size: .82rem;
+      color: rgba(0,200,255,0.6);
+      letter-spacing: .12em;
+      margin-bottom: 2.5rem;
     }
 
-    /* ── MECHANIZED BUTTON SYSTEM ── */
-    @keyframes btn-scan {
-      0%   { transform: translateX(-100%) skewX(-12deg); }
-      100% { transform: translateX(400%) skewX(-12deg); }
-    }
-    @keyframes btn-flicker {
-      0%,100% { opacity:1; } 92% { opacity:1; } 93% { opacity:.7; } 94% { opacity:1; }
-    }
-
-    /* Shared mech base */
+    /* AERO GLASS BUTTONS */
     .btn-aero {
-      display: inline-block; padding: .75rem 2.4rem;
-      border-radius: 0;
-      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
-       font-family: var(--font-display); font-size: .68rem; font-weight: 700;
-      letter-spacing: .18em; text-transform: uppercase; cursor: pointer;
-      position: relative; overflow: hidden; transition: all .22s;
+      display: inline-block;
+      padding: .75rem 2.4rem;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all .25s;
     }
-    /* left notch pip */
-    .btn-aero::after {
-      content: '▶'; position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-      font-size: .45rem; opacity: .6; transition: opacity .2s;
-    }
-    .btn-aero:hover::after { opacity: 1; }
-
-    /* scan shimmer */
-    .btn-aero .btn-scan {
-      position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%);
-      transform: translateX(-100%) skewX(-12deg);
-    }
-    .btn-aero:hover .btn-scan { animation: btn-scan .55s ease forwards; }
 
     .btn-aero-primary {
-      background:
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 6px),
-        linear-gradient(180deg, rgba(0,180,255,0.92) 0%, rgba(0,90,210,0.95) 48%, rgba(0,55,170,0.90) 100%);
-      border: 1px solid rgba(0,220,255,0.7);
-      border-top: 1px solid rgba(180,240,255,0.8);
-      border-bottom: 1px solid rgba(0,100,200,0.8);
+      background: linear-gradient(
+        180deg,
+        rgba(0,160,255,0.85) 0%,
+        rgba(0,80,200,0.90) 50%,
+        rgba(0,50,160,0.85) 100%
+      );
+      border: 1px solid rgba(0,220,255,0.6);
+      border-top-color: rgba(255,255,255,0.6);
       color: #fff;
-      box-shadow: 0 0 18px rgba(0,160,255,0.45), 0 4px 14px rgba(0,0,80,0.6),
-                  inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(0,0,120,0.5);
-      text-shadow: 0 0 10px rgba(0,200,255,0.9), 0 1px 2px rgba(0,0,80,0.6);
-      animation: btn-flicker 8s infinite;
+      box-shadow:
+        0 0 20px rgba(0,150,255,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.55),
+        inset 0 -1px 0 rgba(0,0,100,0.4);
+      text-shadow: 0 1px 3px rgba(0,0,100,0.5);
     }
     .btn-aero-primary::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 42%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.04) 100%);
-      pointer-events: none;
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.35), transparent);
+      border-radius: 7px 7px 0 0;
     }
     .btn-aero-primary:hover {
       color: #fff;
-      background:
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 6px),
-        linear-gradient(180deg, rgba(0,220,255,0.95) 0%, rgba(0,130,255,0.95) 48%, rgba(0,80,210,0.92) 100%);
-      box-shadow: 0 0 36px rgba(0,220,255,0.75), 0 0 70px rgba(0,150,255,0.3), 0 4px 20px rgba(0,0,80,0.7),
-                  inset 0 1px 0 rgba(255,255,255,0.6);
+      box-shadow:
+        0 0 35px rgba(0,200,255,0.8),
+        inset 0 1px 0 rgba(255,255,255,0.6);
       transform: translateY(-2px);
     }
 
     .btn-aero-ghost {
-      background:
-        repeating-linear-gradient(90deg, rgba(0,200,255,0.03) 0px, rgba(0,200,255,0.03) 1px, transparent 1px, transparent 6px),
-        linear-gradient(180deg, rgba(0,60,120,0.45) 0%, rgba(0,20,60,0.55) 100%);
-      border: 1px solid rgba(0,200,255,0.45);
-      border-top: 1px solid rgba(120,220,255,0.55);
-      color: rgba(160,230,255,0.9);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 0 8px rgba(0,200,255,0.15);
-      text-shadow: 0 0 8px rgba(0,200,255,0.6);
+      background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(0,200,255,0.07));
+      border: 1px solid rgba(0,200,255,0.35);
+      border-top-color: rgba(255,255,255,0.30);
+      color: rgba(200,240,255,0.9);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.20);
     }
     .btn-aero-ghost::before {
-      content: ''; 
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      right: 0; 
-      height: 42%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, transparent 100%);
-      pointer-events: none;
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent);
+      border-radius: 7px 7px 0 0;
     }
     .btn-aero-ghost:hover {
-      color: #fff; 
-      border-color: rgba(0,240,255,0.8); 
-      border-top-color: rgba(200,250,255,0.8);
-      background:
-        repeating-linear-gradient(90deg, rgba(0,200,255,0.05) 0px, rgba(0,200,255,0.05) 1px, transparent 1px, transparent 6px),
-        linear-gradient(180deg, rgba(0,120,200,0.55) 0%, rgba(0,60,140,0.65) 100%);
-      box-shadow: 0 0 20px rgba(0,220,255,0.5), inset 0 1px 0 rgba(255,255,255,0.25);
+      color: #fff;
+      border-color: rgba(0,220,255,0.7);
+      box-shadow: 0 0 16px rgba(0,200,255,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
     }
 
-    .hero-scroll-arrow { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); z-index: 2; }
+    .hero-scroll-arrow {
+      position: absolute; bottom: 36px; left: 50%;
+      transform: translateX(-50%); z-index: 2;
+    }
     .hero-scroll-arrow a {
       display: flex; flex-direction: column; align-items: center;
-      color: rgba(0,200,255,0.6); font-family: var(--font-mono);
+      color: rgba(0,200,255,0.6);
+      font-family: var(--font-mono);
       font-size: .65rem; letter-spacing: .14em; text-transform: uppercase; gap: 8px;
     }
     .hero-scroll-arrow i { animation: bounce 2s infinite; }
@@ -406,155 +535,303 @@
       50%      { transform: translateY(7px); }
     }
 
-    .tm-section { padding: 100px 0; position: relative; z-index: 1; }
+    .tm-section { 
+      padding: 100px 0; position: relative; z-index: 1;
+    }
 
     .section-label {
-      display: inline-block; font-family: var(--font-mono); font-size: .66rem;
-      letter-spacing: .22em; text-transform: uppercase; color: var(--aero-teal);
-      margin-bottom: .8rem; text-shadow: 0 0 8px rgba(0,230,200,0.6);
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: .66rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--aero-teal);
+      margin-bottom: .8rem;
+      text-shadow: 0 0 8px rgba(0,230,200,0.6);
     }
+
     .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: #fff;
-      margin-bottom: .8rem; text-shadow: 0 0 20px rgba(0,200,255,0.4);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: .8rem;
+      text-shadow: 0 0 20px rgba(0,200,255,0.4);
     }
     .section-title-alt {
-      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: var(--aero-cyan);
-      margin-bottom: .8rem; text-shadow: 0 0 16px rgba(0,200,255,0.6);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--aero-cyan);
+      margin-bottom: .8rem;
+      text-shadow: 0 0 16px rgba(0,200,255,0.6);
     }
+
     .tm-divider {
       width: 52px; height: 3px;
       background: linear-gradient(90deg, var(--aero-cyan), var(--aero-teal));
-      border-radius: 2px; margin-bottom: 2rem;
+      border-radius: 2px;
+      margin-bottom: 2rem;
       box-shadow: 0 0 10px rgba(0,200,255,0.6);
     }
     .tm-divider.center { margin-left: auto; margin-right: auto; }
 
-    #whatwedo { background: linear-gradient(180deg, rgba(0,10,30,0) 0%, rgba(0,20,50,0.6) 100%); }
+    #whatwedo {
+      background: linear-gradient(180deg, rgba(0,10,30,0) 0%, rgba(0,20,50,0.6) 100%);
+    }
 
     .feature-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(0,160,255,0.07) 50%, rgba(0,80,180,0.10) 100%);
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.12) 0%,
+        rgba(0,160,255,0.07) 50%,
+        rgba(0,80,180,0.10) 100%
+      );
       border: 1px solid rgba(0,200,255,0.25);
-      border-top-color: rgba(255,255,255,0.40); border-left-color: rgba(255,255,255,0.20);
-      border-radius: 16px; padding: 2rem; height: 100%;
-      position: relative; overflow: hidden; transition: all .3s;
-      box-shadow: 0 8px 32px rgba(0,10,40,0.6), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -1px 0 rgba(0,150,255,0.12);
+      border-top-color: rgba(255,255,255,0.40);
+      border-left-color: rgba(255,255,255,0.20);
+      border-radius: 16px;
+      padding: 2rem;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      transition: all .3s;
+      box-shadow:
+        0 8px 32px rgba(0,10,40,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.35),
+        inset 0 -1px 0 rgba(0,150,255,0.12);
     }
+
+    /* gloss top */
     .feature-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 40%;
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 40%;
       background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 100%);
-      border-radius: 16px 16px 0 0; pointer-events: none;
+      border-radius: 16px 16px 0 0;
+      pointer-events: none;
     }
+
+    /* reflection bottom */
     .feature-card::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 25%;
-      background: linear-gradient(0deg, rgba(0,200,255,0.06) 0%, transparent 100%); pointer-events: none;
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0; height: 25%;
+      background: linear-gradient(0deg, rgba(0,200,255,0.06) 0%, transparent 100%);
+      pointer-events: none;
     }
+
     .feature-card:hover {
-      border-color: rgba(0,220,255,0.55); 
+      border-color: rgba(0,220,255,0.55);
       border-top-color: rgba(255,255,255,0.65);
       transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0,10,40,0.7), 0 0 30px rgba(0,200,255,0.20), inset 0 1px 0 rgba(255,255,255,0.50);
+      box-shadow:
+        0 20px 50px rgba(0,10,40,0.7),
+        0 0 30px rgba(0,200,255,0.20),
+        inset 0 1px 0 rgba(255,255,255,0.50);
     }
+
     .feature-icon {
-      width: 56px; 
-      height: 56px; 
+      width: 56px; height: 56px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(0,180,255,0.30) 0%, rgba(0,80,200,0.20) 100%);
-      border: 1px solid rgba(0,200,255,0.40); 
+      background: linear-gradient(
+        135deg,
+        rgba(0,180,255,0.30) 0%,
+        rgba(0,80,200,0.20) 100%
+      );
+      border: 1px solid rgba(0,200,255,0.40);
       border-top-color: rgba(255,255,255,0.50);
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      font-size: 1.5rem; 
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
       color: var(--aero-cyan);
       margin-bottom: 1.3rem;
-      position: relative; 
+      position: relative;
       overflow: hidden;
-      box-shadow: 0 0 14px rgba(0,200,255,0.3), inset 0 1px 0 rgba(255,255,255,0.45);
-      text-shadow: 0 0 10px rgba(0,200,255,0.8); 
+      box-shadow:
+        0 0 14px rgba(0,200,255,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.45);
+      text-shadow: 0 0 10px rgba(0,200,255,0.8);
       transition: all .3s;
     }
     .feature-icon::before {
-      content: ''; 
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      right: 0; 
-      bottom: 0;
-      height: 50%;
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 50%;
       background: linear-gradient(180deg, rgba(255,255,255,0.30), transparent);
     }
-    .feature-card:hover .feature-icon { box-shadow: 0 0 24px rgba(0,220,255,0.6), inset 0 1px 0 rgba(255,255,255,0.5); }
-    .feature-card h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .5rem; text-shadow: 0 0 8px rgba(0,200,255,0.3); }
-    .feature-card p { font-size: .9rem; color: rgba(160,210,240,0.85); margin-bottom: 1rem; }
-    .feature-link { font-size: .75rem; font-weight: 700; color: var(--aero-cyan); text-transform: uppercase; letter-spacing: .1em; text-shadow: 0 0 6px rgba(0,200,255,0.5); }
+    .feature-card:hover .feature-icon {
+      box-shadow: 0 0 24px rgba(0,220,255,0.6), inset 0 1px 0 rgba(255,255,255,0.5);
+    }
+
+    .feature-card h3 {
+      font-size: 1rem; font-weight: 700; color: #fff;
+      margin-bottom: .5rem;
+      text-shadow: 0 0 8px rgba(0,200,255,0.3);
+    }
+    .feature-card p {
+      font-size: .9rem; color: rgba(160,210,240,0.85); margin-bottom: 1rem;
+    }
+    .feature-link {
+      font-size: .75rem; font-weight: 700; color: var(--aero-cyan);
+      text-transform: uppercase; letter-spacing: .1em;
+      text-shadow: 0 0 6px rgba(0,200,255,0.5);
+    }
     .feature-link i { margin-left: 4px; transition: transform .2s; }
     .feature-link:hover { color: #fff; }
     .feature-link:hover i { transform: translateX(4px); }
 
+    /* ═══════════════════════════════════════════════
+       REVIEWS
+    ═══════════════════════════════════════════════ */
     #reviews {
       background: linear-gradient(180deg, rgba(0,10,30,0.4) 0%, rgba(0,20,60,0.6) 100%);
       position: relative; overflow: hidden;
     }
+
+    /* underwater particle grid */
     #reviews::before {
-      content: ''; position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(0,200,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,200,255,0.04) 1px, transparent 1px);
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,200,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,255,0.04) 1px, transparent 1px);
       background-size: 48px 48px;
     }
+
     .review-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(0,100,200,0.07) 50%, rgba(0,50,140,0.10) 100%);
-      border: 1px solid rgba(0,200,255,0.22); border-top-color: rgba(255,255,255,0.35);
-      border-radius: 16px; padding: 2rem; height: 100%;
-      position: relative; overflow: hidden; transition: all .3s;
-      box-shadow: 0 8px 30px rgba(0,10,40,0.55), inset 0 1px 0 rgba(255,255,255,0.30);
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.10) 0%,
+        rgba(0,100,200,0.07) 50%,
+        rgba(0,50,140,0.10) 100%
+      );
+      border: 1px solid rgba(0,200,255,0.22);
+      border-top-color: rgba(255,255,255,0.35);
+      border-radius: 16px;
+      padding: 2rem;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      transition: all .3s;
+      box-shadow:
+        0 8px 30px rgba(0,10,40,0.55),
+        inset 0 1px 0 rgba(255,255,255,0.30);
     }
     .review-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 38%;
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 38%;
       background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 100%);
-      border-radius: 16px 16px 0 0; pointer-events: none;
+      border-radius: 16px 16px 0 0;
+      pointer-events: none;
     }
-    .review-card:hover { border-color: rgba(0,220,255,0.45); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,10,50,0.7), 0 0 20px rgba(0,200,255,0.15); }
-    .review-card blockquote { font-size: .92rem; line-height: 1.8; color: rgba(180,225,255,0.9); margin-bottom: 1.5rem; font-style: italic; }
-    .review-card blockquote::before { content: '\201C'; font-family: Georgia, serif; font-size: 3rem; line-height: 0; color: var(--aero-cyan); vertical-align: -.5rem; margin-right: .2rem; text-shadow: 0 0 10px rgba(0,200,255,0.6); }
+    .review-card:hover {
+      border-color: rgba(0,220,255,0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,10,50,0.7), 0 0 20px rgba(0,200,255,0.15);
+    }
+
+    .review-card blockquote {
+      font-size: .92rem; line-height: 1.8;
+      color: rgba(180,225,255,0.9);
+      margin-bottom: 1.5rem; font-style: italic;
+    }
+    .review-card blockquote::before {
+      content: '\201C';
+      font-family: Georgia, serif; font-size: 3rem; line-height: 0;
+      color: var(--aero-cyan); vertical-align: -.5rem; margin-right: .2rem;
+      text-shadow: 0 0 10px rgba(0,200,255,0.6);
+    }
+
     .reviewer { display: flex; align-items: center; gap: 12px; }
     .reviewer-avatar {
       width: 46px; height: 46px; border-radius: 50%;
       background: linear-gradient(135deg, rgba(0,160,255,0.8), rgba(0,80,200,0.9));
-      border: 1px solid rgba(0,200,255,0.5); border-top-color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(0,200,255,0.5);
+      border-top-color: rgba(255,255,255,0.5);
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display); font-size: .72rem; font-weight: 700; color: white; flex-shrink: 0;
+      font-family: var(--font-display); font-size: .72rem;
+      font-weight: 700; color: white; flex-shrink: 0;
       box-shadow: 0 0 12px rgba(0,200,255,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
       text-shadow: 0 1px 2px rgba(0,0,100,0.5);
     }
     .reviewer-name { font-size: .88rem; font-weight: 700; color: #fff; }
     .reviewer-role { font-size: .75rem; color: var(--aero-cyan); opacity: .8; }
 
-    #gallery { background: linear-gradient(180deg, rgba(0,20,60,0.5) 0%, rgba(0,10,30,0.4) 100%); }
-    .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.4rem; }
+    /* ═══════════════════════════════════════════════
+       APP STORE — GRID
+    ═══════════════════════════════════════════════ */
+    #gallery {
+      background: linear-gradient(180deg, rgba(0,20,60,0.5) 0%, rgba(0,10,30,0.4) 100%);
+    }
+
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 1.4rem;
+    }
+
     .app-card {
-      background: linear-gradient(160deg, rgba(255,255,255,0.12) 0%, rgba(0,120,220,0.08) 50%, rgba(0,60,140,0.12) 100%);
-      border: 1px solid rgba(0,200,255,0.22); border-top-color: rgba(255,255,255,0.38);
-      border-radius: 14px; overflow: hidden; position: relative; cursor: pointer; transition: all .3s;
-      box-shadow: 0 6px 24px rgba(0,10,40,0.6), inset 0 1px 0 rgba(255,255,255,0.28);
+      background: linear-gradient(
+        160deg,
+        rgba(255,255,255,0.12) 0%,
+        rgba(0,120,220,0.08) 50%,
+        rgba(0,60,140,0.12) 100%
+      );
+      border: 1px solid rgba(0,200,255,0.22);
+      border-top-color: rgba(255,255,255,0.38);
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: all .3s;
+      box-shadow:
+        0 6px 24px rgba(0,10,40,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.28);
     }
     .app-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 40%;
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 40%;
       background: linear-gradient(180deg, rgba(255,255,255,0.16) 0%, transparent 100%);
       pointer-events: none; z-index: 1;
     }
-    .app-card:hover { transform: translateY(-7px) scale(1.02); border-color: rgba(0,220,255,0.55); border-top-color: rgba(255,255,255,0.6); box-shadow: 0 18px 40px rgba(0,10,50,0.7), 0 0 24px rgba(0,200,255,0.25); }
+    .app-card:hover {
+      transform: translateY(-7px) scale(1.02);
+      border-color: rgba(0,220,255,0.55);
+      border-top-color: rgba(255,255,255,0.6);
+      box-shadow:
+        0 18px 40px rgba(0,10,50,0.7),
+        0 0 24px rgba(0,200,255,0.25);
+    }
+
     .app-card-placeholder {
       width: 100%; aspect-ratio: 1;
       background: linear-gradient(135deg, rgba(0,30,80,0.8), rgba(0,15,50,0.9));
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px;
       color: var(--aero-cyan); font-size: 2.4rem;
-      text-shadow: 0 0 18px rgba(0,200,255,0.8), 0 0 40px rgba(0,150,255,0.4); position: relative;
+      text-shadow: 0 0 18px rgba(0,200,255,0.8), 0 0 40px rgba(0,150,255,0.4);
+      position: relative;
     }
+    /* icon gloss */
     .app-card-placeholder::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 50%;
       background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 100%);
     }
-    .app-card-placeholder span { font-family: var(--font-mono); font-size: .72rem; color: rgba(0,200,255,0.6); letter-spacing: .07em; position: relative; z-index: 1; }
-    .app-card-label { padding: .7rem 1rem; font-family: var(--font-display); font-size: .72rem; font-weight: 700; color: rgba(180,230,255,0.9); letter-spacing: .05em; background: rgba(0,20,60,0.4); }
+    .app-card-placeholder span {
+      font-family: var(--font-mono); font-size: .72rem;
+      color: rgba(0,200,255,0.6); letter-spacing: .07em; position: relative; z-index: 1;
+    }
+
+    .app-card-label {
+      padding: .7rem 1rem;
+      font-family: var(--font-display); font-size: .72rem; font-weight: 700;
+      color: rgba(180,230,255,0.9); letter-spacing: .05em;
+      background: rgba(0,20,60,0.4);
+    }
+
     .app-card-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(135deg, rgba(0,150,255,0.75), rgba(0,80,200,0.85));
@@ -562,820 +839,224 @@
       opacity: 0; transition: opacity .25s;
       font-family: var(--font-display); font-size: .7rem; font-weight: 700;
       color: #fff; text-transform: uppercase; letter-spacing: .1em;
-      text-shadow: 0 0 10px rgba(0,200,255,0.6); border: 1px solid rgba(255,255,255,0.2);
+      text-shadow: 0 0 10px rgba(0,200,255,0.6);
+      border: 1px solid rgba(255,255,255,0.2);
     }
-    .app-card-overlay::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.22), transparent); }
+    .app-card-overlay::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 40%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.22), transparent);
+    }
     .app-card:hover .app-card-overlay { opacity: 1; }
 
-    #community { border-top: 1px solid rgba(0,200,255,0.18); border-bottom: 1px solid rgba(0,200,255,0.18); }
-    .community-block {
-      background: linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(0,100,200,0.06) 100%);
-      border: 1px solid rgba(0,200,255,0.20); border-top-color: rgba(255,255,255,0.30);
-      border-left: 3px solid rgba(0,200,255,0.7); 
-      border-radius: 12px;
-      padding: 1.8rem 2rem; 
-      margin-bottom: 1.2rem; 
-      position: relative; 
-      overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 6px 20px rgba(0,10,40,0.4);
-    }
-    
-    .community-block::before { 
-      content: '';
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      right: 0;
-      height: 35%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent); 
-      pointer-events: none; 
-    }
-    
-    .community-block p { 
-      margin: 0;
-      color: rgba(170,220,250,0.9); 
-      font-size: .95rem; 
-    }
-
-    #contact { 
-      background: linear-gradient(180deg, rgba(0,15,40,0.4) 0%, rgba(0,5,20,0.5) 100%); }
-    .tm-input {
-      display: block; 
-      width: 100%; 
-      padding: .8rem 1.3rem; 
-      margin-bottom: 1.2rem;
-      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,80,180,0.06));
-      border: 1px solid rgba(0,200,255,0.25); 
-      border-top-color: rgba(255,255,255,0.25);
-      border-radius: 8px; 
-      color: #fff; 
-      font-family: var(--font-body); 
-      font-size: .95rem;
-      transition: all .2s;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 4px 12px rgba(0,10,40,0.4);
-    }
-   
-    .tm-input:focus { 
-      outline: none; 
-      border-color: rgba(0,220,255,0.6); 
-      border-top-color: rgba(255,255,255,0.45); 
-      box-shadow: 0 0 16px rgba(0,200,255,0.25), 
-      inset 0 1px 0 rgba(255,255,255,0.20); 
-    }
-    
-    .tm-input::placeholder { 
-      color: rgba(0,200,255,0.35); 
-    }
-    
-    .btn-submit {
-      background: linear-gradient(180deg, rgba(0,180,255,0.85) 0%, rgba(0,80,200,0.9) 50%, rgba(0,50,160,0.85) 100%);
-      border: 1px solid rgba(0,220,255,0.55); 
-      border-top-color: rgba(255,255,255,0.55);
-      color: white; 
-      cursor: pointer; 
-      padding: .8rem 2.8rem;
-      font-family: var(--font-display); 
-      font-size: .72rem; 
-      letter-spacing: .12em; 
-      text-transform: uppercase; 
-      border-radius: 8px;
-      position: relative; 
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0,150,255,0.4), inset 0 1px 0 rgba(255,255,255,0.50); 
-      transition: all .25s;
-    }
-    
-    .btn-submit::before { 
-      content: ''; 
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      right: 0; 
-      height: 50%; 
-      background: linear-gradient(180deg, rgba(255,255,255,0.32), transparent); 
-    }
-    
-    .btn-submit:hover { 
-      box-shadow: 0 0 30px rgba(0,200,255,0.7), 
-        inset 0 1px 0 rgba(255,255,255,0.55); 
-      transform: translateY(-2px); 
-    }
-    
-    .contact-info-item {
-      display: flex; 
-      align-items: center;
-      gap: 1.2rem; 
-      padding: 1rem 1.3rem;
-      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,80,180,0.06));
-      border: 1px solid rgba(0,200,255,0.20); 
-      border-top-color: rgba(255,255,255,0.25);
-      border-radius: 10px;
-      margin-bottom: 1rem; 
-      position: relative; 
-      overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 4px 14px rgba(0,10,40,0.4); 
-      transition: all .25s;
-    }
-    
-    .contact-info-item::before { 
-      content: ''; 
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      right: 0; 
-      height: 40%; 
-      background: linear-gradient(180deg, rgba(255,255,255,0.10), transparent); 
-      pointer-events: none; 
-    }
-    
-    .contact-info-item:hover { 
-      border-color: rgba(0,220,255,0.45); 
-      box-shadow: 0 0 16px rgba(0,200,255,0.18), 
-        inset 0 1px 0 rgba(255,255,255,0.20);
-    }
-    
-    .contact-info-item i {
-      width: 42px; 
-      height: 42px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, rgba(0,160,255,0.28), rgba(0,60,180,0.22));
-      border: 1px solid rgba(0,200,255,0.35); border-top-color: rgba(255,255,255,0.40);
-      color: var(--aero-cyan); font-size: 1rem;
-      flex-shrink: 0;
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      box-shadow: 0 0 10px rgba(0,200,255,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
-      text-shadow: 0 0 8px rgba(0,200,255,0.7);
-    }
-    .contact-info-item span { 
-      color: rgba(180,225,255,0.9); font-size: .9rem;
-    }
-
-    footer {
-      background: linear-gradient(180deg, rgba(0,10,30,0.9) 0%, rgba(0,5,15,0.97) 100%);
-      border-top: 1px solid rgba(0,200,255,0.22); padding: 2.5rem 0;
-      text-align: center; font-size: .82rem; color: rgba(0,200,255,0.5);
-      position: relative; z-index: 1;
-    }
-    footer::before { 
-      content: ''; 
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      right: 0; 
-      height: 1px; 
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); 
-    }
-    
-    footer a { 
-      color: rgba(0,200,255,0.5); 
-    }
-    
-    footer a:hover { 
-      color: var(--aero-cyan); 
-    }
-
-    .scanlines { 
-      position: fixed; 
-      inset: 0; 
-      z-index: 9999; 
-      pointer-events: none; 
-      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px); 
-    }
-
-    /* ── MECHANIZED HUD OVERLAY ── */
-    .hud-corner {
-      display: none; 
-    }
-
-    .mech-hud { 
-      position: fixed; inset: 0; z-index: 998; pointer-events: none; 
-    }
-
-    /* Corner brackets */
-    .mech-corner {
-      position: fixed; width: 54px; height: 54px; z-index: 999; pointer-events: none;
-    }
-    .mech-corner svg { 
-      width: 100%; height: 100%; 
-    }
-    .mech-corner--tl { 
-      top: 76px; left: 10px; 
-    }
-    .mech-corner--tr {
-      top: 76px; right: 10px; transform: scaleX(-1); 
-    }
-    .mech-corner--bl { 
-      bottom: 10px; left: 10px; transform: scaleY(-1);
-    }
-    .mech-corner--br {
-      bottom: 10px; right: 10px; transform: scale(-1,-1); 
-    }
-
-    /* Side edge bars */
-    .hud-edge-l, .hud-edge-r {
-      position: fixed; 
-      top: 50%; 
-      transform: translateY(-50%);
-      width: 3px; 
-      height: 220px; 
-      z-index: 999; 
-      pointer-events: none;
-      background: linear-gradient(180deg, transparent 0%, rgba(0,200,255,0.6) 30%, rgba(0,255,200,0.8) 50%, rgba(0,200,255,0.6) 70%, transparent 100%);
-    }
-    .hud-edge-l { 
-      left: 8px;
-    }
-    .hud-edge-r { 
-      right: 8px; 
-    }
-    .hud-edge-l::before, .hud-edge-r::before {
-      content: ''; 
-      position: absolute; 
-      top: 50%; 
-      transform: translateY(-50%);
-      width: 8px; 
-      height: 2px;
-      background: rgba(0,255,200,0.9);
-    }
-    .hud-edge-l::before {
-      left: 3px; 
-    }
-    .hud-edge-r::before {
-      right: 3px; 
-    }
-
-    /* Status readout - top left */
-    .hud-status {
-      position: fixed; 
-      top: 84px; 
-      left: 70px; 
-      z-index: 999; 
-      pointer-events: none;
-      font-family: var(--font-mono); 
-      font-size: .58rem;
-      color: rgba(0,230,200,0.75); 
-      letter-spacing: .12em;
-      line-height: 1.7; 
-      text-shadow: 0 0 6px rgba(0,200,255,0.6);
-    }
-    .hud-status-line { display: flex; align-items: center; gap: 6px; }
-    
-    .hud-status-dot {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: rgba(0,255,180,0.9); box-shadow: 0 0 6px rgba(0,255,180,0.8);
-      animation: hud-blink 2.4s ease-in-out infinite;
-    }
-    .hud-status-dot.alt { background: rgba(0,200,255,0.9); animation-delay: 1.2s; }
-    @keyframes hud-blink {
-      0%,100% { opacity:1; } 50% { opacity:.25; }
-    }
-
-    /* Clock / coordinate readout - top right */
-    .hud-readout {
-      position: fixed; top: 84px; right: 70px; z-index: 999; pointer-events: none;
-      font-family: var(--font-mono); font-size: .58rem;
-      color: rgba(0,200,255,0.65); letter-spacing: .12em;
-      line-height: 1.7; text-align: right;
-      text-shadow: 0 0 6px rgba(0,200,255,0.5);
-    }
-
-    /* Scan line reticle in center - very subtle */
-    .hud-reticle {
-      position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      width: 60px; height: 60px; z-index: 997; pointer-events: none;
-      opacity: 0.18;
-    }
-    .hud-reticle::before, .hud-reticle::after {
-      content: ''; position: absolute;
-    }
-    .hud-reticle::before {
-      top: 50%; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,200,255,0.9) 30%, rgba(0,200,255,0.9) 70%, transparent);
-      transform: translateY(-50%);
-    }
-    .hud-reticle::after {
-      left: 50%; top: 0; bottom: 0; width: 1px;
-      background: linear-gradient(180deg, transparent, rgba(0,200,255,0.9) 30%, rgba(0,200,255,0.9) 70%, transparent);
-      transform: translateX(-50%);
-    }
-
-    /* Bottom bar — data strip */
-    .hud-bottom-bar {
-      position: fixed; bottom: 16px; left: 70px; right: 70px; z-index: 999; pointer-events: none;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem;
-      font-family: var(--font-mono); font-size: .56rem; letter-spacing: .13em;
-      color: rgba(0,200,255,0.5); text-shadow: 0 0 5px rgba(0,200,255,0.4);
-    }
-    .hud-bottom-bar::before {
-      content: ''; position: absolute; top: -5px; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,200,255,0.35) 20%, rgba(0,255,200,0.5) 50%, rgba(0,200,255,0.35) 80%, transparent);
-    }
-    .hud-progress {
-      flex: 1; height: 2px; max-width: 120px;
-      background: rgba(0,200,255,0.12); border-radius: 1px; overflow: hidden;
-    }
-    .hud-progress-fill {
-      height: 100%; width: 65%;
-      background: linear-gradient(90deg, rgba(0,200,255,0.6), rgba(0,255,200,0.8));
-      box-shadow: 0 0 6px rgba(0,200,255,0.5);
-      animation: hud-scan 3s ease-in-out infinite alternate;
-    }
-    @keyframes hud-scan {
-      0% { width: 45%; } 100% { width: 88%; }
-    }
-
-    /* Sweep animation on corners */
-    @keyframes mech-pulse {
-      0%,100% { opacity:.7; filter: drop-shadow(0 0 3px rgba(0,200,255,0.5)); }
-      50%      { opacity:1;  filter: drop-shadow(0 0 8px rgba(0,255,200,0.8)); }
-    }
-    .mech-corner svg { animation: mech-pulse 3s ease-in-out infinite; }
-
-    @media (max-width:576px) { .btn-aero-ghost { margin-left: 0 !important; margin-top: .75rem; } }
-
-    /* ── DOWNLOAD BUTTONS (MECH) ── */
-    #download-win7 {
-      background: linear-gradient(180deg, rgba(0,10,30,0.55) 0%, rgba(0,25,65,0.65) 100%);
+    /* ═══════════════════════════════════════════════
+       COMMUNITY
+    ═══════════════════════════════════════════════ */
+    #community {
       border-top: 1px solid rgba(0,200,255,0.18);
       border-bottom: 1px solid rgba(0,200,255,0.18);
     }
-    .btn-dl {
-      display: inline-flex; align-items: center; gap: 1rem;
-      padding: .9rem 1.8rem;
-      border-radius: 0;
-      clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
-      font-family: var(--font-display); text-decoration: none;
-      position: relative; overflow: hidden; transition: all .25s;
-      min-width: 280px;
-      box-shadow: 0 8px 28px rgba(0,10,50,0.6), inset 0 1px 0 rgba(255,255,255,0.20);
-    }
-    /* grid texture overlay */
-    .btn-dl::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background:
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 8px),
-        repeating-linear-gradient(0deg,  rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 8px),
-        linear-gradient(180deg, rgba(255,255,255,0.16) 0%, transparent 45%);
-    }
-    /* scan sweep on hover */
-    .btn-dl::after {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,0.16) 50%, transparent 62%);
-      transform: translateX(-120%) skewX(-14deg);
-      transition: none;
-    }
-    .btn-dl:hover::after { animation: btn-scan .5s ease forwards; }
-    .btn-dl:hover { transform: translateY(-4px); }
 
-    /* corner tick marks */
-    .btn-dl .btn-dl-tick-tl, .btn-dl .btn-dl-tick-br {
-      position: absolute; width: 8px; height: 8px; pointer-events: none;
+    .community-block {
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.09) 0%,
+        rgba(0,100,200,0.06) 100%
+      );
+      border: 1px solid rgba(0,200,255,0.20);
+      border-top-color: rgba(255,255,255,0.30);
+      border-left: 3px solid rgba(0,200,255,0.7);
+      border-radius: 12px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.2rem;
+      position: relative; overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 6px 20px rgba(0,10,40,0.4);
     }
-    .btn-dl .btn-dl-tick-tl { top: 3px; left: 16px; border-top: 1px solid rgba(255,255,255,0.6); border-left: 1px solid rgba(255,255,255,0.6); }
-    .btn-dl .btn-dl-tick-br { bottom: 3px; right: 16px; border-bottom: 1px solid rgba(255,255,255,0.3); border-right: 1px solid rgba(255,255,255,0.3); }
+    .community-block::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 35%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent);
+      pointer-events: none;
+    }
+    .community-block p { margin: 0; color: rgba(170,220,250,0.9); font-size: .95rem; }
 
-    .btn-dl-primary {
-      background: linear-gradient(150deg, rgba(0,140,255,0.88) 0%, rgba(0,70,200,0.93) 55%, rgba(0,40,160,0.90) 100%);
-      border: 1px solid rgba(0,200,255,0.6); border-top-color: rgba(160,230,255,0.7);
-      color: #fff;
+    /* ═══════════════════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════════════════ */
+    #contact {
+      background: linear-gradient(180deg, rgba(0,15,40,0.4) 0%, rgba(0,5,20,0.5) 100%);
     }
-    .btn-dl-primary:hover { box-shadow: 0 0 36px rgba(0,160,255,0.75), 0 8px 30px rgba(0,0,80,0.7); color:#fff; }
-    .btn-dl-teal {
-      background: linear-gradient(150deg, rgba(0,190,210,0.85) 0%, rgba(0,110,150,0.92) 55%, rgba(0,70,110,0.90) 100%);
-      border: 1px solid rgba(0,230,200,0.55); border-top-color: rgba(160,255,240,0.65);
-      color: #fff;
-    }
-    .btn-dl-teal:hover { box-shadow: 0 0 36px rgba(0,230,200,0.6), 0 8px 30px rgba(0,0,80,0.7); color:#fff; }
-    .btn-dl-green {
-      background: linear-gradient(150deg, rgba(0,190,110,0.85) 0%, rgba(0,100,65,0.92) 55%, rgba(0,60,40,0.90) 100%);
-      border: 1px solid rgba(0,255,160,0.45); border-top-color: rgba(160,255,200,0.55);
-      color: #fff;
-    }
-    .btn-dl-green:hover { box-shadow: 0 0 36px rgba(0,255,140,0.55), 0 8px 30px rgba(0,0,80,0.7); color:#fff; }
-    .btn-dl-purple {
-      background: linear-gradient(150deg, rgba(150,70,255,0.88) 0%, rgba(90,10,200,0.93) 55%, rgba(60,0,160,0.90) 100%);
-      border: 1px solid rgba(180,100,255,0.55); border-top-color: rgba(210,160,255,0.65);
-      color: #fff;
-    }
-    .btn-dl-purple:hover { box-shadow: 0 0 36px rgba(160,80,255,0.7), 0 8px 30px rgba(0,0,80,0.7); color:#fff; }
 
-    .btn-dl-icon {
-      font-size: 1.8rem; flex-shrink: 0;
-      text-shadow: 0 0 14px rgba(255,255,255,0.7);
+    .tm-input {
+      display: block; width: 100%;
+      padding: .8rem 1.3rem;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,80,180,0.06));
+      border: 1px solid rgba(0,200,255,0.25);
+      border-top-color: rgba(255,255,255,0.25);
+      border-radius: 8px;
+      color: #fff;
+      font-family: var(--font-body); font-size: .95rem;
+      transition: all .2s;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 4px 12px rgba(0,10,40,0.4);
+    }
+    .tm-input:focus {
+      outline: none;
+      border-color: rgba(0,220,255,0.6);
+      border-top-color: rgba(255,255,255,0.45);
+      box-shadow:
+        0 0 16px rgba(0,200,255,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.20);
+    }
+    .tm-input::placeholder { color: rgba(0,200,255,0.35); }
+
+    .btn-submit {
+      background: linear-gradient(
+        180deg,
+        rgba(0,180,255,0.85) 0%,
+        rgba(0,80,200,0.9) 50%,
+        rgba(0,50,160,0.85) 100%
+      );
+      border: 1px solid rgba(0,220,255,0.55);
+      border-top-color: rgba(255,255,255,0.55);
+      color: white; cursor: pointer;
+      padding: .8rem 2.8rem;
+      font-family: var(--font-display); font-size: .72rem;
+      letter-spacing: .12em; text-transform: uppercase; border-radius: 8px;
+      position: relative; overflow: hidden;
+      box-shadow:
+        0 0 20px rgba(0,150,255,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.50);
+      transition: all .25s;
+    }
+    .btn-submit::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.32), transparent);
+    }
+    .btn-submit:hover {
+      box-shadow: 0 0 30px rgba(0,200,255,0.7), inset 0 1px 0 rgba(255,255,255,0.55);
+      transform: translateY(-2px);
+    }
+
+    .contact-info-item {
+      display: flex; align-items: center; gap: 1.2rem;
+      padding: 1rem 1.3rem;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,80,180,0.06));
+      border: 1px solid rgba(0,200,255,0.20);
+      border-top-color: rgba(255,255,255,0.25);
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      position: relative; overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 4px 14px rgba(0,10,40,0.4);
+      transition: all .25s;
+    }
+    .contact-info-item::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 40%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), transparent);
+      pointer-events: none;
+    }
+    .contact-info-item:hover {
+      border-color: rgba(0,220,255,0.45);
+      box-shadow: 0 0 16px rgba(0,200,255,0.18), inset 0 1px 0 rgba(255,255,255,0.20);
+    }
+    .contact-info-item i {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(0,160,255,0.28), rgba(0,60,180,0.22));
+      border: 1px solid rgba(0,200,255,0.35);
+      border-top-color: rgba(255,255,255,0.40);
+      color: var(--aero-cyan); font-size: 1rem; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 10px rgba(0,200,255,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
+      text-shadow: 0 0 8px rgba(0,200,255,0.7);
+    }
+    .contact-info-item span { color: rgba(180,225,255,0.9); font-size: .9rem; }
+
+    /* ═══════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════ */
+    footer {
+      background: linear-gradient(
+        180deg,
+        rgba(0,10,30,0.9) 0%,
+        rgba(0,5,15,0.97) 100%
+      );
+      border-top: 1px solid rgba(0,200,255,0.22);
+      padding: 2.5rem 0;
+      text-align: center;
+      font-size: .82rem;
+      color: rgba(0,200,255,0.5);
       position: relative; z-index: 1;
     }
-    .btn-dl-text { display: flex; flex-direction: column; line-height: 1.3; position: relative; z-index: 1; }
-    .btn-dl-label { font-size: .75rem; font-weight: 700; letter-spacing: .10em; color: #fff; text-shadow: 0 0 8px rgba(255,255,255,0.4); }
-    .btn-dl-sub { font-size: .60rem; color: rgba(255,255,255,0.55); letter-spacing: .09em; margin-top: 3px; font-family: var(--font-mono); }
+    footer::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    }
+    footer a { color: rgba(0,200,255,0.5); }
+    footer a:hover { color: var(--aero-cyan); }
 
-    /* ── PC CAROUSEL ── */
-    #recommended-pcs {
-      background: linear-gradient(180deg, rgba(0,15,45,0.5) 0%, rgba(0,25,70,0.6) 100%);
+    /* scan-line overlay on entire page */
+    .scanlines {
+      position: fixed; inset: 0; z-index: 9999;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.03) 2px,
+        rgba(0,0,0,0.03) 4px
+      );
     }
-    .pc-filter-tabs {
-      display: flex; justify-content: center; gap: .6rem; flex-wrap: wrap; margin-top: 1.4rem;
+
+    /* HUD corner brackets */
+    .hud-corner {
+      position: fixed;
+      width: 28px; height: 28px;
+      z-index: 999; pointer-events: none;
     }
-    .pc-tab {
-      background:
-        repeating-linear-gradient(90deg, rgba(0,200,255,0.03) 0px, rgba(0,200,255,0.03) 1px, transparent 1px, transparent 7px),
-        linear-gradient(180deg, rgba(0,30,80,0.6) 0%, rgba(0,10,40,0.7) 100%);
-      border: 1px solid rgba(0,200,255,0.30); border-top-color: rgba(120,220,255,0.40);
-      color: rgba(160,220,255,0.85); font-family: var(--font-mono);
-      font-size: .60rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
-      padding: .45rem 1.4rem;
-      border-radius: 0;
-      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-      cursor: pointer; transition: all .2s;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
-    }
-    .pc-tab:hover, .pc-tab.active {
-      background:
-        repeating-linear-gradient(90deg, rgba(0,200,255,0.06) 0px, rgba(0,200,255,0.06) 1px, transparent 1px, transparent 7px),
-        linear-gradient(180deg, rgba(0,140,255,0.35) 0%, rgba(0,70,200,0.40) 100%);
-      border-color: rgba(0,220,255,0.70); border-top-color: rgba(180,240,255,0.80);
-      color: #fff;
-      box-shadow: 0 0 16px rgba(0,200,255,0.45), inset 0 1px 0 rgba(255,255,255,0.25);
-      text-shadow: 0 0 8px rgba(0,220,255,0.9);
-    }
-    .pc-carousel-wrapper {
-      position: relative; display: flex; align-items: center; gap: 0;
-    }
-    .pc-carousel {
-      display: flex; gap: 1.4rem; overflow-x: auto; scroll-behavior: smooth;
-      padding: 1.2rem .5rem 1.8rem;
-      scrollbar-width: thin; scrollbar-color: rgba(0,200,255,0.35) rgba(0,10,30,0.4);
-    }
-    .pc-carousel::-webkit-scrollbar { height: 5px; }
-    .pc-carousel::-webkit-scrollbar-track { background: rgba(0,10,30,0.4); border-radius: 3px; }
-    .pc-carousel::-webkit-scrollbar-thumb { background: rgba(0,200,255,0.35); border-radius: 3px; }
-    .pc-carousel-btn {
-      flex-shrink: 0;
-      width: 44px; height: 44px; border-radius: 50%;
-      background: linear-gradient(135deg, rgba(0,160,255,0.25), rgba(0,60,180,0.30));
-      border: 1px solid rgba(0,200,255,0.40); border-top-color: rgba(255,255,255,0.35);
-      color: var(--aero-cyan); font-size: 1rem; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 14px rgba(0,200,255,0.2), inset 0 1px 0 rgba(255,255,255,0.25);
-      transition: all .2s; z-index: 2; flex-shrink: 0;
-    }
-    .pc-carousel-btn:hover {
-      background: linear-gradient(135deg, rgba(0,200,255,0.40), rgba(0,100,220,0.40));
-      box-shadow: 0 0 22px rgba(0,200,255,0.55), inset 0 1px 0 rgba(255,255,255,0.35);
-      color: #fff;
-    }
-    .pc-card {
-      flex: 0 0 260px; border-radius: 18px; overflow: hidden;
-      background: linear-gradient(145deg, rgba(255,255,255,0.12) 0%, rgba(0,140,240,0.07) 50%, rgba(0,60,160,0.12) 100%);
-      border: 1px solid rgba(0,200,255,0.25); border-top-color: rgba(255,255,255,0.42);
-      box-shadow: 0 8px 32px rgba(0,10,45,0.65), inset 0 1px 0 rgba(255,255,255,0.30);
-      position: relative; transition: all .3s;
-    }
-    .pc-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 38%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.16) 0%, transparent 100%);
-      border-radius: 18px 18px 0 0; pointer-events: none; z-index: 1;
-    }
-    .pc-card:hover {
-      border-color: rgba(0,220,255,0.55); border-top-color: rgba(255,255,255,0.65);
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 22px 50px rgba(0,10,50,0.75), 0 0 30px rgba(0,200,255,0.25), inset 0 1px 0 rgba(255,255,255,0.45);
-    }
-    .pc-card.hidden { display: none; }
-    .pc-card-badge {
-      position: absolute; top: 12px; right: 12px; z-index: 2;
-      background: linear-gradient(135deg, rgba(0,180,255,0.70), rgba(0,80,200,0.80));
-      border: 1px solid rgba(0,220,255,0.5); border-top-color: rgba(255,255,255,0.4);
-      color: #fff; font-family: var(--font-mono); font-size: .6rem; letter-spacing: .12em;
-      text-transform: uppercase; padding: .25rem .65rem; border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,200,255,0.3);
-    }
-    .pc-card-icon {
-      display: flex; align-items: center; justify-content: center;
-      padding: 2.2rem 0 1.4rem;
-      font-size: 3.2rem; color: var(--aero-cyan);
-      text-shadow: 0 0 20px rgba(0,200,255,0.8), 0 0 50px rgba(0,150,255,0.4);
-      position: relative; z-index: 1;
-      background: linear-gradient(180deg, rgba(0,20,60,0.5) 0%, rgba(0,10,40,0.3) 100%);
-    }
-    .pc-card-body { padding: 1.2rem 1.4rem 1.6rem; }
-    .pc-card-name {
-      font-family: var(--font-display); font-size: 1rem; font-weight: 700;
-      color: #fff; margin-bottom: .2rem; text-shadow: 0 0 8px rgba(0,200,255,0.3);
-    }
-    .pc-card-sub { font-family: var(--font-mono); font-size: .68rem; color: var(--aero-cyan); opacity:.7; margin-bottom: .9rem; letter-spacing:.05em; }
-    .pc-card-specs { list-style: none; padding: 0; margin: 0 0 1rem; }
-    .pc-card-specs li {
-      font-size: .8rem; color: rgba(170,220,250,0.88); padding: .28rem 0;
-      border-bottom: 1px solid rgba(0,200,255,0.09); display: flex; align-items: center; gap: 8px;
-    }
-    .pc-card-specs li:last-child { border-bottom: none; }
-    .pc-card-specs li i { color: var(--aero-cyan); font-size: .72rem; width: 14px; flex-shrink:0; text-shadow: 0 0 6px rgba(0,200,255,0.6); }
-    .pc-card-tag {
-      display: inline-block; font-family: var(--font-mono); font-size: .6rem;
-      letter-spacing: .12em; text-transform: uppercase;
-      padding: .22rem .7rem; border-radius: 8px; border: 1px solid;
-    }
-    .pc-tag-great { color: #00ffb0; border-color: rgba(0,255,176,0.4); background: rgba(0,200,120,0.12); text-shadow: 0 0 6px rgba(0,255,176,0.5); }
-    .pc-tag-good  { color: var(--aero-cyan); border-color: rgba(0,200,255,0.4); background: rgba(0,150,255,0.10); text-shadow: 0 0 6px rgba(0,200,255,0.5); }
-    .pc-tag-mod   { color: #ffcc44; border-color: rgba(255,200,60,0.4); background: rgba(255,180,0,0.10); text-shadow: 0 0 6px rgba(255,200,60,0.5); }
+    .hud-corner--tl { top: 80px; left: 14px; border-top: 2px solid rgba(0,200,255,0.5); border-left: 2px solid rgba(0,200,255,0.5); }
+    .hud-corner--tr { top: 80px; right: 14px; border-top: 2px solid rgba(0,200,255,0.5); border-right: 2px solid rgba(0,200,255,0.5); }
+    .hud-corner--bl { bottom: 14px; left: 14px; border-bottom: 2px solid rgba(0,200,255,0.5); border-left: 2px solid rgba(0,200,255,0.5); }
+    .hud-corner--br { bottom: 14px; right: 14px; border-bottom: 2px solid rgba(0,200,255,0.5); border-right: 2px solid rgba(0,200,255,0.5); }
+
+    /* win7 logo ping */
+    .win-logo { display: inline-flex; margin-bottom: 1.8rem; }
 
     @media (max-width:576px) {
       .btn-aero-ghost { margin-left: 0 !important; margin-top: .75rem; }
-      .btn-dl { min-width: unset; width: 100%; }
-      .pc-card { flex: 0 0 220px; }
     }
-
-    /* ── PC SPEC MODAL ── */
-    .pc-modal-backdrop {
-      display: none;
-      position: fixed; inset: 0; z-index: 9000;
-      background: rgba(0,5,20,0.82);
-      backdrop-filter: blur(6px);
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-    }
-    .pc-modal-backdrop.open {
-      display: flex;
-    }
-    .pc-modal {
-      position: relative;
-      background: linear-gradient(145deg, rgba(0,20,60,0.97) 0%, rgba(0,40,100,0.95) 50%, rgba(0,15,45,0.98) 100%);
-      border: 1px solid rgba(0,220,255,0.55);
-      border-top-color: rgba(255,255,255,0.55);
-      border-left-color: rgba(255,255,255,0.25);
-      box-shadow: 0 0 0 1px rgba(0,200,255,0.15), 0 30px 80px rgba(0,0,30,0.9), 0 0 60px rgba(0,150,255,0.2), inset 0 2px 0 rgba(255,255,255,0.55);
-      border-radius: 18px;
-      width: 100%;
-      max-width: 860px;
-      max-height: 90vh;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      animation: modalIn .25s cubic-bezier(0.34,1.56,0.64,1) both;
-    }
-    @keyframes modalIn {
-      from { opacity:0; transform: scale(0.88) translateY(24px); }
-      to   { opacity:1; transform: scale(1) translateY(0); }
-    }
-    /* Glass shine top bar */
-    .pc-modal::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 42%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, transparent 100%);
-      border-radius: 18px 18px 0 0;
-      pointer-events: none; z-index: 0;
-    }
-    /* Modal title bar */
-    .pc-modal-titlebar {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 20px 12px;
-      border-bottom: 1px solid rgba(0,200,255,0.22);
-      background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(0,50,120,0.12) 100%);
-      position: relative; z-index: 1; flex-shrink: 0;
-    }
-    .pc-modal-titlebar-left {
-      display: flex; align-items: center; gap: 10px;
-    }
-    .pc-modal-winbtn-group {
-      display: flex; gap: 6px;
-    }
-    .pc-modal-winbtn {
-      width: 14px; height: 14px; border-radius: 50%;
-      border: 1px solid rgba(0,0,0,0.25);
-      cursor: default;
-      flex-shrink: 0;
-    }
-    .pc-modal-winbtn.red   { background: #ff5f57; border-color: #e0443e; }
-    .pc-modal-winbtn.yellow{ background: #febc2e; border-color: #d4a01a; }
-    .pc-modal-winbtn.green { background: #28c840; border-color: #1aaa2e; }
-    .pc-modal-title {
-      font-family: var(--font-display); font-size: .78rem; font-weight: 700;
-      color: rgba(200,235,255,0.9); letter-spacing: .12em; text-transform: uppercase;
-      text-shadow: 0 0 8px rgba(0,200,255,0.5);
-    }
-    .pc-modal-close {
-      width: 34px; height: 34px; border-radius: 8px;
-      background: linear-gradient(135deg, rgba(200,40,40,0.7), rgba(140,10,10,0.8));
-      border: 1px solid rgba(255,80,80,0.5); border-top-color: rgba(255,160,160,0.4);
-      color: #fff; font-size: 1rem; font-weight: 700;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 10px rgba(200,0,0,0.35), inset 0 1px 0 rgba(255,200,200,0.25);
-      transition: all .2s; line-height: 1; flex-shrink: 0;
-      font-family: system-ui, sans-serif;
-    }
-    .pc-modal-close:hover {
-      background: linear-gradient(135deg, rgba(255,60,60,0.9), rgba(200,20,20,0.9));
-      box-shadow: 0 0 18px rgba(255,50,50,0.7), inset 0 1px 0 rgba(255,200,200,0.35);
-      transform: scale(1.05);
-    }
-    /* Modal body */
-    .pc-modal-body {
-      display: flex;
-      flex: 1;
-      overflow: hidden;
-      position: relative; z-index: 1;
-    }
-    /* LEFT: image panel */
-    .pc-modal-img-panel {
-      flex: 0 0 46%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      padding: 32px 24px;
-      background: linear-gradient(160deg, rgba(0,30,80,0.6) 0%, rgba(0,10,40,0.8) 100%);
-      border-right: 1px solid rgba(0,200,255,0.18);
-      gap: 20px;
-    }
-    .pc-modal-img {
-      width: 100%; max-width: 300px;
-      height: 200px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 18px rgba(0,180,255,0.55)) drop-shadow(0 4px 12px rgba(0,0,0,0.7));
-      border-radius: 10px;
-    }
-    /* Fallback icon when no image */
-    .pc-modal-icon-fallback {
-      font-size: 6rem; color: var(--aero-cyan);
-      text-shadow: 0 0 30px rgba(0,200,255,0.8), 0 0 70px rgba(0,150,255,0.4);
-    }
-    .pc-modal-img-label {
-      font-family: var(--font-mono); font-size: .6rem; letter-spacing: .16em;
-      color: rgba(0,200,255,0.5); text-transform: uppercase; text-align: center;
-    }
-    /* Win7 badge */
-    .pc-modal-win7-badge {
-      display: flex; align-items: center; gap: 8px;
-      background: linear-gradient(135deg, rgba(0,100,220,0.35), rgba(0,40,120,0.45));
-      border: 1px solid rgba(0,180,255,0.35); border-top-color: rgba(255,255,255,0.25);
-      border-radius: 10px; padding: .5rem 1rem;
-      font-family: var(--font-mono); font-size: .62rem; color: rgba(180,230,255,0.9);
-      letter-spacing: .1em; box-shadow: 0 0 12px rgba(0,150,255,0.2);
-    }
-    .pc-modal-win7-badge .win7-logo-nav { width: 20px; height: 20px; }
-    /* RIGHT: info panel */
-    .pc-modal-info-panel {
-      flex: 1;
-      overflow-y: auto;
-      padding: 28px 28px 28px 24px;
-      scrollbar-width: thin; scrollbar-color: rgba(0,200,255,0.3) rgba(0,10,30,0.3);
-    }
-    .pc-modal-info-panel::-webkit-scrollbar { width: 4px; }
-    .pc-modal-info-panel::-webkit-scrollbar-thumb { background: rgba(0,200,255,0.35); border-radius: 2px; }
-    .pc-modal-pc-name {
-      font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
-      color: #fff; margin-bottom: .2rem;
-      text-shadow: 0 0 12px rgba(0,200,255,0.4);
-    }
-    .pc-modal-pc-sub {
-      font-family: var(--font-mono); font-size: .7rem; color: var(--aero-cyan);
-      opacity:.75; margin-bottom: 1.2rem; letter-spacing: .07em;
-    }
-    .pc-modal-specs-title {
-      font-family: var(--font-mono); font-size: .6rem; letter-spacing: .18em;
-      color: rgba(0,200,255,0.55); text-transform: uppercase; margin-bottom: .65rem;
-      border-bottom: 1px solid rgba(0,200,255,0.15); padding-bottom: .45rem;
-    }
-    .pc-modal-spec-row {
-      display: flex; align-items: flex-start; gap: 12px;
-      padding: .55rem 0;
-      border-bottom: 1px solid rgba(0,200,255,0.08);
-      font-size: .88rem; color: rgba(180,225,255,0.9);
-    }
-    .pc-modal-spec-row:last-child { border-bottom: none; }
-    .pc-modal-spec-row i {
-      color: var(--aero-cyan); font-size: .8rem; width: 16px;
-      flex-shrink: 0; margin-top: 3px;
-      text-shadow: 0 0 6px rgba(0,200,255,0.7);
-    }
-    .pc-modal-spec-label {
-      font-family: var(--font-mono); font-size: .62rem; color: rgba(0,200,255,0.5);
-      letter-spacing: .08em; text-transform: uppercase; margin-bottom: 2px;
-    }
-    .pc-modal-win7-compat {
-      margin-top: 1.4rem;
-      background: linear-gradient(135deg, rgba(0,60,180,0.25), rgba(0,20,80,0.35));
-      border: 1px solid rgba(0,200,255,0.3); border-top-color: rgba(255,255,255,0.2);
-      border-radius: 12px; padding: 1rem 1.2rem;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
-    }
-    .pc-modal-compat-title {
-      font-family: var(--font-mono); font-size: .62rem; letter-spacing: .15em;
-      color: rgba(0,200,255,0.6); text-transform: uppercase; margin-bottom: .65rem;
-    }
-    .pc-modal-compat-row {
-      display: flex; align-items: center; gap: 10px;
-      padding: .38rem 0; font-size: .82rem; color: rgba(170,220,255,0.88);
-    }
-    .pc-modal-compat-row i.check { color: #00ffb0; text-shadow: 0 0 8px rgba(0,255,176,0.6); }
-    .pc-modal-compat-row i.warn  { color: #ffcc44; text-shadow: 0 0 8px rgba(255,200,60,0.6); }
-    .pc-modal-tag-row { margin-top: 1rem; display: flex; gap: .5rem; flex-wrap: wrap; }
-
-    /* Mobile stacked layout */
-    @media (max-width: 640px) {
-      .pc-modal { border-radius: 14px; max-height: 95vh; }
-      .pc-modal-body { flex-direction: column; overflow-y: auto; }
-      .pc-modal-img-panel {
-        flex: none; padding: 22px 20px 16px;
-        border-right: none; border-bottom: 1px solid rgba(0,200,255,0.18);
-      }
-      .pc-modal-img { height: 140px; }
-      .pc-modal-icon-fallback { font-size: 4rem; }
-      .pc-modal-info-panel { overflow-y: visible; padding: 20px; }
-      .pc-modal-pc-name { font-size: 1.1rem; }
-    }
-
-    /* PC card clickable cursor */
-    .pc-card { cursor: pointer; }
   </style>
 </head>
 
 <body>
+
+  <!-- scan lines -->
   <div class="scanlines"></div>
 
-  <!-- Mechanized HUD corners -->
-  <div class="mech-corner mech-corner--tl">
-    <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,220,255,0.75)" stroke-width="2" fill="none"/>
-      <polyline points="6,0 6,6 0,6" stroke="rgba(0,255,200,0.5)" stroke-width="1" fill="none"/>
-      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <rect x="2" y="2" width="4" height="4" fill="rgba(0,255,200,0.6)"/>
-    </svg>
-  </div>
-  <div class="mech-corner mech-corner--tr">
-    <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,220,255,0.75)" stroke-width="2" fill="none"/>
-      <polyline points="6,0 6,6 0,6" stroke="rgba(0,255,200,0.5)" stroke-width="1" fill="none"/>
-      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <rect x="2" y="2" width="4" height="4" fill="rgba(0,255,200,0.6)"/>
-    </svg>
-  </div>
-  <div class="mech-corner mech-corner--bl">
-    <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,220,255,0.75)" stroke-width="2" fill="none"/>
-      <polyline points="6,0 6,6 0,6" stroke="rgba(0,255,200,0.5)" stroke-width="1" fill="none"/>
-      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <rect x="2" y="2" width="4" height="4" fill="rgba(0,255,200,0.6)"/>
-    </svg>
-  </div>
-  <div class="mech-corner mech-corner--br">
-    <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,220,255,0.75)" stroke-width="2" fill="none"/>
-      <polyline points="6,0 6,6 0,6" stroke="rgba(0,255,200,0.5)" stroke-width="1" fill="none"/>
-      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <rect x="2" y="2" width="4" height="4" fill="rgba(0,255,200,0.6)"/>
-    </svg>
-  </div>
+  <!-- HUD corners -->
+  <div class="hud-corner hud-corner--tl"></div>
+  <div class="hud-corner hud-corner--tr"></div>
+  <div class="hud-corner hud-corner--bl"></div>
+  <div class="hud-corner hud-corner--br"></div>
 
-  <!-- HUD side edges -->
-  <div class="hud-edge-l"></div>
-  <div class="hud-edge-r"></div>
-
-  <!-- HUD status readout top-left -->
-  <div class="hud-status">
-    <div class="hud-status-line"><span class="hud-status-dot"></span>SYS_ONLINE</div>
-    <div class="hud-status-line"><span class="hud-status-dot alt"></span>NT_6.1.7601</div>
-    <div class="hud-status-line" style="opacity:.5;">AERO::ACTIVE</div>
-  </div>
-
-  <!-- HUD clock readout top-right -->
-  <div class="hud-readout" id="hudReadout">
-    <div id="hudTime">--:--:--</div>
-    <div style="opacity:.55;">WIN7_TEAM</div>
-    <div style="opacity:.35;">V2.6.1</div>
-  </div>
-
-  <!-- HUD subtle reticle -->
-  <div class="hud-reticle"></div>
-
-  <!-- HUD bottom data bar -->
-  <div class="hud-bottom-bar">
-    <span>MEM::OK</span>
-    <div class="hud-progress"><div class="hud-progress-fill"></div></div>
-    <span id="hudDate">----</span>
-    <div class="hud-progress"><div class="hud-progress-fill" style="animation-delay:.9s;"></div></div>
-    <span>AERO::GL</span>
-  </div>
 
   <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">
     <div class="container">
       <a href="#hero" class="navbar-brand">
-        <span style="color:var(--aero-cyan);text-shadow:0 0 12px rgba(0,255,255,1);"><img class="textw" src="pngegg.png" alt="Windows logo"></span>
+        Win<span style="color:var(--aero-cyan);text-shadow:0 0 12px rgba(0,255,255,1);">7 Team</span>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navbarMain"
+        aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse justify-content-end" id="navbarMain">
         <ul class="navbar-nav gap-1">
           <li class="nav-item"><a class="nav-link tm-nav-link" href="#hero">Home</a></li>
-          <li class="nav-item"><a class="nav-link tm-nav-link" href="#download-win7">Downloads</a></li>
-          <li class="nav-item"><a class="nav-link tm-nav-link" href="#recommended-pcs">PCs</a></li>
           <li class="nav-item"><a class="nav-link tm-nav-link" href="#whatwedo">Explore</a></li>
           <li class="nav-item"><a class="nav-link tm-nav-link" href="#reviews">Reviews</a></li>
           <li class="nav-item"><a class="nav-link tm-nav-link" href="#gallery">App Store</a></li>
@@ -1394,213 +1075,25 @@
     <div class="container hero-content">
       <div class="row align-items-center min-vh-100">
         <div class="col-lg-8 py-5">
-          <div class="hero-badge">&#x25C6; Most Legendary and Oldest Operating System Ever &#x25C6;</div>
-          <h2 class="hero-title-t2">Welcome to the world of</h2>
-          <h1 class="hero-title">
-            <img class="textw" src="pngegg.png" alt="Windows logo">Windows 7
-          </h1>
-          <br>
-          <p class="hero-sub">Your PC Simplified</p>
+
+          <div class="hero-badge">&#x25C6;Most Legendary and Oldest Operating System Ever &#x25C6;</div>
+          <h2 class="hero-title-t2">You cannot escape</h2>
+          <h1 class="hero-title"><img class="textw" src="pngegg.png">Windows<span> 7</span></h1> <br>
+          <p class="hero-sub">Your PC runs smoother more stable and Simplified</p>
           <p class="hero-url">&#x276F; Windows 7 can be the most legendary OS thats ever made unlike Windows 11</p>
           <div class="d-flex flex-wrap gap-3">
-            <a href="#whatwedo" class="btn-aero btn-aero-primary">Explore Features<span class="btn-scan"></span></a>
-            <a href="#contact" class="btn-aero btn-aero-ghost">Learn More<span class="btn-scan"></span></a>
+            <a href="#whatwedo" class="btn-aero btn-aero-primary">Explore Features</a>
+            <a href="#contact" class="btn-aero btn-aero-ghost">Learn More</a>
           </div>
         </div>
       </div>
     </div>
 
     <div class="hero-scroll-arrow">
-      <a href="#whatwedo"><span>Scroll</span><i class="fas fa-chevron-down"></i></a>
-    </div>
-  </section>
-
-  <!-- ===================== DOWNLOAD WINDOWS 7 ===================== -->
-  <section id="download-win7" class="tm-section" style="padding:60px 0;">
-    <div class="container">
-      <div class="text-center mb-4">
-        <span class="section-label">// Get Windows 7</span>
-        <h2 class="section-title">Download Windows 7</h2>
-        <div class="tm-divider center"></div>
-        <p style="color:rgba(160,210,245,0.75);max-width:640px;margin:0 auto 2.2rem;">
-          Choose your preferred edition of Windows 7 — original, fully updated, or with modern hardware support baked in.
-        </p>
-      </div>
-      <div class="d-flex flex-wrap gap-3 justify-content-center">
-        <a href="https://web.archive.org/web/20160701202128/http://www.microsoft.com/en-us/software-download/windows7"
-           target="_blank" rel="noopener" class="btn-dl btn-dl-primary">
-          <span class="btn-dl-tick-tl"></span><span class="btn-dl-tick-br"></span>
-          <span class="btn-dl-icon"><i class="fab fa-windows"></i></span>
-          <span class="btn-dl-text"><span class="btn-dl-label">Download Windows 7 (Original)</span><span class="btn-dl-sub">Official Internet Web Archive</span></span>
-        </a>
-        <a href="https://archive.org/details/windows-7-ultimate-x-64-sp-1-fully-updated"
-           target="_blank" rel="noopener" class="btn-dl btn-dl-teal">
-          <span class="btn-dl-tick-tl"></span><span class="btn-dl-tick-br"></span>
-          <span class="btn-dl-icon"><i class="fab fa-windows"></i></span>
-          <span class="btn-dl-text"><span class="btn-dl-label">Download Windows 7 Fully Updated</span><span class="btn-dl-sub">SP1 + All Updates Included</span></span>
-        </a>
-        <a href="https://archive.org/details/windows-7-updated-2024-06-12"
-           target="_blank" rel="noopener" class="btn-dl btn-dl-green">
-          <span class="btn-dl-tick-tl"></span><span class="btn-dl-tick-br"></span>
-          <span class="btn-dl-icon"><i class="fab fa-windowsp"></i></span>
-          <span class="btn-dl-text"><span class="btn-dl-label">Download Windows 7 with Modern Hardware Support</span><span class="btn-dl-sub">Updated June 2024 — Intel/AMD Ready</span></span>
-        </a>
-        <a href="https://reloadedwin.neocities.org/"
-           target="_blank" rel="noopener" class="btn-dl btn-dl-purple">
-          <span class="btn-dl-tick-tl"></span><span class="btn-dl-tick-br"></span>
-          <span class="btn-dl-icon"><i class="fas fa-paint-brush"></i></span>
-          <span class="btn-dl-text"><span class="btn-dl-label">Download Windows 10 with Windows 7 Theme</span><span class="btn-dl-sub">ReloadedWin — Win7 Look on Win10</span></span>
-        </a>
-      </div>
-      <p style="text-align:center;margin-top:1.5rem;font-family:var(--font-mono);font-size:.68rem;color:rgba(0,200,255,0.35);letter-spacing:.1em;">
-        CAUTION: Windows 7 reached the end of support in 2020. Updates will continue, but Security Patches may be limited. Use at your own risk. 
-      </p>
-    </div>
-  </section>
-
-  <!-- ===================== RECOMMENDED PCs ===================== -->
-  <section id="recommended-pcs" class="tm-section" style="padding:70px 0;">
-    <div class="container-fluid px-4">
-      <div class="text-center mb-5">
-        <span class="section-label">// Real Hardware</span>
-        <h2 class="section-title">Recommended Windows 7 PCs And Desktops</h2>
-        <div class="tm-divider center"></div>
-        <p style="color:rgba(160,210,245,0.75);max-width:680px;margin:0 auto 1rem;">
-          Want to run Windows 7 on real hardware Scroll left or right to browse — we have <strong style="color:var(--aero-cyan);">7 PCs</strong> to choose from. Click a category to filter.
-        </p>
-        <div class="pc-filter-tabs">
-          <button class="pc-tab active" data-filter="all">All</button>
-          <button class="pc-tab" data-filter="laptop">Laptops</button>
-          <button class="pc-tab" data-filter="desktop">Desktops</button>
-          <button class="pc-tab" data-filter="server">Servers</button>
-        </div>
-      </div>
-      <div class="pc-carousel-wrapper">
-        <button class="pc-carousel-btn pc-carousel-btn--left" id="pcScrollLeft" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
-        <div class="pc-carousel" id="pcCarousel">
-
-          <!-- 1 -->
-          <div class="pc-card" data-type="laptop">
-            <div class="pc-card-badge">Laptop</div>
-            <div class="pc-card-icon"><i class="fas fa-laptop"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">ThinkPad T430</h4>
-              <div class="pc-card-sub">Lenovo · 2012</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Core i5-3320M</li>
-                <li><i class="fas fa-memory"></i> Up to 16 GB DDR3</li>
-                <li><i class="fas fa-hdd"></i> HDD / SSD upgradeable</li>
-                <li><i class="fas fa-check-circle"></i> Full Win 7 driver support</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-great">Best Pick</span>
-            </div>
-          </div>
-
-          <!-- 2 -->
-          <div class="pc-card" data-type="desktop">
-            <div class="pc-card-badge">Desktop</div>
-            <div class="pc-card-icon"><i class="fas fa-desktop"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">Dell OptiPlex 7010</h4>
-              <div class="pc-card-sub">Dell · 2012–2013</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Core i5/i7 3rd Gen</li>
-                <li><i class="fas fa-memory"></i> Up to 32 GB DDR3</li>
-                <li><i class="fas fa-hdd"></i> SSD + HDD bays</li>
-                <li><i class="fas fa-check-circle"></i> OEM Win 7 drivers available</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-great">Highly Recommended</span>
-            </div>
-          </div>
-
-          <!-- 3 -->
-          <div class="pc-card" data-type="laptop">
-            <div class="pc-card-badge">Laptop</div>
-            <div class="pc-card-icon"><i class="fas fa-laptop"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">HP EliteBook 8470p</h4>
-              <div class="pc-card-sub">HP · 2012</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Core i5/i7 Ivy Bridge</li>
-                <li><i class="fas fa-memory"></i> Up to 16 GB DDR3</li>
-                <li><i class="fas fa-hdd"></i> mSATA + HDD slot</li>
-                <li><i class="fas fa-check-circle"></i> HP official Win 7 drivers</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-good">Great Choice</span>
-            </div>
-          </div>
-
-          <!-- 4 -->
-          <div class="pc-card" data-type="desktop">
-            <div class="pc-card-badge">Desktop</div>
-            <div class="pc-card-icon"><i class="fas fa-desktop"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">HP Z230 Workstation</h4>
-              <div class="pc-card-sub">HP · 2013</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Xeon E3 / Core i7</li>
-                <li><i class="fas fa-memory"></i> Up to 32 GB ECC DDR3</li>
-                <li><i class="fas fa-hdd"></i> PCIe SSD + SATA bays</li>
-                <li><i class="fas fa-check-circle"></i> ECC memory for stability</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-good">Workstation Grade</span>
-            </div>
-          </div>
-
-          <!-- 5 -->
-          <div class="pc-card" data-type="server">
-            <div class="pc-card-badge">Server</div>
-            <div class="pc-card-icon"><i class="fas fa-server"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">Dell PowerEdge T130</h4>
-              <div class="pc-card-sub">Dell · 2016</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Xeon E3-1200 v5</li>
-                <li><i class="fas fa-memory"></i> Up to 64 GB ECC DDR4</li>
-                <li><i class="fas fa-hdd"></i> 4× SATA drive bays</li>
-                <li><i class="fas fa-check-circle"></i> Win 7 with ACPI patches</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-mod">Needs Patching</span>
-            </div>
-          </div>
-
-          <!-- 6 -->
-          <div class="pc-card" data-type="laptop">
-            <div class="pc-card-badge">Laptop</div>
-            <div class="pc-card-icon"><i class="fas fa-laptop"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">ThinkPad X220</h4>
-              <div class="pc-card-sub">Lenovo · 2011</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Core i5/i7 Sandy Bridge</li>
-                <li><i class="fas fa-memory"></i> Up to 16 GB DDR3</li>
-                <li><i class="fas fa-hdd"></i> mSATA + 2.5″ SSD</li>
-                <li><i class="fas fa-check-circle"></i> Classic Win 7 era laptop</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-great">Community Favorite</span>
-            </div>
-          </div>
-
-          <!-- 7 -->
-          <div class="pc-card" data-type="desktop">
-            <div class="pc-card-badge">Desktop</div>
-            <div class="pc-card-icon"><i class="fas fa-desktop"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">Custom ATX Build</h4>
-              <div class="pc-card-sub">DIY · Intel 6th–8th Gen</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Core i5/i7 Skylake–CFL</li>
-                <li><i class="fas fa-memory"></i> Up to 64 GB DDR4</li>
-                <li><i class="fas fa-hdd"></i> NVMe + SATA SSD</li>
-                <li><i class="fas fa-check-circle"></i> Win 7 via Modern HW image</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-mod">Modern Hardware</span>
-            </div>
-          </div>
-
-        </div><!-- /.pc-carousel -->
-        <button class="pc-carousel-btn pc-carousel-btn--right" id="pcScrollRight" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
-      </div>
+      <a href="#whatwedo">
+        <span>Scroll</span>
+        <i class="fas fa-chevron-down"></i>
+      </a>
     </div>
   </section>
 
@@ -1611,9 +1104,12 @@
       <h2 class="section-title-alt">What is Windows 7</h2>
       <div class="tm-divider"></div>
       <p class="mb-5" style="max-width:780px; color:rgba(170,220,255,0.85);">
-        Windows 7 is a major release of the Windows NT operating system developed by Microsoft<br> It was released to manufacturing on July 22 2009 and became generally available on October 22 2009
-        <a href="https://www.microsoft.com/windows" target="_blank" rel="noopener">Learn more on Windows Webpage</a>.
+        Windows 7 is a major release of the Windows NT operating system
+        developed by Microsoft. It was released to manufacturing on
+        July 22, 2009, and became generally available on October 22, 2009.
+        <a href="https://www.microsoft.com/windows" target="_blank" rel="noopener">Learn more at Microsoft.com</a>.
       </p>
+
       <div class="row g-4">
         <div class="col-md-6 col-lg-3">
           <div class="feature-card">
@@ -1627,7 +1123,7 @@
           <div class="feature-card">
             <div class="feature-icon"><i class="fas fa-download"></i></div>
             <h3>System Updates</h3>
-            <p>Windows 7 Updates can be installed or updated via Legacy Update, inspired by Windows Update, even after support has ended.</p>
+            <p>Windows 7 Updates can be installed or updated via Legacy Update, inspired by Windows Update. even the support has ended</p>
             <a href="#reviews" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
@@ -1635,7 +1131,7 @@
           <div class="feature-card">
             <div class="feature-icon"><i class="fas fa-fingerprint"></i></div>
             <h3>Windows 7 on Unsupported Hardware</h3>
-            <p>You can run Windows 7 on Unsupported Hardware by using the ACPI Patch and Custom Driver support up to Intel 14th Gen and AMD Ryzen.</p>
+            <p>You can run Windows 7 on Unsupported Hardware by using the ACPI Patch and Custom Driver support up to Intel 14th Gen Processors and AMD Ryzen.</p>
             <a href="#reviews" class="feature-link">Details <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
@@ -1643,7 +1139,7 @@
           <div class="feature-card">
             <div class="feature-icon"><i class="fas fa-users"></i></div>
             <h3>Extended Kernel</h3>
-            <p>Windows 7 Extended Kernel supports modern apps and browsers like Mozilla Firefox 140 or above that support Windows 10.</p>
+            <p>Windows 7 Extended Kernel supports modern apps and browsers like Mozilla Firefox 140 or above that support Windows 10</p>
             <a href="#contact" class="feature-link">Get help <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
@@ -1659,44 +1155,81 @@
         <h2 class="section-title">People Love Windows 7</h2>
         <div class="tm-divider center"></div>
         <p class="mx-auto" style="max-width:600px;color:rgba(160,210,245,0.75);">
-          Unlike Windows Vista which received a mixed reception  Windows 7 was a major success for Microsoft and it has received positive reviews from reviewers and consumers with critics considering the operating system to be a major improvement over its predecessor
+          Windows 7 is beloved for its stability, user-friendly interface, and lack of intrusive features — often considered the GOAT operating system.
         </p>
       </div>
+
       <div class="row g-4">
         <div class="col-md-6 col-lg-4">
           <div class="review-card">
-            <blockquote>Strong design and Microsoft don't always go together, but they do in Windows 7. Users might take a while to get used to the new taskbar and Aero Peek, but they're a pleasure to use.</blockquote>
-            <div class="reviewer"><div class="reviewer-avatar">CE</div><div><div class="reviewer-name">CNET</div><div class="reviewer-role">July 31th 2009</div></div></div>
+            <blockquote>Windows 7 is the best OS I've ever used. The performance and compatibility for design work is unmatched</blockquote>
+            <div class="reviewer">
+              <div class="reviewer-avatar">CA</div>
+              <div>
+                <div class="reviewer-name">Catherine A.</div>
+                <div class="reviewer-role">UI Designer</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="review-card">
-            <blockquote>Windows 7 is a solid well performing operating system free of many of the glitches that bedeviled the launch of Windows Vista</blockquote>
-            <div class="reviewer"><div class="reviewer-avatar">CW</div><div><div class="reviewer-name">ComputerWorld</div><div class="reviewer-role">August 13 2009</div></div></div>
+            <blockquote>Man Windows 7 was SO much fun to customize back in the day</blockquote>
+            <div class="reviewer">
+              <div class="reviewer-avatar">JD</div>
+              <div>
+                <div class="reviewer-name">38DDs_Please</div>
+                <div class="reviewer-role">Reddit User</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="review-card">
-            <blockquote>Windows 7 showed up in the market to "save" Microsoft after the company failed to market the feature-heavy Vista properly and the public soured on it. </blockquote>
-            <div class="reviewer"><div class="reviewer-avatar">PM</div><div><div class="reviewer-name">PC Magazine</div><div class="reviewer-role">October 29 2014</div></div></div>
+            <blockquote>Windows 7 helped me connect with people, grow professionally, and run my business. It's an amazing platform.</blockquote>
+            <div class="reviewer">
+              <div class="reviewer-avatar">PM</div>
+              <div>
+                <div class="reviewer-name">Pnadi M.</div>
+                <div class="reviewer-role">CEO</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="review-card">
-            <blockquote>Do you think that Windows 7 is the best windows Why I think that it is the best windows!</blockquote>
-            <div class="reviewer"><div class="reviewer-avatar">RR</div><div><div class="reviewer-name">rWindows7 Reddit Community</div><div class="reviewer-role">September 15 2022</div></div></div>
+            <blockquote>As an esports competitor, Windows 7 gives me the low latency and DirectX support Instead of being Windows 10, i switched back</blockquote>
+            <div class="reviewer">
+              <div class="reviewer-avatar">PO</div>
+              <div>
+                <div class="reviewer-name">alphagamingx</div>
+                <div class="reviewer-role">Esports Gamer</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="review-card">
-            <blockquote>Well i should i downgraded back to Windows 7 because its much stable rather than previous and latest windows 11 system</blockquote>
-            <div class="reviewer"><div class="reviewer-avatar">CVM</div><div><div class="reviewer-name">CollabVM</div><div class="reviewer-role">Mid 2021</div></div></div>
+            <blockquote>Steam, Roblox, Minecraft, League of Legends all run flawlessly on Windows 7.</blockquote>
+            <div class="reviewer">
+              <div class="reviewer-avatar">OH</div>
+              <div>
+                <div class="reviewer-name">Olivia H.</div>
+                <div class="reviewer-role">Content Creator</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="review-card">
-            <blockquote>Windows 7 will kill and eat Snow Leopard but no matter what Mac OS X fanboys think</blockquote>
-            <div class="reviewer"><div class="reviewer-avatar">GM</div><div><div class="reviewer-name">Gizmoto</div><div class="reviewer-role">2009</div></div></div>
+            <blockquote>The update cycle, security patches, and Custom driver support make Windows 7.</blockquote>
+            <div class="reviewer">
+              <div class="reviewer-avatar">MR</div>
+              <div>
+                <div class="reviewer-name">Marcus R.</div>
+                <div class="reviewer-role">Systems Administrator</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1712,19 +1245,17 @@
         <div class="tm-divider center"></div>
         <p style="color:rgba(160,210,245,0.7);">Download these apps directly from the Microsoft Store on Windows 7.</p>
       </div>
+
       <div class="app-grid">
-        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-dumbbell"></i><span>Sidebar</span></div><div class="app-card-label">Sidebar Gadgets</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
-        <div class="app-card"><div class="app-card-placeholder"><i class="fab fa-spotify"></i><span>Music</span></div><div class="app-card-label">Spotify for Windows 7</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-dumbbell"></i><span>Fitness</span></div><div class="app-card-label">Health and Fitness</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fab fa-spotify"></i><span>Music</span></div><div class="app-card-label">Spotify</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
         <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-code"></i><span>Dev Tools</span></div><div class="app-card-label">Visual Studio Code</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
-        <div class="app-card"><div class="app-card-placeholder"><i class="fab fa-steam"></i><span>Gaming</span></div><div class="app-card-label">Steam for Windows 7</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
-        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-laptop"></i><span>VMware</span></div><div class="app-card-label">VMware Workstation</div><div class="app-card-overlay"><i class="fas fa-book me-2"></i>View Guide</div></div>
-        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-chart-bar"></i><span>Office</span></div><div class="app-card-label">Microsoft Office 2010</div><div class="app-card-overlay"><i class="fas fa-search me-2"></i>Buy Office</div></div>
-        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-chart-bar"></i><span>Movie Maker</span></div><div class="app-card-label">Windows Movie Maker</div><div class="app-card-overlay"><i class="fas fa-search me-2"></i>Compare</div></div>
-        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-chart-bar"></i><span>Messenging</span></div><div class="app-card-label">Windows Live Messenging</div><div class="app-card-overlay"><i class="fas fa-search me-2"></i>Compare</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fab fa-steam"></i><span>Gaming</span></div><div class="app-card-label">Steam</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-laptop"></i><span>macOS VM</span></div><div class="app-card-label">VMware</div><div class="app-card-overlay"><i class="fas fa-book me-2"></i>View Guide</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-chart-bar"></i><span>Compare</span></div><div class="app-card-label">PC vs Mac Specs</div><div class="app-card-overlay"><i class="fas fa-search me-2"></i>Compare</div></div>
         <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-gamepad"></i><span>Gaming</span></div><div class="app-card-label">Xbox Game Pass</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
         <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-headphones"></i><span>Accessories</span></div><div class="app-card-label">Accessories</div><div class="app-card-overlay"><i class="fas fa-external-link-alt me-2"></i>Explore</div></div>
-        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-web"></i><span>Chrome</span></div><div class="app-card-label">Supermium Browser for Windows 7</div><div class="app-card-overlay"><i class="fas fa-external-link-alt me-2"></i>Get Browser</div></div>
-        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-web"></i><span>Firefox</span></div><div class="app-card-label">Firefox Browser for Windows 7</div><div class="app-card-overlay"><i class="fas fa-external-link-alt me-2"></i>Get Browser</div></div>
+        <div class="app-card"><div class="app-card-placeholder"><i class="fas fa-headphones"></i><span>Chrome</span></div><div class="app-card-label">Supermium Browser for Windows 7</div><div class="app-card-overlay"><i class="fas fa-external-link-alt me-2"></i>Supermium</div></div>
       </div>
     </div>
   </section>
@@ -1735,20 +1266,27 @@
       <span class="section-label">// Community</span>
       <h2 class="section-title">Join the Windows 7 Community</h2>
       <div class="tm-divider"></div>
+
       <div class="row g-4">
         <div class="col-lg-8">
-          <div class="community-block"><p>Windows 7 devices are generally regarded as highly reliable, with modern hardware offering superior performance, build quality, and efficiency. The broad ecosystem of compatible hardware gives users unmatched flexibility.</p></div>
-          <div class="community-block"><p>Windows 7 stands as a cornerstone platform for both everyday users and power users alike. Its broad driver support, rich software library, and security updates make it the go-to OS for professionals and gamers worldwide.</p></div>
-          <div class="community-block"><p>Want to learn more about Windows 7? Explore the official Microsoft documentation, join the Windows Insider program, or visit community forums like Reddit's r/Windows7 for tips, tricks, and help from thousands of enthusiasts.</p></div>
+          <div class="community-block">
+            <p>Windows 7 devices are generally regarded as highly reliable, with modern hardware offering superior performance, build quality, and efficiency. The broad ecosystem of compatible hardware gives users unmatched flexibility.</p>
+          </div>
+          <div class="community-block">
+            <p>Windows 7 stands as a cornerstone platform for both everyday users and power users alike. Its broad driver support, rich software library, and security updates make it the go-to OS for professionals and gamers worldwide.</p>
+          </div>
+          <div class="community-block">
+            <p>Want to learn more about Windows 7? Explore the official Microsoft documentation, join the Windows Insider program, or visit community forums like Reddit's r/Windows7 for tips, tricks, and help from thousands of enthusiasts.</p>
+          </div>
         </div>
         <div class="col-lg-4">
-          <div class="feature-card" style="height:auto;">
+          <div class="feature-card">
             <div class="feature-icon"><i class="fab fa-windows"></i></div>
             <h3>Windows Insider</h3>
             <p>Get early access to new Windows features before they ship to the public.</p>
             <a href="https://insider.windows.com" target="_blank" rel="noopener" class="feature-link">Join Program <i class="fas fa-arrow-right"></i></a>
           </div>
-          <div class="mt-3 feature-card" style="height:auto;">
+          <div class="mt-3 feature-card">
             <div class="feature-icon"><i class="fab fa-reddit"></i></div>
             <h3>r/Windows7</h3>
             <p>A thriving community of Windows users sharing guides, fixes, and news.</p>
@@ -1766,8 +1304,11 @@
         <span class="section-label">// Support</span>
         <h2 class="section-title">Need Help? Contact Support</h2>
         <div class="tm-divider center"></div>
-        <p style="color:rgba(160,210,245,0.7);max-width:560px;margin:0 auto;">Our support team is available 24/7 to help you with any Windows 7 issue — from setup to troubleshooting.</p>
+        <p style="color:rgba(160,210,245,0.7);max-width:560px;margin:0 auto;">
+          Our support team is available 24/7 to help you with any Windows 7 issue — from setup to troubleshooting.
+        </p>
       </div>
+
       <div class="row g-5">
         <div class="col-md-7">
           <form id="contactForm" novalidate>
@@ -1778,10 +1319,34 @@
           </form>
         </div>
         <div class="col-md-5">
-          <div class="contact-info-item"><i class="fas fa-comments"></i><div><span>Support Chat</span><div style="font-size:.75rem;color:rgba(0,200,255,0.5);">Live chat available 24/7</div></div></div>
-          <div class="contact-info-item"><i class="fas fa-envelope"></i><div><span>support@microsoft.com</span><div style="font-size:.75rem;color:rgba(0,200,255,0.5);">Email response within 24h</div></div></div>
-          <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><div><span>One Microsoft Way, Redmond</span><div style="font-size:.75rem;color:rgba(0,200,255,0.5);">Washington, USA</div></div></div>
-          <div class="contact-info-item"><i class="fas fa-phone-square"></i><div><span>1-800-642-7676</span><div style="font-size:.75rem;color:rgba(0,200,255,0.5);">Mon–Fri 9am–9pm EST</div></div></div>
+          <div class="contact-info-item">
+            <i class="fas fa-comments"></i>
+            <div>
+              <span> Support Chat</span>
+              <div style="font-size:.75rem;color:rgba(0,200,255,0.5);">Live chat available 24/7</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <span>support@microsoft.com</span>
+              <div style="font-size:.75rem;color:rgba(0,200,255,0.5);">Email response within 24h</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <span>One Microsoft Way, Redmond</span>
+              <div style="font-size:.75rem;color:rgba(0,200,255,0.5);">Washington, USA</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-phone-square"></i>
+            <div>
+              <span>1-800-642-7676</span>
+              <div style="font-size:.75rem;color:rgba(0,200,255,0.5);">Mon–Fri 9am–9pm EST</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1796,8 +1361,8 @@
       </div>
       <p class="mb-0">
         &copy; 2026 Designed by <a href="#">TheWebpageExperimenter</a> &nbsp;|&nbsp;
-        <a href="https://www.microsoft.com/windows" target="_blank" rel="noopener">Windows</a> &nbsp;|&nbsp;
-        Microsoft Windows and its Windows 7 is the trademarked by Microsoft Corporation, and it's not affiliated. This is a Educational Purposes only, 2026.
+        <a href="https://www.microsoft.com/windows" target="_blank" rel="noopener">Windows </a> &nbsp;|&nbsp;
+        Microsoft Windows and its Windows 7 is the trademarked by Microsoft Corporation, and it's not affiliated. This is a Educational Purposes only,  2026 
         Windows 7 is an unsupported operating system, as it can lead to Security Problems. All rights reserved.
       </p>
     </div>
@@ -1809,53 +1374,9 @@
   </video>
   <div id="bg-video-overlay"></div>
 
-  <!-- ===================== PC SPEC MODAL ===================== -->
-  <div class="pc-modal-backdrop" id="pcModal" role="dialog" aria-modal="true" aria-labelledby="pcModalTitle">
-    <div class="pc-modal" id="pcModalInner">
-      <!-- Title bar -->
-      <div class="pc-modal-titlebar">
-        <div class="pc-modal-titlebar-left">
-          <div class="pc-modal-winbtn-group">
-            <span class="pc-modal-winbtn red"></span>
-            <span class="pc-modal-winbtn yellow"></span>
-            <span class="pc-modal-winbtn green"></span>
-          </div>
-          <span class="pc-modal-title" id="pcModalTitle">PC Specifications</span>
-        </div>
-        <button class="pc-modal-close" id="pcModalClose" aria-label="Close">&#x2715;</button>
-      </div>
-      <!-- Body -->
-      <div class="pc-modal-body">
-        <!-- LEFT: image -->
-        <div class="pc-modal-img-panel" id="pcModalImgPanel">
-          <div class="pc-modal-icon-fallback" id="pcModalIconFallback"><i class="fas fa-desktop"></i></div>
-          <img id="pcModalImg" class="pc-modal-img" src="" alt="" style="display:none;" />
-          <div class="pc-modal-img-label" id="pcModalImgLabel">PC Image</div>
-          <div class="pc-modal-win7-badge">
-            <div class="win7-logo-nav">
-              <span></span><span></span><span></span><span></span>
-            </div>
-            Runs on Windows 7
-          </div>
-        </div>
-        <!-- RIGHT: info -->
-        <div class="pc-modal-info-panel" id="pcModalInfoPanel">
-          <div class="pc-modal-pc-name" id="pcModalName">PC Name</div>
-          <div class="pc-modal-pc-sub" id="pcModalSub">Manufacturer · Year</div>
-          <div class="pc-modal-specs-title">// Hardware Specifications</div>
-          <div id="pcModalSpecsList"></div>
-          <div class="pc-modal-win7-compat">
-            <div class="pc-modal-compat-title">// Windows 7 Compatibility</div>
-            <div id="pcModalCompatList"></div>
-          </div>
-          <div class="pc-modal-tag-row" id="pcModalTagRow"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // ── Bubbles ──
     (function spawnBubbles() {
       const sizes  = [4,6,8,10,14,18,22];
       const delays = [0,2,4,6,8,10,12,14,16,18,20,22,24,26];
@@ -1864,14 +1385,24 @@
         const b = document.createElement('div');
         b.className = 'bubble';
         const s = sizes[Math.floor(Math.random()*sizes.length)];
-        b.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${durs[Math.floor(Math.random()*durs.length)]}s;animation-delay:-${delays[Math.floor(Math.random()*delays.length)]}s;opacity:${0.3+Math.random()*0.4};`;
+        b.style.cssText = `
+          width:${s}px; height:${s}px;
+          left:${Math.random()*100}%;
+          animation-duration:${durs[Math.floor(Math.random()*durs.length)]}s;
+          animation-delay:-${delays[Math.floor(Math.random()*delays.length)]}s;
+          opacity:${0.3 + Math.random()*0.4};
+        `;
         document.body.appendChild(b);
       }
     })();
 
+    // ── Navbar scroll ──
     const nav = document.getElementById('tmNav');
-    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 80); });
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    });
 
+    // ── Active nav highlight ──
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.tm-nav-link');
     const obs = new IntersectionObserver(entries => {
@@ -1885,6 +1416,7 @@
     }, { threshold: 0.4 });
     sections.forEach(s => obs.observe(s));
 
+    // ── Mobile nav close ──
     document.querySelectorAll('#navbarMain .nav-link').forEach(link => {
       link.addEventListener('click', () => {
         const c = document.getElementById('navbarMain');
@@ -1892,6 +1424,7 @@
       });
     });
 
+    // ── Smooth scroll ──
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const t = document.querySelector(a.getAttribute('href'));
@@ -1899,306 +1432,18 @@
       });
     });
 
-    // PC carousel scroll buttons
-    const carousel = document.getElementById('pcCarousel');
-    document.getElementById('pcScrollLeft').addEventListener('click', () => { carousel.scrollBy({ left: -300, behavior: 'smooth' }); });
-    document.getElementById('pcScrollRight').addEventListener('click', () => { carousel.scrollBy({ left: 300, behavior: 'smooth' }); });
-
-    // PC filter tabs
-    document.querySelectorAll('.pc-tab').forEach(tab => {
-      tab.addEventListener('click', function() {
-        document.querySelectorAll('.pc-tab').forEach(t => t.classList.remove('active'));
-        this.classList.add('active');
-        const filter = this.dataset.filter;
-        document.querySelectorAll('.pc-card').forEach(card => {
-          if (filter === 'all' || card.dataset.type === filter) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-      });
-    });
-
+    // ── Contact form ──
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const btn = this.querySelector('.btn-submit');
       btn.textContent = '✓ Message Sent!';
       btn.style.background = 'linear-gradient(180deg,rgba(0,200,120,0.85),rgba(0,100,60,0.9))';
-      setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; this.reset(); }, 3000);
+      setTimeout(() => {
+        btn.textContent = 'Send Message';
+        btn.style.background = '';
+        this.reset();
+      }, 3000);
     });
-
-    // ===================== PC MODAL =====================
-    const pcData = {
-      'thinkpad-t430': {
-        name: 'ThinkPad T430',
-        sub: 'Lenovo · 2012',
-        type: 'laptop',
-        icon: 'fas fa-laptop',
-        img: null, // set to image path like 'pcs/thinkpad-t430.png' if you have one
-        specs: [
-          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Core i5-3320M (Ivy Bridge, 2.6GHz)' },
-          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 16 GB DDR3 (2 SO-DIMM slots)' },
-          { icon:'fas fa-hdd',       label:'Storage', value:'HDD / SSD upgradeable (2.5″ SATA)' },
-          { icon:'fas fa-display',   label:'Display', value:'14″ 1600×900 IPS or TN panel' },
-          { icon:'fas fa-wifi',      label:'Wireless',value:'Intel Centrino Advanced-N 6205' },
-          { icon:'fas fa-plug',      label:'Ports',   value:'USB 3.0, VGA, Mini DisplayPort, Dock connector' },
-        ],
-        compat: [
-          { ok:true,  text:'Full OEM Windows 7 driver support from Lenovo' },
-          { ok:true,  text:'Lenovo System Update tool available for Win7' },
-          { ok:true,  text:'Aero Glass works with Intel HD 4000 / NVIDIA NVS 5400' },
-          { ok:true,  text:'Trackpad, TrackPoint & fingerprint reader fully supported' },
-        ],
-        tag: { cls:'pc-tag-great', label:'Best Pick' },
-      },
-      'dell-optiplex-7010': {
-        name: 'Dell OptiPlex 7010',
-        sub: 'Dell · 2012–2013',
-        type: 'desktop',
-        icon: 'fas fa-desktop',
-        img: null,
-        specs: [
-          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Core i5/i7 3rd Gen Ivy Bridge' },
-          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 32 GB DDR3 (4 DIMM slots)' },
-          { icon:'fas fa-hdd',       label:'Storage', value:'SSD + HDD bays (SATA II/III)' },
-          { icon:'fas fa-display',   label:'GPU',     value:'Intel HD 2500/4000 or discrete PCIe GPU' },
-          { icon:'fas fa-ethernet',  label:'Network', value:'Intel 82579LM Gigabit LAN (Win7 driver ready)' },
-          { icon:'fas fa-plug',      label:'Ports',   value:'USB 3.0 × 4, DisplayPort, VGA, PS/2, PCIe slots' },
-        ],
-        compat: [
-          { ok:true,  text:'OEM Win7 drivers available directly from Dell support' },
-          { ok:true,  text:'Aero Glass supported via Intel HD or discrete GPU' },
-          { ok:true,  text:'Business-grade build, popular for enterprise Win7 deployments' },
-          { ok:true,  text:'BIOS has Legacy/CSM mode for Win7 install' },
-        ],
-        tag: { cls:'pc-tag-great', label:'Highly Recommended' },
-      },
-      'hp-elitebook-8470p': {
-        name: 'HP EliteBook 8470p',
-        sub: 'HP · 2012',
-        type: 'laptop',
-        icon: 'fas fa-laptop',
-        img: null,
-        specs: [
-          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Core i5/i7 Ivy Bridge (up to 2.9GHz)' },
-          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 16 GB DDR3 (2 SO-DIMM slots)' },
-          { icon:'fas fa-hdd',       label:'Storage', value:'mSATA SSD + 2.5″ HDD slot' },
-          { icon:'fas fa-display',   label:'Display', value:'14″ 1600×900 anti-glare panel' },
-          { icon:'fas fa-wifi',      label:'Wireless',value:'Intel Centrino Advanced-N 6205/6235' },
-          { icon:'fas fa-plug',      label:'Ports',   value:'USB 3.0 × 3, VGA, DisplayPort, SD card, Docking' },
-        ],
-        compat: [
-          { ok:true,  text:'HP official Windows 7 drivers available on HP support' },
-          { ok:true,  text:'HP Drive Encryption and HP ProtectTools work on Win7' },
-          { ok:true,  text:'Integrated fingerprint reader supported under Win7' },
-          { ok:true,  text:'Docking station fully functional with Win7' },
-        ],
-        tag: { cls:'pc-tag-good', label:'Great Choice' },
-      },
-      'hp-z230': {
-        name: 'HP Z230 Workstation',
-        sub: 'HP · 2013',
-        type: 'desktop',
-        icon: 'fas fa-desktop',
-        img: null,
-        specs: [
-          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Xeon E3-1200 v3 or Core i7 Haswell' },
-          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 32 GB ECC DDR3 (4 DIMM slots)' },
-          { icon:'fas fa-hdd',       label:'Storage', value:'PCIe SSD + multiple SATA bays' },
-          { icon:'fas fa-display',   label:'GPU',     value:'NVIDIA Quadro / AMD FirePro (PCIe x16)' },
-          { icon:'fas fa-ethernet',  label:'Network', value:'Intel I217LM Gigabit LAN' },
-          { icon:'fas fa-plug',      label:'Ports',   value:'USB 3.0 × 6, PCIe x16/x4/x1 slots, serial port' },
-        ],
-        compat: [
-          { ok:true,  text:'HP provides official Win7 drivers for Z230 workstation' },
-          { ok:true,  text:'ECC memory ensures maximum stability for Win7 workloads' },
-          { ok:true,  text:'Professional GPU cards fully Win7 compatible with WHQL drivers' },
-          { ok:true,  text:'Ideal for CAD, video editing, and server tasks under Win7' },
-        ],
-        tag: { cls:'pc-tag-good', label:'Workstation Grade' },
-      },
-      'dell-poweredge-t130': {
-        name: 'Dell PowerEdge T130',
-        sub: 'Dell · 2016',
-        type: 'server',
-        icon: 'fas fa-server',
-        img: null,
-        specs: [
-          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Xeon E3-1200 v5 (Skylake)' },
-          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 64 GB ECC DDR4 (4 DIMM slots)' },
-          { icon:'fas fa-hdd',       label:'Storage', value:'4 × SATA 3.5″ drive bays (RAID optional)' },
-          { icon:'fas fa-display',   label:'GPU',     value:'Integrated Matrox G200 (BMC), PCIe slot available' },
-          { icon:'fas fa-ethernet',  label:'Network', value:'Dual Intel I210 Gigabit LAN onboard' },
-          { icon:'fas fa-plug',      label:'Ports',   value:'USB 3.0 × 2 front/rear, VGA, PCIe x16, iDRAC port' },
-        ],
-        compat: [
-          { ok:true,  text:'Win7 installable with ACPI patches for Skylake platform' },
-          { ok:false, text:'Requires USB 3.0 driver injection during Win7 install' },
-          { ok:false, text:'Storage controller may need F6 RAID driver during setup' },
-          { ok:true,  text:'Excellent for running Win7 Server-class workloads once patched' },
-        ],
-        tag: { cls:'pc-tag-mod', label:'Needs Patching' },
-      },
-      'thinkpad-x220': {
-        name: 'ThinkPad X220',
-        sub: 'Lenovo · 2011',
-        type: 'laptop',
-        icon: 'fas fa-laptop',
-        img: null,
-        specs: [
-          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Core i5/i7 Sandy Bridge (up to 2.7GHz)' },
-          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 16 GB DDR3 (2 SO-DIMM slots)' },
-          { icon:'fas fa-hdd',       label:'Storage', value:'mSATA SSD + standard 2.5″ SATA slot' },
-          { icon:'fas fa-display',   label:'Display', value:'12.5″ 1366×768 IPS (X220i) or TN' },
-          { icon:'fas fa-wifi',      label:'Wireless',value:'Intel Centrino Advanced-N 6205 / Bluetooth 3.0' },
-          { icon:'fas fa-plug',      label:'Ports',   value:'USB 2.0 × 3, VGA, Mini DisplayPort, SD, Dock' },
-        ],
-        compat: [
-          { ok:true,  text:'A true Win7-era laptop — drivers ship with the OS install disk' },
-          { ok:true,  text:'Community favorite: extensive wiki and driver archive online' },
-          { ok:true,  text:'Aero Glass fully supported via Intel HD 3000 GPU' },
-          { ok:true,  text:'Legendary keyboard; widely praised for Win7 usability' },
-        ],
-        tag: { cls:'pc-tag-great', label:'Community Favorite' },
-      },
-      'custom-atx': {
-        name: 'Custom ATX Build',
-        sub: 'DIY · Intel 6th–8th Gen',
-        type: 'desktop',
-        icon: 'fas fa-desktop',
-        img: null,
-        specs: [
-          { icon:'fas fa-microchip', label:'CPU',     value:'Intel Core i5/i7 Skylake / Kaby Lake / Coffee Lake' },
-          { icon:'fas fa-memory',    label:'RAM',     value:'Up to 64 GB DDR4 (depends on motherboard)' },
-          { icon:'fas fa-hdd',       label:'Storage', value:'NVMe SSD (primary) + SATA SSD/HDD' },
-          { icon:'fas fa-display',   label:'GPU',     value:'NVIDIA GTX 10-series or AMD RX 500-series (Win7 driver available)' },
-          { icon:'fas fa-ethernet',  label:'Network', value:'Intel or Realtek 1GbE onboard (Win7 drivers exist)' },
-          { icon:'fas fa-plug',      label:'Ports',   value:'USB 3.1 × multiple, HDMI, DP, PCIe x16, M.2 slots' },
-        ],
-        compat: [
-          { ok:true,  text:'Use the Windows 7 Modern Hardware image for USB 3.x & NVMe support' },
-          { ok:false, text:'Skylake+ requires USB driver injection or modified ISO for install' },
-          { ok:false, text:'No official WDDM 1.0 driver for Intel Iris Xe; use discrete GPU' },
-          { ok:true,  text:'NVIDIA 474.xx is the last Win7-compatible driver for GTX/RTX series' },
-        ],
-        tag: { cls:'pc-tag-mod', label:'Modern Hardware' },
-      },
-    };
-
-    // Map each pc-card to a data key
-    const pcCardKeys = [
-      'thinkpad-t430',
-      'dell-optiplex-7010',
-      'hp-elitebook-8470p',
-      'hp-z230',
-      'dell-poweredge-t130',
-      'thinkpad-x220',
-      'custom-atx',
-    ];
-
-    const modal        = document.getElementById('pcModal');
-    const modalInner   = document.getElementById('pcModalInner');
-    const modalClose   = document.getElementById('pcModalClose');
-
-    function openPcModal(key) {
-      const d = pcData[key];
-      if (!d) return;
-
-      // Title bar
-      document.getElementById('pcModalTitle').textContent = d.name + ' — Specs';
-
-      // Image or icon
-      const imgEl      = document.getElementById('pcModalImg');
-      const iconEl     = document.getElementById('pcModalIconFallback');
-      const imgLabelEl = document.getElementById('pcModalImgLabel');
-
-      if (d.img) {
-        imgEl.src = d.img;
-        imgEl.alt = d.name;
-        imgEl.style.display = 'block';
-        iconEl.style.display = 'none';
-      } else {
-        imgEl.style.display = 'none';
-        iconEl.innerHTML = `<i class="${d.icon}"></i>`;
-        iconEl.style.display = 'block';
-      }
-      imgLabelEl.textContent = d.name;
-
-      // Name / sub
-      document.getElementById('pcModalName').textContent = d.name;
-      document.getElementById('pcModalSub').textContent  = d.sub;
-
-      // Specs
-      const specsList = document.getElementById('pcModalSpecsList');
-      specsList.innerHTML = d.specs.map(s => `
-        <div class="pc-modal-spec-row">
-          <i class="${s.icon}"></i>
-          <div>
-            <div class="pc-modal-spec-label">${s.label}</div>
-            <div>${s.value}</div>
-          </div>
-        </div>
-      `).join('');
-
-      // Compat
-      const compatList = document.getElementById('pcModalCompatList');
-      compatList.innerHTML = d.compat.map(c => `
-        <div class="pc-modal-compat-row">
-          <i class="${c.ok ? 'fas fa-check-circle check' : 'fas fa-exclamation-triangle warn'}"></i>
-          <span>${c.text}</span>
-        </div>
-      `).join('');
-
-      // Tag
-      document.getElementById('pcModalTagRow').innerHTML = `<span class="pc-card-tag ${d.tag.cls}">${d.tag.label}</span>`;
-
-      // Open
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closePcModal() {
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // Attach click handlers to pc-cards
-    document.querySelectorAll('.pc-card').forEach((card, idx) => {
-      const key = pcCardKeys[idx];
-      card.setAttribute('data-pc', key);
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', 'View specs for ' + (pcData[key]?.name || 'PC'));
-      card.addEventListener('click', () => openPcModal(key));
-      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPcModal(key); } });
-    });
-
-    // Close button
-    modalClose.addEventListener('click', closePcModal);
-
-    // Click backdrop (outside modal inner) to close
-    modal.addEventListener('click', e => {
-      if (!modalInner.contains(e.target)) closePcModal();
-    });
-
-    // Escape key to close
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && modal.classList.contains('open')) closePcModal();
-    });
-
-    // HUD live clock
-    (function hudClock() {
-      const timeEl = document.getElementById('hudTime');
-      const dateEl = document.getElementById('hudDate');
-      function tick() {
-        const n = new Date();
-        const pad = v => String(v).padStart(2,'0');
-        if (timeEl) timeEl.textContent = pad(n.getHours())+':'+pad(n.getMinutes())+':'+pad(n.getSeconds());
-        if (dateEl) dateEl.textContent = n.getFullYear()+'.'+pad(n.getMonth()+1)+'.'+pad(n.getDate());
-      }
-      tick(); setInterval(tick, 1000);
-    })();
   </script>
 </body>
 </html>
