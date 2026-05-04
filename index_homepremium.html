@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The World of Windows 7</title>
+  <title>The World of Windows 7: Home Premium Edition</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -13,22 +13,22 @@
     :root {
       --aero-danger     #F75700;
       --aero-red        #A60D0D;
-      --aero-sky:       #00c8ff;
-      --aero-cyan:      #00f0ff;
-      --aero-deep:      #003860;
-      --aero-ocean:     #001a3a;
-      --aero-navy:      #000d1f;
-      --aero-teal:      #00e5c8;
-      --aero-glass:     rgba(0,200,255,0.10);
+      --aero-sky:       #00c853;
+      --aero-cyan:      #00e676;
+      --aero-deep:      #003820;
+      --aero-ocean:     #001a10;
+      --aero-navy:      #000d0a;
+      --aero-teal:      #69f0ae;
+      --aero-glass:     rgba(0,200,80,0.10);
       --aero-glass-hi:  rgba(255,255,255,0.18);
-      --aero-glass-rim: rgba(0,220,255,0.35);
+      --aero-glass-rim: rgba(0,220,80,0.35);
       --aero-shine:     rgba(255,255,255,0.55);
-      --aero-glow:      rgba(0,200,255,0.6);
+      --aero-glow:      rgba(0,200,80,0.6);
       --aero-green:     #00ffb0;
       --font-display:   'VoxelPoint', sans-serif;
       --font-body:      'VoxelPoint', sans-serif;
       --font-mono:      'Share Tech Mono', monospace;
-      --nav-h:          46px;
+      --nav-h:          68px;
     }
 
     *, *::before, *::after { 
@@ -64,7 +64,7 @@
     body {
       font-family: var(--font-body);
       font-size: 1.05rem;
-      color: #cceeff;
+      color: #ccffee;
       margin: 0;
       background: transparent;
       overflow-x: hidden;
@@ -84,8 +84,8 @@
     .bubble {
       position: fixed; 
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), transparent 40%), rgba(0,180,255,0.15);
-      box-shadow: inset 0 0 15px rgba(255,255,255,0.8), 0 0 25px rgba(0,200,255,0.6);
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), transparent 40%), rgba(0,200,85,0.15);
+      box-shadow: inset 0 0 15px rgba(255,255,255,0.8), 0 0 25px rgba(0,210,90,0.6);
       backdrop-filter: none; 
       pointer-events: none;
       z-index: 0;
@@ -131,11 +131,11 @@
 
     .glass {
       position: relative;
-      background: linear-gradient(145deg, rgba(255,255,255,0.22) 0%, rgba(0,200,255,0.06) 25%, rgba(0,80,200,0.08) 60%, rgba(255,255,255,0.04) 100%);
-      border: 1px solid rgba(0,220,255,0.45);
+      background: linear-gradient(145deg, rgba(255,255,255,0.22) 0%, rgba(0,210,90,0.06) 25%, rgba(0,120,55,0.08) 60%, rgba(255,255,255,0.04) 100%);
+      border: 1px solid rgba(0,230,100,0.45);
       border-top-color: rgba(255,255,255,0.95);
       border-left-color: rgba(255,255,255,0.55);
-      box-shadow: 0 0 0 1px rgba(0,200,255,0.12), 0 10px 40px rgba(0,0,40,0.2), 0 0 30px rgba(0,200,255,0.15), inset 0 2px 0 rgba(255,255,255,0.90), inset 0 -2px 0 rgba(0,200,255,0.2), inset 2px 0 0 rgba(255,255,255,0.40);
+      box-shadow: 0 0 0 1px rgba(0,210,90,0.12), 0 10px 40px rgba(0,20,0,0.2), 0 0 30px rgba(0,210,90,0.15), inset 0 2px 0 rgba(255,255,255,0.90), inset 0 -2px 0 rgba(0,210,90,0.2), inset 2px 0 0 rgba(255,255,255,0.40);
       backdrop-filter: blur(24px) saturate(2.0) brightness(1.12);
     }
     .glass::before {
@@ -157,7 +157,7 @@
       right: 0; 
       top: 0;
       height: 40%;
-      background: linear-gradient(0deg, rgba(0,200,255,0.18), rgba(0,200,255,0.05), transparent);
+      background: linear-gradient(0deg, rgba(0,210,90,0.18), rgba(0,210,90,0.05), transparent);
       opacity: 0.9;
     }
 
@@ -181,7 +181,7 @@
     @keyframes nav-pip-blink {
       0%,100% { 
         opacity: 1; 
-        box-shadow: 0 0 6px rgba(0,255,200,0.9); 
+        box-shadow: 0 0 6px rgba(100,255,80,0.9); 
       }
       50%     { 
         opacity: .25; 
@@ -196,8 +196,8 @@
       100% { width: 100%; opacity: .7; }
     }
     @keyframes nav-corner-pulse {
-      0%,100% { opacity: .75; filter: drop-shadow(0 0 3px rgba(0,220,255,0.6)); }
-      50%     { opacity: 1;   filter: drop-shadow(0 0 8px rgba(0,255,200,0.9)); }
+      0%,100% { opacity: .75; filter: drop-shadow(0 0 3px rgba(0,230,100,0.6)); }
+      50%     { opacity: 1;   filter: drop-shadow(0 0 8px rgba(100,255,80,0.9)); }
     }
 
     /* ── Navbar Shell (idk what it is) ── */
@@ -214,14 +214,14 @@
       background:
         linear-gradient(180deg,
           rgba(255,255,255,0.12) 0%,
-          rgba(0,180,255,0.06)   55%,
+          rgba(0,200,85,0.06)   55%,
           rgba(255,255,255,0.04) 100%);
       /* hard bottom border line */
-      border-bottom: 1px solid rgba(0,220,255,0.55);
-      border-top: 1px solid rgba(0,220,255,0.18);
+      border-bottom: 1px solid rgba(0,230,100,0.55);
+      border-top: 1px solid rgba(0,230,100,0.18);
       box-shadow:
         0 1px 0  rgba(255,255,255,0.06) inset,
-        0 0 28px rgba(0,200,255,0.20),
+        0 0 28px rgba(0,210,90,0.20),
         0 4px 40px rgba(0,0,30,0.5);
       backdrop-filter: blur(28px) saturate(2.2) brightness(1.15);
       -webkit-backdrop-filter: blur(28px) saturate(2.2) brightness(1.15);
@@ -238,15 +238,15 @@
           90deg,
           transparent 0px,
           transparent 5px,
-          rgba(0,200,255,0.022) 5px,
-          rgba(0,200,255,0.022) 6px
+          rgba(0,210,90,0.022) 5px,
+          rgba(0,210,90,0.022) 6px
         ),
         repeating-linear-gradient(
           180deg,
           transparent 0px,
           transparent 11px,
-          rgba(0,200,255,0.018) 11px,
-          rgba(0,200,255,0.018) 12px
+          rgba(0,210,90,0.018) 11px,
+          rgba(0,210,90,0.018) 12px
         );
       pointer-events: none; z-index: 0;
     }
@@ -276,9 +276,9 @@
       height: 1px;
       background: linear-gradient(90deg,
         transparent 0%,
-        rgba(0,220,255,0.0) 10%,
-        rgba(0,255,220,0.55) 50%,
-        rgba(0,220,255,0.0) 90%,
+        rgba(0,230,100,0.0) 10%,
+        rgba(150,255,100,0.55) 50%,
+        rgba(0,230,100,0.0) 90%,
         transparent 100%);
       animation: nav-scan-h 6s linear infinite;
       pointer-events: none; 
@@ -295,11 +295,11 @@
       height: 1px;
       background: linear-gradient(90deg,
         transparent 0%,
-        rgba(0,200,255,0.0) 5%,
-        rgba(0,255,220,0.7) 20%,
-        rgba(0,220,255,0.9) 50%,
-        rgba(0,255,220,0.7) 80%,
-        rgba(0,200,255,0.0) 95%,
+        rgba(0,210,90,0.0) 5%,
+        rgba(150,255,100,0.7) 20%,
+        rgba(0,230,100,0.9) 50%,
+        rgba(150,255,100,0.7) 80%,
+        rgba(0,210,90,0.0) 95%,
         transparent 100%);
       pointer-events: none; z-index: 2;
     }
@@ -314,11 +314,11 @@
       pointer-events: none; 
       z-index: 2;
       background: linear-gradient(180deg,
-        rgba(0,220,255,0.0) 0%,
-        rgba(0,220,255,0.7) 30%,
-        rgba(0,255,200,0.9) 50%,
-        rgba(0,220,255,0.7) 70%,
-        rgba(0,220,255,0.0) 100%);
+        rgba(0,230,100,0.0) 0%,
+        rgba(0,230,100,0.7) 30%,
+        rgba(100,255,80,0.9) 50%,
+        rgba(0,230,100,0.7) 70%,
+        rgba(0,230,100,0.0) 100%);
     }
 
     .nav-hud-right {
@@ -330,11 +330,11 @@
       pointer-events: none; 
       z-index: 2;
       background: linear-gradient(180deg,
-        rgba(0,220,255,0.0) 0%,
-        rgba(0,220,255,0.7) 30%,
-        rgba(0,255,200,0.9) 50%,
-        rgba(0,220,255,0.7) 70%,
-        rgba(0,220,255,0.0) 100%);
+        rgba(0,230,100,0.0) 0%,
+        rgba(0,230,100,0.7) 30%,
+        rgba(100,255,80,0.9) 50%,
+        rgba(0,230,100,0.7) 70%,
+        rgba(0,230,100,0.0) 100%);
     }
 
     .nav-corner {
@@ -356,11 +356,11 @@
     }
     .nav-pip {
       width: 4px; height: 4px; border-radius: 50%;
-      background: rgba(0,255,180,0.9);
-      box-shadow: 0 0 6px rgba(0,255,180,0.9);
+      background: rgba(80,255,70,0.9);
+      box-shadow: 0 0 6px rgba(80,255,70,0.9);
       animation: nav-pip-blink 2s ease-in-out infinite;
     }
-    .nav-pip:nth-child(2) { animation-delay: .4s; background: rgba(0,200,255,0.9); box-shadow: 0 0 6px rgba(0,200,255,0.9); }
+    .nav-pip:nth-child(2) { animation-delay: .4s; background: rgba(0,210,90,0.9); box-shadow: 0 0 6px rgba(0,210,90,0.9); }
     .nav-pip:nth-child(3) { animation-delay: .8s; }
 
     /* ── SCROLLED STATE: slightly less transparent ── */
@@ -368,11 +368,11 @@
       background:
         linear-gradient(180deg,
           rgba(255,255,255,0.18) 0%,
-          rgba(0,180,255,0.09)   55%,
+          rgba(0,200,85,0.09)   55%,
           rgba(255,255,255,0.06) 100%);
       box-shadow:
         0 1px 0 rgba(255,255,255,0.25) inset,
-        0 0 40px rgba(0,200,255,0.28),
+        0 0 40px rgba(0,210,90,0.28),
         0 8px 60px rgba(0,0,30,0.2);
     }
 
@@ -380,24 +380,24 @@
     .navbar-brand {
       font-family: var(--font-display); 
       font-weight: 900; 
-      font-size: 0.9rem;
+      font-size: 1.2rem;
       color: #fff !important; 
       letter-spacing: .12em;
-      text-shadow: 0 0 10px rgba(0,220,255,0.95), 0 0 24px rgba(0,200,255,0.6);
+      text-shadow: 0 0 10px rgba(0,230,100,0.95), 0 0 24px rgba(0,210,90,0.6);
       display: flex; 
       align-items: center; 
-      gap: 8px;
+      gap: 10px;
       position: relative; 
       z-index: 4;
     }
 
     .win7-logo-nav {
-      width: 20px; 
-      height: 20px;
+      width: 28px; 
+      height: 28px;
       display: grid; 
       grid-template-columns: 1fr 1fr; 
       gap: 2px;
-      filter: drop-shadow(0 0 6px rgba(0,200,255,0.9));
+      filter: drop-shadow(0 0 6px rgba(0,210,90,0.9));
     }
     .win7-logo-nav span {
       border-radius: 2px; 
@@ -415,11 +415,11 @@
     .nav-link.tm-nav-link {
       color: rgba(180,235,255,0.88) !important;
       font-family: var(--font-display); 
-      font-size: 0.62rem; 
+      font-size: 0.775rem; 
       font-weight: 600;
       letter-spacing: .10em; 
       text-transform: uppercase;
-      padding: .22rem .65rem !important;
+      padding: .38rem .85rem !important;
       border-radius: 0;
       clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
       border: none;
@@ -438,8 +438,8 @@
       width: 3px; 
       height: 3px; 
       border-radius: 50%;
-      background: rgba(0,200,255,0.5);
-      box-shadow: 0 0 4px rgba(0,200,255,0.6);
+      background: rgba(0,210,90,0.5);
+      box-shadow: 0 0 4px rgba(0,210,90,0.6);
       transition: all .2s;
     }
     
@@ -449,74 +449,51 @@
       background:
         repeating-linear-gradient(
           90deg,
-          rgba(0,200,255,0.04) 0px,
-          rgba(0,200,255,0.04) 1px,
+          rgba(0,210,90,0.04) 0px,
+          rgba(0,210,90,0.04) 1px,
           transparent 1px,
           transparent 5px
         ),
         linear-gradient(180deg,
-          rgba(0,180,255,0.22) 0%,
-          rgba(0,100,220,0.14) 50%,
-          rgba(0,60,180,0.10) 100%);
+          rgba(0,200,85,0.22) 0%,
+          rgba(0,140,65,0.14) 50%,
+          rgba(0,100,50,0.10) 100%);
       box-shadow:
-        0 0 14px rgba(0,200,255,0.35),
+        0 0 14px rgba(0,210,90,0.35),
         inset 0 1px 0 rgba(255,255,255,0.20),
-        inset 0 -1px 0 rgba(0,200,255,0.15);
-      text-shadow: 0 0 10px rgba(0,230,255,0.9), 0 0 22px rgba(0,180,255,0.5);
-      outline: 1px solid rgba(0,200,255,0.40);
+        inset 0 -1px 0 rgba(0,210,90,0.15);
+      text-shadow: 0 0 10px rgba(0,230,255,0.9), 0 0 22px rgba(0,200,85,0.5);
+      outline: 1px solid rgba(0,210,90,0.40);
       outline-offset: -1px;
     }
     .nav-link.tm-nav-link:hover::before,
     .nav-link.tm-nav-link.active::before {
-      background: rgba(0,255,200,0.9);
-      box-shadow: 0 0 6px rgba(0,255,200,0.9);
+      background: rgba(100,255,80,0.9);
+      box-shadow: 0 0 6px rgba(100,255,80,0.9);
     }
 
     /* ── TOGGLER (mobile) ── */
     .navbar-toggler {
-      border: 1px solid rgba(0,200,255,0.5);
+      border: 1px solid rgba(0,210,90,0.5);
       color: #fff;
       position: relative; z-index: 4;
-      background: rgba(0,20,60,0.4);
+      background: rgba(0,40,20,0.4);
       clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-      padding: .2rem .45rem;
-      font-size: .75rem;
     }
     .navbar-toggler-icon {
-      width: 1.1em; height: 1.1em;
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0,220,255,0.95)' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0,230,100,0.95)' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
 
     @media (max-width:767px) {
-      .tm-navbar {
-        height: auto !important;
-        min-height: var(--nav-h);
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-      }
-      .tm-navbar .container {
-        min-height: var(--nav-h);
-        padding-top: 0;
-        padding-bottom: 0;
-        display: flex;
-        align-items: center;
-      }
       .navbar-collapse {
         background:
-          repeating-linear-gradient(90deg, rgba(0,200,255,0.025) 0px, rgba(0,200,255,0.025) 1px, transparent 1px, transparent 6px),
-          rgba(0,8,28,0.96);
-        border: 1px solid rgba(0,200,255,0.35);
-        border-top: 2px solid rgba(0,220,255,0.6);
+          repeating-linear-gradient(90deg, rgba(0,210,90,0.025) 0px, rgba(0,210,90,0.025) 1px, transparent 1px, transparent 6px),
+          rgba(0,18,9,0.96);
+        border: 1px solid rgba(0,210,90,0.35);
+        border-top: 2px solid rgba(0,230,100,0.6);
         border-radius: 0 0 10px 10px;
-        padding: 8px 12px; margin-top: 4px;
-        box-shadow: 0 12px 40px rgba(0,0,30,0.8), 0 0 20px rgba(0,200,255,0.15);
-      }
-      .nav-link.tm-nav-link {
-        padding: .18rem .55rem !important;
-        font-size: 0.6rem;
-      }
-      .navbar-brand {
-        font-size: 0.78rem;
+        padding: 10px 16px; margin-top: 8px;
+        box-shadow: 0 12px 40px rgba(0,0,30,0.8), 0 0 20px rgba(0,210,90,0.15);
       }
     }
 
@@ -541,7 +518,7 @@
       top: -20%;
       width: 300px; 
       height: 130%;
-      background: linear-gradient(180deg, rgba(0,200,255,0.12) 0%, transparent 80%);
+      background: linear-gradient(180deg, rgba(0,210,90,0.12) 0%, transparent 80%);
       transform-origin: top center;
       animation: rays 6s ease-in-out infinite alternate;
     }
@@ -554,7 +531,7 @@
 
     .hero-orb {
       position: absolute; width: 700px; height: 700px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,150,255,0.20) 0%, rgba(0,80,200,0.08) 50%, transparent 75%);
+      background: radial-gradient(circle, rgba(0,180,75,0.20) 0%, rgba(0,120,55,0.08) 50%, transparent 75%);
       top: 50%; left: 50%; transform: translate(-40%, -50%);
       animation: pulse-orb 4s ease-in-out infinite alternate; pointer-events: none;
     }
@@ -573,8 +550,8 @@
 
     .hero-badge {
       display: inline-block;
-      background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(0,200,255,0.12));
-      border: 1px solid rgba(0,220,255,0.50);
+      background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(0,210,90,0.12));
+      border: 1px solid rgba(0,230,100,0.50);
       border-top-color: rgba(255,255,255,0.55);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.40), 0 4px 16px rgba(0,20,80,0.5);
       color: var(--aero-cyan); 
@@ -585,13 +562,13 @@
       padding: .35rem 1.2rem; 
       border-radius: 20px; 
       margin-bottom: 1.5rem;
-      text-shadow: 0 0 8px rgba(0,220,255,0.8);
+      text-shadow: 0 0 8px rgba(0,230,100,0.8);
     }
 
     .hero-title-t2 {
       font-size: clamp(0.5rem, 4.5vw, 2.5rem); font-weight: 885; line-height: 1.0;
       color: #fff;
-      text-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,150,255,0.4), 0 2px 4px rgba(0,0,0,0.8);
+      text-shadow: 0 0 30px rgba(0,210,90,0.7), 0 0 60px rgba(0,180,75,0.4), 0 2px 4px rgba(0,0,0,0.8);
       margin-bottom: .4rem; letter-spacing: .03em;
     }
 
@@ -601,7 +578,7 @@
       font-weight: 895;
       line-height: 1.0;
       color: #fff;
-      text-shadow: 0 0 30px rgba(0,200,255,0.7), 0 0 60px rgba(0,150,255,0.4), 0 2px 4px rgba(0,0,0,0.8);
+      text-shadow: 0 0 30px rgba(0,210,90,0.7), 0 0 60px rgba(0,180,75,0.4), 0 2px 4px rgba(0,0,0,0.8);
       margin-bottom: .5rem;
       letter-spacing: .04em;
       display: flex;
@@ -617,13 +594,13 @@
       vertical-align: middle;
       position: relative;
       top: -0.04em;          /* subtle nudge up to sit on optical baseline */
-      filter: drop-shadow(0 0 10px rgba(0,200,255,0.5));
+      filter: drop-shadow(0 0 10px rgba(0,210,90,0.5));
       flex-shrink: 0;
     }
 
     .hero-title span {
       color: var(--aero-cyan);
-      text-shadow: 0 0 20px rgba(0,255,255,1), 0 0 40px rgba(0,200,255,0.8), 0 0 70px rgba(0,150,255,0.5);
+      text-shadow: 0 0 20px rgba(0,255,255,1), 0 0 40px rgba(0,210,90,0.8), 0 0 70px rgba(0,180,75,0.5);
     }
 
     .hero-sub {
@@ -633,7 +610,7 @@
     }
     .hero-url {
       font-family: var(--font-mono); font-size: .82rem;
-      color: rgba(0,200,255,0.6); letter-spacing: .12em; margin-bottom: 2.5rem;
+      color: rgba(0,210,90,0.6); letter-spacing: .12em; margin-bottom: 2.5rem;
     }
 
     /* ── MECHANIZED BUTTON SYSTEM ── */
@@ -672,14 +649,14 @@
     .btn-aero-primary {
       background:
         repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 6px),
-        linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(0,160,255,0.18) 35%, rgba(0,90,200,0.12) 65%, rgba(255,255,255,0.06) 100%);
-      border: 1px solid rgba(0,220,255,0.55);
+        linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(0,185,80,0.18) 35%, rgba(0,130,60,0.12) 65%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(0,230,100,0.55);
       border-top: 1px solid rgba(255,255,255,0.95);
-      border-bottom: 1px solid rgba(0,180,255,0.35);
+      border-bottom: 1px solid rgba(0,200,85,0.35);
       color: #fff;
-      box-shadow: 0 0 18px rgba(0,200,255,0.25), 0 4px 14px rgba(0,0,80,0.15),
-                  inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -1px 0 rgba(0,180,255,0.3);
-      text-shadow: 0 0 10px rgba(0,200,255,0.9), 0 1px 2px rgba(0,0,80,0.4);
+      box-shadow: 0 0 18px rgba(0,210,90,0.25), 0 4px 14px rgba(0,0,80,0.15),
+                  inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -1px 0 rgba(0,200,85,0.3);
+      text-shadow: 0 0 10px rgba(0,210,90,0.9), 0 1px 2px rgba(0,0,80,0.4);
       animation: btn-flicker 8s infinite;
       backdrop-filter: blur(20px) saturate(2) brightness(1.2);
     }
@@ -692,8 +669,8 @@
       color: #fff;
       background:
         repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 6px),
-        linear-gradient(180deg, rgba(255,255,255,0.50) 0%, rgba(0,200,255,0.25) 38%, rgba(0,120,255,0.18) 65%, rgba(255,255,255,0.10) 100%);
-      box-shadow: 0 0 36px rgba(0,220,255,0.45), 0 0 70px rgba(0,150,255,0.15), 0 4px 20px rgba(0,0,80,0.2),
+        linear-gradient(180deg, rgba(255,255,255,0.50) 0%, rgba(0,210,90,0.25) 38%, rgba(0,160,70,0.18) 65%, rgba(255,255,255,0.10) 100%);
+      box-shadow: 0 0 36px rgba(0,230,100,0.45), 0 0 70px rgba(0,180,75,0.15), 0 4px 20px rgba(0,0,80,0.2),
                   inset 0 1px 0 rgba(255,255,255,0.98);
       transform: translateY(-2px);
     }
@@ -701,12 +678,12 @@
     .btn-aero-ghost {
       background:
         repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 6px),
-        linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(0,200,255,0.06) 50%, rgba(255,255,255,0.04) 100%);
-      border: 1px solid rgba(0,200,255,0.35);
+        linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(0,210,90,0.06) 50%, rgba(255,255,255,0.04) 100%);
+      border: 1px solid rgba(0,210,90,0.35);
       border-top: 1px solid rgba(255,255,255,0.80);
       color: rgba(220,245,255,0.95);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.65), 0 0 8px rgba(0,200,255,0.12);
-      text-shadow: 0 0 8px rgba(0,200,255,0.6);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.65), 0 0 8px rgba(0,210,90,0.12);
+      text-shadow: 0 0 8px rgba(0,210,90,0.6);
       backdrop-filter: blur(20px) saturate(1.8) brightness(1.15);
     }
     .btn-aero-ghost::before {
@@ -721,18 +698,18 @@
     }
     .btn-aero-ghost:hover {
       color: #fff; 
-      border-color: rgba(0,240,255,0.6); 
+      border-color: rgba(0,240,110,0.6); 
       border-top-color: rgba(255,255,255,0.98);
       background:
         repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 6px),
-        linear-gradient(180deg, rgba(255,255,255,0.30) 0%, rgba(0,180,255,0.12) 50%, rgba(255,255,255,0.08) 100%);
-      box-shadow: 0 0 20px rgba(0,220,255,0.3), inset 0 1px 0 rgba(255,255,255,0.90);
+        linear-gradient(180deg, rgba(255,255,255,0.30) 0%, rgba(0,200,85,0.12) 50%, rgba(255,255,255,0.08) 100%);
+      box-shadow: 0 0 20px rgba(0,230,100,0.3), inset 0 1px 0 rgba(255,255,255,0.90);
     }
 
     .hero-scroll-arrow { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); z-index: 2; }
     .hero-scroll-arrow a {
       display: flex; flex-direction: column; align-items: center;
-      color: rgba(0,200,255,0.6); font-family: var(--font-mono);
+      color: rgba(0,210,90,0.6); font-family: var(--font-mono);
       font-size: .65rem; letter-spacing: .14em; text-transform: uppercase; gap: 8px;
     }
     .hero-scroll-arrow i { animation: bounce 2s infinite; }
@@ -746,33 +723,33 @@
     .section-label {
       display: inline-block; font-family: var(--font-mono); font-size: .66rem;
       letter-spacing: .22em; text-transform: uppercase; color: var(--aero-teal);
-      margin-bottom: .8rem; text-shadow: 0 0 8px rgba(0,230,200,0.6);
+      margin-bottom: .8rem; text-shadow: 0 0 8px rgba(0,230,100,0.6);
     }
     .section-title {
       font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: #fff;
-      margin-bottom: .8rem; text-shadow: 0 0 20px rgba(0,200,255,0.4);
+      margin-bottom: .8rem; text-shadow: 0 0 20px rgba(0,210,90,0.4);
     }
     .section-title-alt {
       font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: var(--aero-cyan);
-      margin-bottom: .8rem; text-shadow: 0 0 16px rgba(0,200,255,0.6);
+      margin-bottom: .8rem; text-shadow: 0 0 16px rgba(0,210,90,0.6);
     }
     .tm-divider {
       width: 52px; height: 3px;
       background: linear-gradient(90deg, var(--aero-cyan), var(--aero-teal));
       border-radius: 2px; margin-bottom: 2rem;
-      box-shadow: 0 0 10px rgba(0,200,255,0.6);
+      box-shadow: 0 0 10px rgba(0,210,90,0.6);
     }
     .tm-divider.center { margin-left: auto; margin-right: auto; }
 
     #whatwedo { background: transparent; }
 
     .feature-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(0,200,255,0.05) 50%, rgba(255,255,255,0.04) 100%);
-      border: 1px solid rgba(0,200,255,0.20);
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(0,210,90,0.05) 50%, rgba(255,255,255,0.04) 100%);
+      border: 1px solid rgba(0,210,90,0.20);
       border-top-color: rgba(255,255,255,0.85); border-left-color: rgba(255,255,255,0.40);
       border-radius: 16px; padding: 2rem; height: 100%;
       position: relative; overflow: hidden; transition: all .3s;
-      box-shadow: 0 8px 32px rgba(0,10,40,0.15), inset 0 1px 0 rgba(255,255,255,0.80), inset 0 -1px 0 rgba(0,150,255,0.08);
+      box-shadow: 0 8px 32px rgba(0,25,12,0.15), inset 0 1px 0 rgba(255,255,255,0.80), inset 0 -1px 0 rgba(0,180,75,0.08);
       backdrop-filter: blur(20px) saturate(1.9) brightness(1.1);
     }
     .feature-card::before {
@@ -782,20 +759,20 @@
     }
     .feature-card::after {
       content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 25%;
-      background: linear-gradient(0deg, rgba(0,200,255,0.06) 0%, transparent 100%); pointer-events: none;
+      background: linear-gradient(0deg, rgba(0,210,90,0.06) 0%, transparent 100%); pointer-events: none;
     }
     .feature-card:hover {
-      border-color: rgba(0,220,255,0.40); 
+      border-color: rgba(0,230,100,0.40); 
       border-top-color: rgba(255,255,255,0.98);
       transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0,10,40,0.18), 0 0 30px rgba(0,200,255,0.12), inset 0 1px 0 rgba(255,255,255,0.95);
+      box-shadow: 0 20px 50px rgba(0,25,12,0.18), 0 0 30px rgba(0,210,90,0.12), inset 0 1px 0 rgba(255,255,255,0.95);
     }
     .feature-icon {
       width: 56px; 
       height: 56px; 
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(0,180,255,0.30) 0%, rgba(0,80,200,0.20) 100%);
-      border: 1px solid rgba(0,200,255,0.40); 
+      background: linear-gradient(135deg, rgba(0,200,85,0.30) 0%, rgba(0,120,55,0.20) 100%);
+      border: 1px solid rgba(0,210,90,0.40); 
       border-top-color: rgba(255,255,255,0.50);
       display: flex; 
       align-items: center; 
@@ -805,8 +782,8 @@
       margin-bottom: 1.3rem;
       position: relative; 
       overflow: hidden;
-      box-shadow: 0 0 14px rgba(0,200,255,0.3), inset 0 1px 0 rgba(255,255,255,0.45);
-      text-shadow: 0 0 10px rgba(0,200,255,0.8); 
+      box-shadow: 0 0 14px rgba(0,210,90,0.3), inset 0 1px 0 rgba(255,255,255,0.45);
+      text-shadow: 0 0 10px rgba(0,210,90,0.8); 
       transition: all .3s;
     }
     .feature-icon::before {
@@ -819,10 +796,10 @@
       height: 50%;
       background: linear-gradient(180deg, rgba(255,255,255,0.30), transparent);
     }
-    .feature-card:hover .feature-icon { box-shadow: 0 0 24px rgba(0,220,255,0.6), inset 0 1px 0 rgba(255,255,255,0.5); }
-    .feature-card h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .5rem; text-shadow: 0 0 8px rgba(0,200,255,0.3); }
+    .feature-card:hover .feature-icon { box-shadow: 0 0 24px rgba(0,230,100,0.6), inset 0 1px 0 rgba(255,255,255,0.5); }
+    .feature-card h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .5rem; text-shadow: 0 0 8px rgba(0,210,90,0.3); }
     .feature-card p { font-size: .9rem; color: rgba(160,210,240,0.85); margin-bottom: 1rem; }
-    .feature-link { font-size: .75rem; font-weight: 700; color: var(--aero-cyan); text-transform: uppercase; letter-spacing: .1em; text-shadow: 0 0 6px rgba(0,200,255,0.5); }
+    .feature-link { font-size: .75rem; font-weight: 700; color: var(--aero-cyan); text-transform: uppercase; letter-spacing: .1em; text-shadow: 0 0 6px rgba(0,210,90,0.5); }
     .feature-link i { margin-left: 4px; transition: transform .2s; }
     .feature-link:hover { color: #fff; }
     .feature-link:hover i { transform: translateX(4px); }
@@ -833,15 +810,15 @@
     }
     #reviews::before {
       content: ''; position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(0,200,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,200,255,0.04) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(0,210,90,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,210,90,0.04) 1px, transparent 1px);
       background-size: 48px 48px;
     }
     .review-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(0,200,255,0.04) 50%, rgba(255,255,255,0.03) 100%);
-      border: 1px solid rgba(0,200,255,0.18); border-top-color: rgba(255,255,255,0.80);
+      background: linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(0,210,90,0.04) 50%, rgba(255,255,255,0.03) 100%);
+      border: 1px solid rgba(0,210,90,0.18); border-top-color: rgba(255,255,255,0.80);
       border-radius: 16px; padding: 2rem; height: 100%;
       position: relative; overflow: hidden; transition: all .3s;
-      box-shadow: 0 8px 30px rgba(0,10,40,0.12), inset 0 1px 0 rgba(255,255,255,0.75);
+      box-shadow: 0 8px 30px rgba(0,25,12,0.12), inset 0 1px 0 rgba(255,255,255,0.75);
       backdrop-filter: blur(20px) saturate(1.8) brightness(1.1);
     }
     .review-card::before {
@@ -849,17 +826,17 @@
       background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 100%);
       border-radius: 16px 16px 0 0; pointer-events: none;
     }
-    .review-card:hover { border-color: rgba(0,220,255,0.45); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,10,50,0.7), 0 0 20px rgba(0,200,255,0.15); }
+    .review-card:hover { border-color: rgba(0,230,100,0.45); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,25,15,0.7), 0 0 20px rgba(0,210,90,0.15); }
     .review-card blockquote { font-size: .92rem; line-height: 1.8; color: rgba(180,225,255,0.9); margin-bottom: 1.5rem; font-style: italic; }
-    .review-card blockquote::before { content: '\201C'; font-family: Georgia, serif; font-size: 3rem; line-height: 0; color: var(--aero-cyan); vertical-align: -.5rem; margin-right: .2rem; text-shadow: 0 0 10px rgba(0,200,255,0.6); }
+    .review-card blockquote::before { content: '\201C'; font-family: Georgia, serif; font-size: 3rem; line-height: 0; color: var(--aero-cyan); vertical-align: -.5rem; margin-right: .2rem; text-shadow: 0 0 10px rgba(0,210,90,0.6); }
     .reviewer { display: flex; align-items: center; gap: 12px; }
     .reviewer-avatar {
       width: 46px; height: 46px; border-radius: 50%;
-      background: linear-gradient(135deg, rgba(0,160,255,0.8), rgba(0,80,200,0.9));
-      border: 1px solid rgba(0,200,255,0.5); border-top-color: rgba(255,255,255,0.5);
+      background: linear-gradient(135deg, rgba(0,185,80,0.8), rgba(0,120,55,0.9));
+      border: 1px solid rgba(0,210,90,0.5); border-top-color: rgba(255,255,255,0.5);
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-display); font-size: .72rem; font-weight: 700; color: white; flex-shrink: 0;
-      box-shadow: 0 0 12px rgba(0,200,255,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
+      box-shadow: 0 0 12px rgba(0,210,90,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
       text-shadow: 0 1px 2px rgba(0,0,100,0.5);
     }
     .reviewer-name { font-size: .88rem; font-weight: 700; color: #fff; }
@@ -868,10 +845,10 @@
     #gallery { background: transparent; }
     .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.4rem; }
     .app-card {
-      background: linear-gradient(160deg, rgba(255,255,255,0.18) 0%, rgba(0,200,255,0.05) 50%, rgba(255,255,255,0.03) 100%);
-      border: 1px solid rgba(0,200,255,0.18); border-top-color: rgba(255,255,255,0.80);
+      background: linear-gradient(160deg, rgba(255,255,255,0.18) 0%, rgba(0,210,90,0.05) 50%, rgba(255,255,255,0.03) 100%);
+      border: 1px solid rgba(0,210,90,0.18); border-top-color: rgba(255,255,255,0.80);
       border-radius: 14px; overflow: hidden; position: relative; cursor: pointer; transition: all .3s;
-      box-shadow: 0 6px 24px rgba(0,10,40,0.12), inset 0 1px 0 rgba(255,255,255,0.70);
+      box-shadow: 0 6px 24px rgba(0,25,12,0.12), inset 0 1px 0 rgba(255,255,255,0.70);
       backdrop-filter: blur(16px) saturate(1.8) brightness(1.08);
     }
     .app-card::before {
@@ -879,43 +856,43 @@
       background: linear-gradient(180deg, rgba(255,255,255,0.16) 0%, transparent 100%);
       pointer-events: none; z-index: 1;
     }
-    .app-card:hover { transform: translateY(-7px) scale(1.02); border-color: rgba(0,220,255,0.55); border-top-color: rgba(255,255,255,0.6); box-shadow: 0 18px 40px rgba(0,10,50,0.7), 0 0 24px rgba(0,200,255,0.25); }
+    .app-card:hover { transform: translateY(-7px) scale(1.02); border-color: rgba(0,230,100,0.55); border-top-color: rgba(255,255,255,0.6); box-shadow: 0 18px 40px rgba(0,25,15,0.7), 0 0 24px rgba(0,210,90,0.25); }
     .app-card-placeholder {
       width: 100%; aspect-ratio: 1;
-      background: linear-gradient(135deg, rgba(0,30,80,0.8), rgba(0,15,50,0.9));
+      background: linear-gradient(135deg, rgba(0,60,25,0.8), rgba(0,35,18,0.9));
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
       color: var(--aero-cyan); font-size: 2.4rem;
-      text-shadow: 0 0 18px rgba(0,200,255,0.8), 0 0 40px rgba(0,150,255,0.4); position: relative;
+      text-shadow: 0 0 18px rgba(0,210,90,0.8), 0 0 40px rgba(0,180,75,0.4); position: relative;
     }
     .app-card-placeholder::after {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%;
       background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 100%);
     }
-    .app-card-placeholder span { font-family: var(--font-mono); font-size: .72rem; color: rgba(0,200,255,0.6); letter-spacing: .07em; position: relative; z-index: 1; }
-    .app-card-label { padding: .7rem 1rem; font-family: var(--font-display); font-size: .72rem; font-weight: 700; color: rgba(180,230,255,0.9); letter-spacing: .05em; background: rgba(0,20,60,0.4); }
+    .app-card-placeholder span { font-family: var(--font-mono); font-size: .72rem; color: rgba(0,210,90,0.6); letter-spacing: .07em; position: relative; z-index: 1; }
+    .app-card-label { padding: .7rem 1rem; font-family: var(--font-display); font-size: .72rem; font-weight: 700; color: rgba(180,230,255,0.9); letter-spacing: .05em; background: rgba(0,40,20,0.4); }
     .app-card-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(0,150,255,0.75), rgba(0,80,200,0.85));
+      background: linear-gradient(135deg, rgba(0,180,75,0.75), rgba(0,120,55,0.85));
       display: flex; align-items: center; justify-content: center;
       opacity: 0; transition: opacity .25s;
       font-family: var(--font-display); font-size: .7rem; font-weight: 700;
       color: #fff; text-transform: uppercase; letter-spacing: .1em;
-      text-shadow: 0 0 10px rgba(0,200,255,0.6); border: 1px solid rgba(255,255,255,0.2);
+      text-shadow: 0 0 10px rgba(0,210,90,0.6); border: 1px solid rgba(255,255,255,0.2);
     }
     .app-card-overlay::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.22), transparent); }
     .app-card:hover .app-card-overlay { opacity: 1; }
 
-    #community { border-top: 1px solid rgba(0,200,255,0.18); border-bottom: 1px solid rgba(0,200,255,0.18); }
+    #community { border-top: 1px solid rgba(0,210,90,0.18); border-bottom: 1px solid rgba(0,210,90,0.18); }
     .community-block {
-      background: linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(0,100,200,0.06) 100%);
-      border: 1px solid rgba(0,200,255,0.20); border-top-color: rgba(255,255,255,0.30);
-      border-left: 3px solid rgba(0,200,255,0.7); 
+      background: linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(0,140,65,0.06) 100%);
+      border: 1px solid rgba(0,210,90,0.20); border-top-color: rgba(255,255,255,0.30);
+      border-left: 3px solid rgba(0,210,90,0.7); 
       border-radius: 12px;
       padding: 1.8rem 2rem; 
       margin-bottom: 1.2rem; 
       position: relative; 
       overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 6px 20px rgba(0,10,40,0.4);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 6px 20px rgba(0,25,12,0.4);
     }
     
     .community-block::before { 
@@ -942,33 +919,33 @@
       width: 100%; 
       padding: .8rem 1.3rem; 
       margin-bottom: 1.2rem;
-      background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(0,200,255,0.04));
-      border: 1px solid rgba(0,200,255,0.20); 
+      background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(0,210,90,0.04));
+      border: 1px solid rgba(0,210,90,0.20); 
       border-top-color: rgba(255,255,255,0.75);
       border-radius: 8px; 
       color: #fff; 
       font-family: var(--font-body); 
       font-size: .95rem;
       transition: all .2s;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), 0 4px 12px rgba(0,10,40,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), 0 4px 12px rgba(0,25,12,0.08);
       backdrop-filter: blur(16px) saturate(1.8);
     }
    
     .tm-input:focus { 
       outline: none; 
-      border-color: rgba(0,220,255,0.6); 
+      border-color: rgba(0,230,100,0.6); 
       border-top-color: rgba(255,255,255,0.45); 
-      box-shadow: 0 0 16px rgba(0,200,255,0.25), 
+      box-shadow: 0 0 16px rgba(0,210,90,0.25), 
       inset 0 1px 0 rgba(255,255,255,0.20); 
     }
     
     .tm-input::placeholder { 
-      color: rgba(0,200,255,0.35); 
+      color: rgba(0,210,90,0.35); 
     }
     
     .btn-submit {
-      background: linear-gradient(180deg, rgba(0,180,255,0.85) 0%, rgba(0,80,200,0.9) 50%, rgba(0,50,160,0.85) 100%);
-      border: 1px solid rgba(0,220,255,0.55); 
+      background: linear-gradient(180deg, rgba(0,200,85,0.85) 0%, rgba(0,120,55,0.9) 50%, rgba(0,90,45,0.85) 100%);
+      border: 1px solid rgba(0,230,100,0.55); 
       border-top-color: rgba(255,255,255,0.55);
       color: white; 
       cursor: pointer; 
@@ -980,7 +957,7 @@
       border-radius: 8px;
       position: relative; 
       overflow: hidden;
-      box-shadow: 0 0 20px rgba(0,150,255,0.4), inset 0 1px 0 rgba(255,255,255,0.50); 
+      box-shadow: 0 0 20px rgba(0,180,75,0.4), inset 0 1px 0 rgba(255,255,255,0.50); 
       transition: all .25s;
     }
     
@@ -995,7 +972,7 @@
     }
     
     .btn-submit:hover { 
-      box-shadow: 0 0 30px rgba(0,200,255,0.7), 
+      box-shadow: 0 0 30px rgba(0,210,90,0.7), 
         inset 0 1px 0 rgba(255,255,255,0.55); 
       transform: translateY(-2px); 
     }
@@ -1006,13 +983,13 @@
       gap: 1.2rem; 
       padding: 1rem 1.3rem;
       background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(0,80,180,0.06));
-      border: 1px solid rgba(0,200,255,0.20); 
+      border: 1px solid rgba(0,210,90,0.20); 
       border-top-color: rgba(255,255,255,0.25);
       border-radius: 10px;
       margin-bottom: 1rem; 
       position: relative; 
       overflow: hidden;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 4px 14px rgba(0,10,40,0.4); 
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 4px 14px rgba(0,25,12,0.4); 
       transition: all .25s;
     }
     
@@ -1028,8 +1005,8 @@
     }
     
     .contact-info-item:hover { 
-      border-color: rgba(0,220,255,0.45); 
-      box-shadow: 0 0 16px rgba(0,200,255,0.18), 
+      border-color: rgba(0,230,100,0.45); 
+      box-shadow: 0 0 16px rgba(0,210,90,0.18), 
         inset 0 1px 0 rgba(255,255,255,0.20);
     }
     
@@ -1037,24 +1014,24 @@
       width: 42px; 
       height: 42px;
       border-radius: 10px;
-      background: linear-gradient(135deg, rgba(0,160,255,0.28), rgba(0,60,180,0.22));
-      border: 1px solid rgba(0,200,255,0.35); border-top-color: rgba(255,255,255,0.40);
+      background: linear-gradient(135deg, rgba(0,185,80,0.28), rgba(0,100,50,0.22));
+      border: 1px solid rgba(0,210,90,0.35); border-top-color: rgba(255,255,255,0.40);
       color: var(--aero-cyan); font-size: 1rem;
       flex-shrink: 0;
       display: flex; 
       align-items: center; 
       justify-content: center;
-      box-shadow: 0 0 10px rgba(0,200,255,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
-      text-shadow: 0 0 8px rgba(0,200,255,0.7);
+      box-shadow: 0 0 10px rgba(0,210,90,0.3), inset 0 1px 0 rgba(255,255,255,0.35);
+      text-shadow: 0 0 8px rgba(0,210,90,0.7);
     }
     .contact-info-item span { 
       color: rgba(180,225,255,0.9); font-size: .9rem;
     }
 
     footer {
-      background: linear-gradient(180deg, rgba(0,10,30,0.9) 0%, rgba(0,5,15,0.97) 100%);
-      border-top: 1px solid rgba(0,200,255,0.22); padding: 2.5rem 0;
-      text-align: center; font-size: .82rem; color: rgba(0,200,255,0.5);
+      background: linear-gradient(180deg, rgba(0,22,10,0.9) 0%, rgba(0,12,6,0.97) 100%);
+      border-top: 1px solid rgba(0,210,90,0.22); padding: 2.5rem 0;
+      text-align: center; font-size: .82rem; color: rgba(0,210,90,0.5);
       position: relative; z-index: 1;
     }
     footer::before { 
@@ -1068,7 +1045,7 @@
     }
     
     footer a { 
-      color: rgba(0,200,255,0.5); 
+      color: rgba(0,210,90,0.5); 
     }
     
     footer a:hover { 
@@ -1121,7 +1098,7 @@
       height: 220px; 
       z-index: 999; 
       pointer-events: none;
-      background: linear-gradient(180deg, transparent 0%, rgba(0,200,255,0.6) 30%, rgba(0,255,200,0.8) 50%, rgba(0,200,255,0.6) 70%, transparent 100%);
+      background: linear-gradient(180deg, transparent 0%, rgba(0,210,90,0.6) 30%, rgba(100,255,80,0.8) 50%, rgba(0,210,90,0.6) 70%, transparent 100%);
     }
     .hud-edge-l { 
       left: 8px;
@@ -1136,7 +1113,7 @@
       transform: translateY(-50%);
       width: 8px; 
       height: 2px;
-      background: rgba(0,255,200,0.9);
+      background: rgba(100,255,80,0.9);
     }
     .hud-edge-l::before {
       left: 3px; 
@@ -1154,19 +1131,19 @@
       pointer-events: none;
       font-family: var(--font-mono); 
       font-size: .58rem;
-      color: rgba(0,230,200,0.75); 
+      color: rgba(0,230,100,0.75); 
       letter-spacing: .12em;
       line-height: 1.7; 
-      text-shadow: 0 0 6px rgba(0,200,255,0.6);
+      text-shadow: 0 0 6px rgba(0,210,90,0.6);
     }
     .hud-status-line { display: flex; align-items: center; gap: 6px; }
     
     .hud-status-dot {
       width: 5px; height: 5px; border-radius: 50%;
-      background: rgba(0,255,180,0.9); box-shadow: 0 0 6px rgba(0,255,180,0.8);
+      background: rgba(80,255,70,0.9); box-shadow: 0 0 6px rgba(80,255,70,0.8);
       animation: hud-blink 2.4s ease-in-out infinite;
     }
-    .hud-status-dot.alt { background: rgba(0,200,255,0.9); animation-delay: 1.2s; }
+    .hud-status-dot.alt { background: rgba(0,210,90,0.9); animation-delay: 1.2s; }
     @keyframes hud-blink {
       0%,100% { opacity:1; } 50% { opacity:.25; }
     }
@@ -1175,9 +1152,9 @@
     .hud-readout {
       position: fixed; top: 84px; right: 70px; z-index: 999; pointer-events: none;
       font-family: var(--font-mono); font-size: .58rem;
-      color: rgba(0,200,255,0.65); letter-spacing: .12em;
+      color: rgba(0,210,90,0.65); letter-spacing: .12em;
       line-height: 1.7; text-align: right;
-      text-shadow: 0 0 6px rgba(0,200,255,0.5);
+      text-shadow: 0 0 6px rgba(0,210,90,0.5);
     }
 
     /* Scan line reticle in center - very subtle */
@@ -1191,12 +1168,12 @@
     }
     .hud-reticle::before {
       top: 50%; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,200,255,0.9) 30%, rgba(0,200,255,0.9) 70%, transparent);
+      background: linear-gradient(90deg, transparent, rgba(0,210,90,0.9) 30%, rgba(0,210,90,0.9) 70%, transparent);
       transform: translateY(-50%);
     }
     .hud-reticle::after {
       left: 50%; top: 0; bottom: 0; width: 1px;
-      background: linear-gradient(180deg, transparent, rgba(0,200,255,0.9) 30%, rgba(0,200,255,0.9) 70%, transparent);
+      background: linear-gradient(180deg, transparent, rgba(0,210,90,0.9) 30%, rgba(0,210,90,0.9) 70%, transparent);
       transform: translateX(-50%);
     }
 
@@ -1206,20 +1183,20 @@
       display: flex; align-items: center; justify-content: space-between;
       gap: 1rem;
       font-family: var(--font-mono); font-size: .56rem; letter-spacing: .13em;
-      color: rgba(0,200,255,0.5); text-shadow: 0 0 5px rgba(0,200,255,0.4);
+      color: rgba(0,210,90,0.5); text-shadow: 0 0 5px rgba(0,210,90,0.4);
     }
     .hud-bottom-bar::before {
       content: ''; position: absolute; top: -5px; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,200,255,0.35) 20%, rgba(0,255,200,0.5) 50%, rgba(0,200,255,0.35) 80%, transparent);
+      background: linear-gradient(90deg, transparent, rgba(0,210,90,0.35) 20%, rgba(100,255,80,0.5) 50%, rgba(0,210,90,0.35) 80%, transparent);
     }
     .hud-progress {
       flex: 1; height: 2px; max-width: 120px;
-      background: rgba(0,200,255,0.12); border-radius: 1px; overflow: hidden;
+      background: rgba(0,210,90,0.12); border-radius: 1px; overflow: hidden;
     }
     .hud-progress-fill {
       height: 100%; width: 65%;
-      background: linear-gradient(90deg, rgba(0,200,255,0.6), rgba(0,255,200,0.8));
-      box-shadow: 0 0 6px rgba(0,200,255,0.5);
+      background: linear-gradient(90deg, rgba(0,210,90,0.6), rgba(100,255,80,0.8));
+      box-shadow: 0 0 6px rgba(0,210,90,0.5);
       animation: hud-scan 3s ease-in-out infinite alternate;
     }
     @keyframes hud-scan {
@@ -1228,8 +1205,8 @@
 
     /* Sweep animation on corners */
     @keyframes mech-pulse {
-      0%,100% { opacity:.7; filter: drop-shadow(0 0 3px rgba(0,200,255,0.5)); }
-      50%      { opacity:1;  filter: drop-shadow(0 0 8px rgba(0,255,200,0.8)); }
+      0%,100% { opacity:.7; filter: drop-shadow(0 0 3px rgba(0,210,90,0.5)); }
+      50%      { opacity:1;  filter: drop-shadow(0 0 8px rgba(100,255,80,0.8)); }
     }
     .mech-corner svg { animation: mech-pulse 3s ease-in-out infinite; }
 
@@ -1237,9 +1214,9 @@
 
     /* ── DOWNLOAD BUTTONS (MECH) ── */
     #download-win7 {
-      background: linear-gradient(180deg, rgba(0,10,30,0.55) 0%, rgba(0,25,65,0.65) 100%);
-      border-top: 1px solid rgba(0,200,255,0.18);
-      border-bottom: 1px solid rgba(0,200,255,0.18);
+      background: linear-gradient(180deg, rgba(0,22,10,0.55) 0%, rgba(0,40,20,0.65) 100%);
+      border-top: 1px solid rgba(0,210,90,0.18);
+      border-bottom: 1px solid rgba(0,210,90,0.18);
     }
     .btn-dl {
       display: inline-flex; align-items: center; gap: 1rem;
@@ -1249,7 +1226,7 @@
       font-family: var(--font-display); text-decoration: none;
       position: relative; overflow: hidden; transition: all .25s;
       min-width: 280px;
-      box-shadow: 0 8px 28px rgba(0,10,50,0.35), inset 0 1px 0 rgba(255,255,255,0.45);
+      box-shadow: 0 8px 28px rgba(0,25,15,0.35), inset 0 1px 0 rgba(255,255,255,0.45);
     }
     /* grid texture overlay */
     .btn-dl::before {
@@ -1284,32 +1261,32 @@
       background:
         repeating-linear-gradient(
           90deg,
-          rgba(0,220,255,0.03) 0px,
-          rgba(0,220,255,0.03) 1px,
+          rgba(0,230,100,0.03) 0px,
+          rgba(0,230,100,0.03) 1px,
           transparent 1px,
           transparent 10px
         ),
         repeating-linear-gradient(
           0deg,
-          rgba(0,220,255,0.02) 0px,
-          rgba(0,220,255,0.02) 1px,
+          rgba(0,230,100,0.02) 0px,
+          rgba(0,230,100,0.02) 1px,
           transparent 1px,
           transparent 10px
         ),
         linear-gradient(160deg,
-          rgba(0,220,255,0.06) 0%,
+          rgba(0,230,100,0.06) 0%,
           rgba(0,0,0,0.0) 45%,
-          rgba(0,220,255,0.04) 100%);
-      border: 1px solid rgba(0,220,255,0.35);
+          rgba(0,230,100,0.04) 100%);
+      border: 1px solid rgba(0,230,100,0.35);
       border-top-color: rgba(0,255,240,0.55);
       border-left-color: rgba(0,255,240,0.25);
       color: #e0f8ff;
       backdrop-filter: blur(10px) saturate(1.6);
       box-shadow:
-        0 0 0 1px rgba(0,200,255,0.08) inset,
-        0 0 18px rgba(0,200,255,0.10),
+        0 0 0 1px rgba(0,210,90,0.08) inset,
+        0 0 18px rgba(0,210,90,0.10),
         inset 0 1px 0 rgba(0,255,240,0.20),
-        inset 0 -1px 0 rgba(0,200,255,0.10);
+        inset 0 -1px 0 rgba(0,210,90,0.10);
     }
 
     /* ── per-button accent color via glow only ── */
@@ -1318,24 +1295,24 @@
     .btn-dl-green   { --btn-glow: 0,255,140; --btn-accent: 0,255,160; }
     .btn-dl-purple  { --btn-glow: 160,80,255; --btn-accent: 190,120,255; }
 
-    .btn-dl-primary { border-color: rgba(0,200,255,0.40); border-top-color: rgba(0,240,255,0.60); }
+    .btn-dl-primary { border-color: rgba(0,210,90,0.40); border-top-color: rgba(0,240,110,0.60); }
     .btn-dl-teal    { border-color: rgba(0,240,200,0.38); border-top-color: rgba(0,255,230,0.58); }
-    .btn-dl-green   { border-color: rgba(0,255,140,0.35); border-top-color: rgba(140,255,200,0.55); }
+    .btn-dl-green   { border-color: rgba(50,255,60,0.35); border-top-color: rgba(140,255,200,0.55); }
     .btn-dl-purple  { border-color: rgba(180,100,255,0.38); border-top-color: rgba(210,150,255,0.55); }
 
     /* corner tick marks accent colors */
     .btn-dl-primary .btn-dl-tick-tl,
-    .btn-dl-primary .btn-dl-tick-br { border-color: rgba(0,220,255,0.7); }
+    .btn-dl-primary .btn-dl-tick-br { border-color: rgba(0,230,100,0.7); }
     .btn-dl-teal .btn-dl-tick-tl,
     .btn-dl-teal .btn-dl-tick-br    { border-color: rgba(0,255,210,0.7); }
     .btn-dl-green .btn-dl-tick-tl,
-    .btn-dl-green .btn-dl-tick-br   { border-color: rgba(0,255,140,0.7); }
+    .btn-dl-green .btn-dl-tick-br   { border-color: rgba(50,255,60,0.7); }
     .btn-dl-purple .btn-dl-tick-tl,
     .btn-dl-purple .btn-dl-tick-br  { border-color: rgba(190,100,255,0.7); }
 
-    .btn-dl-primary:hover { box-shadow: 0 0 28px rgba(0,160,255,0.55), 0 0 60px rgba(0,160,255,0.18), inset 0 0 18px rgba(0,200,255,0.08), 0 8px 30px rgba(0,0,80,0.3); color:#fff; border-color: rgba(0,220,255,0.7); }
-    .btn-dl-teal:hover    { box-shadow: 0 0 28px rgba(0,230,200,0.55), 0 0 60px rgba(0,230,200,0.18), inset 0 0 18px rgba(0,255,220,0.08), 0 8px 30px rgba(0,0,80,0.3); color:#fff; border-color: rgba(0,255,210,0.7); }
-    .btn-dl-green:hover   { box-shadow: 0 0 28px rgba(0,255,140,0.50), 0 0 60px rgba(0,255,140,0.18), inset 0 0 18px rgba(0,255,160,0.08), 0 8px 30px rgba(0,0,80,0.3); color:#fff; border-color: rgba(0,255,150,0.7); }
+    .btn-dl-primary:hover { box-shadow: 0 0 28px rgba(0,185,80,0.55), 0 0 60px rgba(0,185,80,0.18), inset 0 0 18px rgba(0,210,90,0.08), 0 8px 30px rgba(0,0,80,0.3); color:#fff; border-color: rgba(0,230,100,0.7); }
+    .btn-dl-teal:hover    { box-shadow: 0 0 28px rgba(0,230,100,0.55), 0 0 60px rgba(0,230,100,0.18), inset 0 0 18px rgba(150,255,100,0.08), 0 8px 30px rgba(0,0,80,0.3); color:#fff; border-color: rgba(0,255,210,0.7); }
+    .btn-dl-green:hover   { box-shadow: 0 0 28px rgba(50,255,60,0.50), 0 0 60px rgba(50,255,60,0.18), inset 0 0 18px rgba(60,255,70,0.08), 0 8px 30px rgba(0,0,80,0.3); color:#fff; border-color: rgba(0,255,150,0.7); }
     .btn-dl-purple:hover  { box-shadow: 0 0 28px rgba(160,80,255,0.55), 0 0 60px rgba(160,80,255,0.18), inset 0 0 18px rgba(190,120,255,0.08), 0 8px 30px rgba(0,0,80,0.3); color:#fff; border-color: rgba(200,130,255,0.7); }
 
     .btn-dl-icon {
@@ -1344,7 +1321,7 @@
       position: relative; z-index: 1;
     }
     .btn-dl-text { display: flex; flex-direction: column; line-height: 1.3; position: relative; z-index: 1; }
-    .btn-dl-label { font-size: .75rem; font-weight: 700; letter-spacing: .10em; color: #d0f4ff; text-shadow: 0 0 10px rgba(0,220,255,0.6); }
+    .btn-dl-label { font-size: .75rem; font-weight: 700; letter-spacing: .10em; color: #d0f4ff; text-shadow: 0 0 10px rgba(0,230,100,0.6); }
     .btn-dl-sub { font-size: .60rem; color: rgba(150,220,255,0.65); letter-spacing: .09em; margin-top: 3px; font-family: var(--font-mono); }
 
     /* ── PC CAROUSEL ── */
@@ -1357,8 +1334,8 @@
     .pc-tab {
       background:
         repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 7px),
-        linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(0,200,255,0.06) 100%);
-      border: 1px solid rgba(0,200,255,0.25); border-top-color: rgba(255,255,255,0.70);
+        linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(0,210,90,0.06) 100%);
+      border: 1px solid rgba(0,210,90,0.25); border-top-color: rgba(255,255,255,0.70);
       color: rgba(220,245,255,0.90); font-family: var(--font-mono);
       font-size: .60rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
       padding: .45rem 1.4rem;
@@ -1370,12 +1347,12 @@
     }
     .pc-tab:hover, .pc-tab.active {
       background:
-        repeating-linear-gradient(90deg, rgba(0,200,255,0.06) 0px, rgba(0,200,255,0.06) 1px, transparent 1px, transparent 7px),
-        linear-gradient(180deg, rgba(0,140,255,0.35) 0%, rgba(0,70,200,0.40) 100%);
-      border-color: rgba(0,220,255,0.70); border-top-color: rgba(180,240,255,0.80);
+        repeating-linear-gradient(90deg, rgba(0,210,90,0.06) 0px, rgba(0,210,90,0.06) 1px, transparent 1px, transparent 7px),
+        linear-gradient(180deg, rgba(0,170,75,0.35) 0%, rgba(0,110,55,0.40) 100%);
+      border-color: rgba(0,230,100,0.70); border-top-color: rgba(180,240,255,0.80);
       color: #fff;
-      box-shadow: 0 0 16px rgba(0,200,255,0.45), inset 0 1px 0 rgba(255,255,255,0.25);
-      text-shadow: 0 0 8px rgba(0,220,255,0.9);
+      box-shadow: 0 0 16px rgba(0,210,90,0.45), inset 0 1px 0 rgba(255,255,255,0.25);
+      text-shadow: 0 0 8px rgba(0,230,100,0.9);
     }
     .pc-carousel-wrapper {
       position: relative; display: flex; align-items: center; gap: 0;
@@ -1383,30 +1360,30 @@
     .pc-carousel {
       display: flex; gap: 1.4rem; overflow-x: auto; scroll-behavior: smooth;
       padding: 1.2rem .5rem 1.8rem;
-      scrollbar-width: thin; scrollbar-color: rgba(0,200,255,0.35) rgba(0,10,30,0.4);
+      scrollbar-width: thin; scrollbar-color: rgba(0,210,90,0.35) rgba(0,22,10,0.4);
     }
     .pc-carousel::-webkit-scrollbar { height: 5px; }
-    .pc-carousel::-webkit-scrollbar-track { background: rgba(0,10,30,0.4); border-radius: 3px; }
-    .pc-carousel::-webkit-scrollbar-thumb { background: rgba(0,200,255,0.35); border-radius: 3px; }
+    .pc-carousel::-webkit-scrollbar-track { background: rgba(0,22,10,0.4); border-radius: 3px; }
+    .pc-carousel::-webkit-scrollbar-thumb { background: rgba(0,210,90,0.35); border-radius: 3px; }
     .pc-carousel-btn {
       flex-shrink: 0;
       width: 44px; height: 44px; border-radius: 50%;
-      background: linear-gradient(135deg, rgba(0,160,255,0.25), rgba(0,60,180,0.30));
-      border: 1px solid rgba(0,200,255,0.40); border-top-color: rgba(255,255,255,0.35);
+      background: linear-gradient(135deg, rgba(0,185,80,0.25), rgba(0,100,50,0.30));
+      border: 1px solid rgba(0,210,90,0.40); border-top-color: rgba(255,255,255,0.35);
       color: var(--aero-cyan); font-size: 1rem; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 14px rgba(0,200,255,0.2), inset 0 1px 0 rgba(255,255,255,0.25);
+      box-shadow: 0 0 14px rgba(0,210,90,0.2), inset 0 1px 0 rgba(255,255,255,0.25);
       transition: all .2s; z-index: 2; flex-shrink: 0;
     }
     .pc-carousel-btn:hover {
-      background: linear-gradient(135deg, rgba(0,200,255,0.40), rgba(0,100,220,0.40));
-      box-shadow: 0 0 22px rgba(0,200,255,0.55), inset 0 1px 0 rgba(255,255,255,0.35);
+      background: linear-gradient(135deg, rgba(0,210,90,0.40), rgba(0,140,65,0.40));
+      box-shadow: 0 0 22px rgba(0,210,90,0.55), inset 0 1px 0 rgba(255,255,255,0.35);
       color: #fff;
     }
     .pc-card {
       flex: 0 0 260px; border-radius: 18px; overflow: hidden;
-      background: linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(0,200,255,0.05) 50%, rgba(255,255,255,0.04) 100%);
-      border: 1px solid rgba(0,200,255,0.20); border-top-color: rgba(255,255,255,0.85);
+      background: linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(0,210,90,0.05) 50%, rgba(255,255,255,0.04) 100%);
+      border: 1px solid rgba(0,210,90,0.20); border-top-color: rgba(255,255,255,0.85);
       box-shadow: 0 8px 32px rgba(0,10,45,0.12), inset 0 1px 0 rgba(255,255,255,0.75);
       position: relative; transition: all .3s;
       backdrop-filter: blur(20px) saturate(1.9) brightness(1.08);
@@ -1417,47 +1394,47 @@
       border-radius: 18px 18px 0 0; pointer-events: none; z-index: 1;
     }
     .pc-card:hover {
-      border-color: rgba(0,220,255,0.40); border-top-color: rgba(255,255,255,0.98);
+      border-color: rgba(0,230,100,0.40); border-top-color: rgba(255,255,255,0.98);
       transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 22px 50px rgba(0,10,50,0.18), 0 0 30px rgba(0,200,255,0.15), inset 0 1px 0 rgba(255,255,255,0.95);
+      box-shadow: 0 22px 50px rgba(0,25,15,0.18), 0 0 30px rgba(0,210,90,0.15), inset 0 1px 0 rgba(255,255,255,0.95);
     }
     .pc-card.hidden { display: none; }
     .pc-card-badge {
       position: absolute; top: 12px; right: 12px; z-index: 2;
-      background: linear-gradient(135deg, rgba(0,180,255,0.70), rgba(0,80,200,0.80));
-      border: 1px solid rgba(0,220,255,0.5); border-top-color: rgba(255,255,255,0.4);
+      background: linear-gradient(135deg, rgba(0,200,85,0.70), rgba(0,120,55,0.80));
+      border: 1px solid rgba(0,230,100,0.5); border-top-color: rgba(255,255,255,0.4);
       color: #fff; font-family: var(--font-mono); font-size: .6rem; letter-spacing: .12em;
       text-transform: uppercase; padding: .25rem .65rem; border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,200,255,0.3);
+      box-shadow: 0 0 10px rgba(0,210,90,0.3);
     }
     .pc-card-icon {
       display: flex; align-items: center; justify-content: center;
       padding: 2.2rem 0 1.4rem;
       font-size: 3.2rem; color: var(--aero-cyan);
-      text-shadow: 0 0 20px rgba(0,200,255,0.8), 0 0 50px rgba(0,150,255,0.4);
+      text-shadow: 0 0 20px rgba(0,210,90,0.8), 0 0 50px rgba(0,180,75,0.4);
       position: relative; z-index: 1;
-      background: linear-gradient(180deg, rgba(0,20,60,0.5) 0%, rgba(0,10,40,0.3) 100%);
+      background: linear-gradient(180deg, rgba(0,40,20,0.5) 0%, rgba(0,25,12,0.3) 100%);
     }
     .pc-card-body { padding: 1.2rem 1.4rem 1.6rem; }
     .pc-card-name {
       font-family: var(--font-display); font-size: 1rem; font-weight: 700;
-      color: #fff; margin-bottom: .2rem; text-shadow: 0 0 8px rgba(0,200,255,0.3);
+      color: #fff; margin-bottom: .2rem; text-shadow: 0 0 8px rgba(0,210,90,0.3);
     }
     .pc-card-sub { font-family: var(--font-mono); font-size: .68rem; color: var(--aero-cyan); opacity:.7; margin-bottom: .9rem; letter-spacing:.05em; }
     .pc-card-specs { list-style: none; padding: 0; margin: 0 0 1rem; }
     .pc-card-specs li {
       font-size: .8rem; color: rgba(170,220,250,0.88); padding: .28rem 0;
-      border-bottom: 1px solid rgba(0,200,255,0.09); display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid rgba(0,210,90,0.09); display: flex; align-items: center; gap: 8px;
     }
     .pc-card-specs li:last-child { border-bottom: none; }
-    .pc-card-specs li i { color: var(--aero-cyan); font-size: .72rem; width: 14px; flex-shrink:0; text-shadow: 0 0 6px rgba(0,200,255,0.6); }
+    .pc-card-specs li i { color: var(--aero-cyan); font-size: .72rem; width: 14px; flex-shrink:0; text-shadow: 0 0 6px rgba(0,210,90,0.6); }
     .pc-card-tag {
       display: inline-block; font-family: var(--font-mono); font-size: .6rem;
       letter-spacing: .12em; text-transform: uppercase;
       padding: .22rem .7rem; border-radius: 8px; border: 1px solid;
     }
     .pc-tag-great { color: #00ffb0; border-color: rgba(0,255,176,0.4); background: rgba(0,200,120,0.12); text-shadow: 0 0 6px rgba(0,255,176,0.5); }
-    .pc-tag-good  { color: var(--aero-cyan); border-color: rgba(0,200,255,0.4); background: rgba(0,150,255,0.10); text-shadow: 0 0 6px rgba(0,200,255,0.5); }
+    .pc-tag-good  { color: var(--aero-cyan); border-color: rgba(0,210,90,0.4); background: rgba(0,180,75,0.10); text-shadow: 0 0 6px rgba(0,210,90,0.5); }
     .pc-tag-mod   { color: #ffcc44; border-color: rgba(255,200,60,0.4); background: rgba(255,180,0,0.10); text-shadow: 0 0 6px rgba(255,200,60,0.5); }
 
     @media (max-width:576px) {
@@ -1470,7 +1447,7 @@
     .app-modal-backdrop {
       display: none;
       position: fixed; inset: 0; z-index: 9100;
-      background: rgba(0,5,20,0.35);
+      background: rgba(0,15,8,0.35);
       backdrop-filter: blur(12px);
       align-items: center;
       justify-content: center;
@@ -1480,11 +1457,11 @@
 
     .app-modal {
       position: relative;
-      background: linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(0,200,255,0.06) 50%, rgba(255,255,255,0.04) 100%);
-      border: 1px solid rgba(0,220,255,0.45);
+      background: linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(0,210,90,0.06) 50%, rgba(255,255,255,0.04) 100%);
+      border: 1px solid rgba(0,230,100,0.45);
       border-top-color: rgba(255,255,255,0.90);
       border-left-color: rgba(255,255,255,0.35);
-      box-shadow: 0 0 0 1px rgba(0,200,255,0.10), 0 30px 80px rgba(0,0,30,0.3), 0 0 60px rgba(0,130,255,0.10), inset 0 2px 0 rgba(255,255,255,0.90);
+      box-shadow: 0 0 0 1px rgba(0,210,90,0.10), 0 30px 80px rgba(0,0,30,0.3), 0 0 60px rgba(0,170,70,0.10), inset 0 2px 0 rgba(255,255,255,0.90);
       border-radius: 18px;
       width: 100%;
       max-width: 580px;
@@ -1509,8 +1486,8 @@
     .app-modal-titlebar {
       display: flex; align-items: center; justify-content: space-between;
       padding: 12px 18px 11px;
-      border-bottom: 1px solid rgba(0,200,255,0.2);
-      background: linear-gradient(180deg, rgba(0,60,140,0.45) 0%, rgba(0,30,80,0.35) 100%);
+      border-bottom: 1px solid rgba(0,210,90,0.2);
+      background: linear-gradient(180deg, rgba(0,60,140,0.45) 0%, rgba(0,60,25,0.35) 100%);
       position: relative; z-index: 1; flex-shrink: 0;
     }
     .app-modal-titlebar-left { display: flex; align-items: center; gap: 10px; }
@@ -1525,7 +1502,7 @@
     .app-modal-titletext {
       font-family: var(--font-display); font-size:.72rem; font-weight:700;
       color:rgba(200,235,255,0.9); letter-spacing:.14em; text-transform:uppercase;
-      text-shadow:0 0 8px rgba(0,200,255,0.5);
+      text-shadow:0 0 8px rgba(0,210,90,0.5);
     }
     .app-modal-closebtn {
       width:33px; height:33px; border-radius:8px;
@@ -1547,10 +1524,10 @@
       overflow-y: auto; flex:1;
       padding: 28px 28px 32px;
       position: relative; z-index:1;
-      scrollbar-width: thin; scrollbar-color: rgba(0,200,255,0.3) rgba(0,10,30,0.3);
+      scrollbar-width: thin; scrollbar-color: rgba(0,210,90,0.3) rgba(0,22,10,0.3);
     }
     .app-modal-body::-webkit-scrollbar { width:4px; }
-    .app-modal-body::-webkit-scrollbar-thumb { background:rgba(0,200,255,0.35); border-radius:2px; }
+    .app-modal-body::-webkit-scrollbar-thumb { background:rgba(0,210,90,0.35); border-radius:2px; }
 
     /* App header row */
     .app-modal-header {
@@ -1558,22 +1535,22 @@
     }
     .app-modal-iconbox {
       width: 72px; height: 72px; border-radius: 16px; flex-shrink:0;
-      background: linear-gradient(145deg, rgba(0,80,200,0.55), rgba(0,30,100,0.75));
-      border: 1px solid rgba(0,200,255,0.4); border-top-color: rgba(255,255,255,0.35);
+      background: linear-gradient(145deg, rgba(0,120,55,0.55), rgba(0,60,30,0.75));
+      border: 1px solid rgba(0,210,90,0.4); border-top-color: rgba(255,255,255,0.35);
       display: flex; align-items:center; justify-content:center;
       font-size: 2.2rem; color: var(--aero-cyan);
-      text-shadow: 0 0 18px rgba(0,200,255,0.8);
-      box-shadow: 0 0 20px rgba(0,150,255,0.25), inset 0 1px 0 rgba(255,255,255,0.25);
+      text-shadow: 0 0 18px rgba(0,210,90,0.8);
+      box-shadow: 0 0 20px rgba(0,180,75,0.25), inset 0 1px 0 rgba(255,255,255,0.25);
     }
     .app-modal-header-info { flex:1; min-width:0; }
     .app-modal-appname {
       font-family: var(--font-display); font-size:1.25rem; font-weight:700;
       color:#fff; margin-bottom:4px;
-      text-shadow:0 0 10px rgba(0,200,255,0.35);
+      text-shadow:0 0 10px rgba(0,210,90,0.35);
     }
     .app-modal-appcategory {
       font-family: var(--font-mono); font-size:.62rem; letter-spacing:.14em;
-      color:rgba(0,200,255,0.6); text-transform:uppercase; margin-bottom:6px;
+      color:rgba(0,210,90,0.6); text-transform:uppercase; margin-bottom:6px;
     }
     .app-modal-rating {
       display:flex; align-items:center; gap:6px;
@@ -1584,13 +1561,13 @@
     /* Divider */
     .app-modal-divider {
       height:1px; margin:18px 0;
-      background:linear-gradient(90deg,transparent,rgba(0,200,255,0.3) 30%,rgba(0,200,255,0.3) 70%,transparent);
+      background:linear-gradient(90deg,transparent,rgba(0,210,90,0.3) 30%,rgba(0,210,90,0.3) 70%,transparent);
     }
 
     /* Description */
     .app-modal-desc-label {
       font-family:var(--font-mono); font-size:.58rem; letter-spacing:.18em;
-      color:rgba(0,200,255,0.5); text-transform:uppercase; margin-bottom:10px;
+      color:rgba(0,210,90,0.5); text-transform:uppercase; margin-bottom:10px;
     }
     .app-modal-desc {
       font-size:.9rem; line-height:1.85;
@@ -1600,14 +1577,14 @@
     /* Link row */
     .app-modal-link-row {
       display:flex; align-items:center; gap:10px;
-      background:rgba(0,30,80,0.45);
-      border:1px solid rgba(0,200,255,0.2); border-radius:10px;
+      background:rgba(0,60,25,0.45);
+      border:1px solid rgba(0,210,90,0.2); border-radius:10px;
       padding:.65rem 1rem; margin-bottom:22px;
       overflow:hidden;
     }
     .app-modal-link-row i { color:var(--aero-cyan); flex-shrink:0; font-size:.85rem; }
     .app-modal-link-row a {
-      font-family:var(--font-mono); font-size:.68rem; color:rgba(0,200,255,0.8);
+      font-family:var(--font-mono); font-size:.68rem; color:rgba(0,210,90,0.8);
       letter-spacing:.05em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
       flex:1; min-width:0;
       transition:color .2s;
@@ -1619,7 +1596,7 @@
     .app-modal-tag {
       font-family:var(--font-mono); font-size:.58rem; letter-spacing:.12em;
       text-transform:uppercase; padding:.22rem .75rem; border-radius:8px;
-      border:1px solid rgba(0,200,255,0.3); color:rgba(0,200,255,0.75);
+      border:1px solid rgba(0,210,90,0.3); color:rgba(0,210,90,0.75);
       background:rgba(0,80,180,0.12);
     }
 
@@ -1634,13 +1611,13 @@
       color:#fff; text-decoration:none; cursor:pointer;
       background:
         repeating-linear-gradient(90deg,rgba(255,255,255,0.025) 0px,rgba(255,255,255,0.025) 1px,transparent 1px,transparent 6px),
-        linear-gradient(180deg,rgba(0,180,255,0.92) 0%,rgba(0,90,210,0.95) 48%,rgba(0,55,170,0.90) 100%);
-      border:1px solid rgba(0,220,255,0.7);
+        linear-gradient(180deg,rgba(0,200,85,0.92) 0%,rgba(0,90,210,0.95) 48%,rgba(0,55,170,0.90) 100%);
+      border:1px solid rgba(0,230,100,0.7);
       border-top:1px solid rgba(180,240,255,0.8);
-      border-bottom:1px solid rgba(0,100,200,0.8);
-      box-shadow:0 0 18px rgba(0,160,255,0.45),0 4px 14px rgba(0,0,80,0.6),
+      border-bottom:1px solid rgba(0,140,65,0.8);
+      box-shadow:0 0 18px rgba(0,185,80,0.45),0 4px 14px rgba(0,0,80,0.6),
                  inset 0 1px 0 rgba(255,255,255,0.5),inset 0 -1px 0 rgba(0,0,120,0.5);
-      text-shadow:0 0 10px rgba(0,200,255,0.9),0 1px 2px rgba(0,0,80,0.6);
+      text-shadow:0 0 10px rgba(0,210,90,0.9),0 1px 2px rgba(0,0,80,0.6);
       position:relative; overflow:hidden; transition:all .22s;
     }
     .app-modal-dl-btn::before {
@@ -1652,8 +1629,8 @@
       color:#fff;
       background:
         repeating-linear-gradient(90deg,rgba(255,255,255,0.04) 0px,rgba(255,255,255,0.04) 1px,transparent 1px,transparent 6px),
-        linear-gradient(180deg,rgba(0,220,255,0.95) 0%,rgba(0,130,255,0.95) 48%,rgba(0,80,210,0.92) 100%);
-      box-shadow:0 0 36px rgba(0,220,255,0.75),0 0 70px rgba(0,150,255,0.3),0 4px 20px rgba(0,0,80,0.7),
+        linear-gradient(180deg,rgba(0,230,100,0.95) 0%,rgba(0,170,70,0.95) 48%,rgba(0,80,210,0.92) 100%);
+      box-shadow:0 0 36px rgba(0,230,100,0.75),0 0 70px rgba(0,180,75,0.3),0 4px 20px rgba(0,0,80,0.7),
                  inset 0 1px 0 rgba(255,255,255,0.6);
       transform:translateY(-2px);
     }
@@ -1669,7 +1646,7 @@
     .pc-modal-backdrop {
       display: none;
       position: fixed; inset: 0; z-index: 9000;
-      background: rgba(0,5,20,0.30);
+      background: rgba(0,15,8,0.30);
       backdrop-filter: blur(12px);
       align-items: center;
       justify-content: center;
@@ -1680,11 +1657,11 @@
     }
     .pc-modal {
       position: relative;
-      background: linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(0,200,255,0.06) 50%, rgba(255,255,255,0.04) 100%);
-      border: 1px solid rgba(0,220,255,0.45);
+      background: linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(0,210,90,0.06) 50%, rgba(255,255,255,0.04) 100%);
+      border: 1px solid rgba(0,230,100,0.45);
       border-top-color: rgba(255,255,255,0.90);
       border-left-color: rgba(255,255,255,0.38);
-      box-shadow: 0 0 0 1px rgba(0,200,255,0.10), 0 30px 80px rgba(0,0,30,0.25), 0 0 60px rgba(0,150,255,0.10), inset 0 2px 0 rgba(255,255,255,0.90);
+      box-shadow: 0 0 0 1px rgba(0,210,90,0.10), 0 30px 80px rgba(0,0,30,0.25), 0 0 60px rgba(0,180,75,0.10), inset 0 2px 0 rgba(255,255,255,0.90);
       border-radius: 18px;
       width: 100%;
       max-width: 860px;
@@ -1711,7 +1688,7 @@
     .pc-modal-titlebar {
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 20px 12px;
-      border-bottom: 1px solid rgba(0,200,255,0.22);
+      border-bottom: 1px solid rgba(0,210,90,0.22);
       background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(0,50,120,0.12) 100%);
       position: relative; z-index: 1; flex-shrink: 0;
     }
@@ -1733,7 +1710,7 @@
     .pc-modal-title {
       font-family: var(--font-display); font-size: .78rem; font-weight: 700;
       color: rgba(200,235,255,0.9); letter-spacing: .12em; text-transform: uppercase;
-      text-shadow: 0 0 8px rgba(0,200,255,0.5);
+      text-shadow: 0 0 8px rgba(0,210,90,0.5);
     }
     .pc-modal-close {
       width: 34px; height: 34px; border-radius: 8px;
@@ -1763,34 +1740,34 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       padding: 32px 24px;
-      background: linear-gradient(160deg, rgba(0,30,80,0.6) 0%, rgba(0,10,40,0.8) 100%);
-      border-right: 1px solid rgba(0,200,255,0.18);
+      background: linear-gradient(160deg, rgba(0,60,25,0.6) 0%, rgba(0,25,12,0.8) 100%);
+      border-right: 1px solid rgba(0,210,90,0.18);
       gap: 20px;
     }
     .pc-modal-img {
       width: 100%; max-width: 300px;
       height: 200px;
       object-fit: contain;
-      filter: drop-shadow(0 0 18px rgba(0,180,255,0.55)) drop-shadow(0 4px 12px rgba(0,0,0,0.7));
+      filter: drop-shadow(0 0 18px rgba(0,200,85,0.55)) drop-shadow(0 4px 12px rgba(0,0,0,0.7));
       border-radius: 10px;
     }
     /* Fallback icon when no image */
     .pc-modal-icon-fallback {
       font-size: 6rem; color: var(--aero-cyan);
-      text-shadow: 0 0 30px rgba(0,200,255,0.8), 0 0 70px rgba(0,150,255,0.4);
+      text-shadow: 0 0 30px rgba(0,210,90,0.8), 0 0 70px rgba(0,180,75,0.4);
     }
     .pc-modal-img-label {
       font-family: var(--font-mono); font-size: .6rem; letter-spacing: .16em;
-      color: rgba(0,200,255,0.5); text-transform: uppercase; text-align: center;
+      color: rgba(0,210,90,0.5); text-transform: uppercase; text-align: center;
     }
     /* Win7 badge */
     .pc-modal-win7-badge {
       display: flex; align-items: center; gap: 8px;
-      background: linear-gradient(135deg, rgba(0,100,220,0.35), rgba(0,40,120,0.45));
-      border: 1px solid rgba(0,180,255,0.35); border-top-color: rgba(255,255,255,0.25);
+      background: linear-gradient(135deg, rgba(0,140,65,0.35), rgba(0,40,120,0.45));
+      border: 1px solid rgba(0,200,85,0.35); border-top-color: rgba(255,255,255,0.25);
       border-radius: 10px; padding: .5rem 1rem;
       font-family: var(--font-mono); font-size: .62rem; color: rgba(180,230,255,0.9);
-      letter-spacing: .1em; box-shadow: 0 0 12px rgba(0,150,255,0.2);
+      letter-spacing: .1em; box-shadow: 0 0 12px rgba(0,180,75,0.2);
     }
     .pc-modal-win7-badge .win7-logo-nav { width: 20px; height: 20px; }
     /* RIGHT: info panel */
@@ -1798,14 +1775,14 @@
       flex: 1;
       overflow-y: auto;
       padding: 28px 28px 28px 24px;
-      scrollbar-width: thin; scrollbar-color: rgba(0,200,255,0.3) rgba(0,10,30,0.3);
+      scrollbar-width: thin; scrollbar-color: rgba(0,210,90,0.3) rgba(0,22,10,0.3);
     }
     .pc-modal-info-panel::-webkit-scrollbar { width: 4px; }
-    .pc-modal-info-panel::-webkit-scrollbar-thumb { background: rgba(0,200,255,0.35); border-radius: 2px; }
+    .pc-modal-info-panel::-webkit-scrollbar-thumb { background: rgba(0,210,90,0.35); border-radius: 2px; }
     .pc-modal-pc-name {
       font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
       color: #fff; margin-bottom: .2rem;
-      text-shadow: 0 0 12px rgba(0,200,255,0.4);
+      text-shadow: 0 0 12px rgba(0,210,90,0.4);
     }
     .pc-modal-pc-sub {
       font-family: var(--font-mono); font-size: .7rem; color: var(--aero-cyan);
@@ -1813,35 +1790,35 @@
     }
     .pc-modal-specs-title {
       font-family: var(--font-mono); font-size: .6rem; letter-spacing: .18em;
-      color: rgba(0,200,255,0.55); text-transform: uppercase; margin-bottom: .65rem;
-      border-bottom: 1px solid rgba(0,200,255,0.15); padding-bottom: .45rem;
+      color: rgba(0,210,90,0.55); text-transform: uppercase; margin-bottom: .65rem;
+      border-bottom: 1px solid rgba(0,210,90,0.15); padding-bottom: .45rem;
     }
     .pc-modal-spec-row {
       display: flex; align-items: flex-start; gap: 12px;
       padding: .55rem 0;
-      border-bottom: 1px solid rgba(0,200,255,0.08);
+      border-bottom: 1px solid rgba(0,210,90,0.08);
       font-size: .88rem; color: rgba(180,225,255,0.9);
     }
     .pc-modal-spec-row:last-child { border-bottom: none; }
     .pc-modal-spec-row i {
       color: var(--aero-cyan); font-size: .8rem; width: 16px;
       flex-shrink: 0; margin-top: 3px;
-      text-shadow: 0 0 6px rgba(0,200,255,0.7);
+      text-shadow: 0 0 6px rgba(0,210,90,0.7);
     }
     .pc-modal-spec-label {
-      font-family: var(--font-mono); font-size: .62rem; color: rgba(0,200,255,0.5);
+      font-family: var(--font-mono); font-size: .62rem; color: rgba(0,210,90,0.5);
       letter-spacing: .08em; text-transform: uppercase; margin-bottom: 2px;
     }
     .pc-modal-win7-compat {
       margin-top: 1.4rem;
-      background: linear-gradient(135deg, rgba(0,60,180,0.25), rgba(0,20,80,0.35));
-      border: 1px solid rgba(0,200,255,0.3); border-top-color: rgba(255,255,255,0.2);
+      background: linear-gradient(135deg, rgba(0,100,50,0.25), rgba(0,20,80,0.35));
+      border: 1px solid rgba(0,210,90,0.3); border-top-color: rgba(255,255,255,0.2);
       border-radius: 12px; padding: 1rem 1.2rem;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
     }
     .pc-modal-compat-title {
       font-family: var(--font-mono); font-size: .62rem; letter-spacing: .15em;
-      color: rgba(0,200,255,0.6); text-transform: uppercase; margin-bottom: .65rem;
+      color: rgba(0,210,90,0.6); text-transform: uppercase; margin-bottom: .65rem;
     }
     .pc-modal-compat-row {
       display: flex; align-items: center; gap: 10px;
@@ -1857,7 +1834,7 @@
       .pc-modal-body { flex-direction: column; overflow-y: auto; }
       .pc-modal-img-panel {
         flex: none; padding: 22px 20px 16px;
-        border-right: none; border-bottom: 1px solid rgba(0,200,255,0.18);
+        border-right: none; border-bottom: 1px solid rgba(0,210,90,0.18);
       }
       .pc-modal-img { height: 140px; }
       .pc-modal-icon-fallback { font-size: 4rem; }
@@ -1867,88 +1844,6 @@
 
     /* PC card clickable cursor */
     .pc-card { cursor: pointer; }
-
-    /* ── WINDOWS 7 EDITIONS SECTION ── */
-    .editions-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    @media (max-width: 991px) { .editions-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 575px) { .editions-grid { grid-template-columns: 1fr; } }
-
-    .edition-card {
-      position: relative; border-radius: 16px; overflow: hidden;
-      text-decoration: none !important; cursor: pointer; display: block;
-      transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .28s;
-      background: linear-gradient(145deg, rgba(255,255,255,0.13) 0%, rgba(0,200,255,0.05) 40%, rgba(0,50,120,0.10) 100%);
-      border: 1px solid rgba(0,200,255,0.30);
-      border-top-color: rgba(255,255,255,0.70);
-      box-shadow: 0 8px 32px rgba(0,0,40,0.25), 0 0 0 1px rgba(0,200,255,0.08), inset 0 2px 0 rgba(255,255,255,0.55);
-      backdrop-filter: blur(20px) saturate(1.8);
-    }
-    .edition-card:hover {
-      transform: translateY(-6px) scale(1.025);
-      box-shadow: 0 18px 55px rgba(0,0,50,0.4), 0 0 40px var(--ed-glow, rgba(0,200,255,0.3)), inset 0 2px 0 rgba(255,255,255,0.7);
-      border-color: var(--ed-accent, rgba(0,200,255,0.65));
-    }
-    .edition-card-glow {
-      position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
-      background: radial-gradient(ellipse at 50% 0%, var(--ed-glow, rgba(0,200,255,0.18)) 0%, transparent 70%);
-      opacity: 0; transition: opacity .3s;
-    }
-    .edition-card:hover .edition-card-glow { opacity: 1; }
-    .edition-card-inner {
-      position: relative; z-index: 1; padding: 2rem 1.6rem 1.8rem;
-      display: flex; flex-direction: column; gap: .7rem;
-    }
-    .edition-icon {
-      font-size: 2.2rem; color: var(--ed-accent, var(--aero-cyan));
-      text-shadow: 0 0 18px var(--ed-glow, rgba(0,200,255,0.8)); margin-bottom: .2rem;
-    }
-    .edition-badge {
-      display: inline-block; width: fit-content;
-      font-family: var(--font-mono); font-size: .55rem; letter-spacing: .16em;
-      text-transform: uppercase; padding: .18rem .65rem; border-radius: 20px;
-      border: 1px solid var(--ed-accent, rgba(0,200,255,0.4));
-      color: var(--ed-accent, var(--aero-cyan)); background: rgba(0,0,40,0.3);
-      text-shadow: 0 0 6px var(--ed-glow, rgba(0,200,255,0.5));
-    }
-    .edition-name {
-      font-family: var(--font-display); font-size: 1.35rem; font-weight: 800;
-      color: #fff; margin: 0;
-      text-shadow: 0 0 14px var(--ed-glow, rgba(0,200,255,0.4)); letter-spacing: .03em;
-    }
-    .edition-desc {
-      font-size: .82rem; line-height: 1.75; color: rgba(180,225,255,0.80); margin: 0;
-    }
-    .edition-features { display: flex; flex-direction: column; gap: .35rem; margin-top: .3rem; }
-    .edition-features span {
-      font-family: var(--font-mono); font-size: .66rem; letter-spacing: .06em;
-      color: rgba(160,220,255,0.75); display: flex; align-items: center; gap: .55rem;
-    }
-    .edition-features span i.fa-check { color: #00ffb0; text-shadow: 0 0 6px rgba(0,255,176,0.6); font-size: .58rem; }
-    .edition-features span i.fa-times  { color: rgba(255,100,100,0.7); font-size: .58rem; }
-    .edition-cta {
-      margin-top: .8rem; font-family: var(--font-display); font-size: .72rem; font-weight: 700;
-      letter-spacing: .12em; text-transform: uppercase;
-      color: var(--ed-accent, var(--aero-cyan));
-      text-shadow: 0 0 10px var(--ed-glow, rgba(0,200,255,0.7));
-      display: flex; align-items: center; gap: .5rem; transition: gap .2s;
-    }
-    .edition-card:hover .edition-cta { gap: .85rem; }
-    .edition-cta i { font-size: .65rem; }
-    /* Per-edition color themes */
-    .edition-starter     { --ed-accent: #aad4ff; --ed-glow: rgba(120,190,255,0.30); }
-    .edition-homebasic   { --ed-accent: #00e5c8; --ed-glow: rgba(0,229,200,0.28); }
-    .edition-homepremium { --ed-accent: #00c8ff; --ed-glow: rgba(0,200,255,0.32); }
-    .edition-professional{ --ed-accent: #7eb8ff; --ed-glow: rgba(100,160,255,0.30); }
-    .edition-enterprise  { --ed-accent: #ff9f40; --ed-glow: rgba(255,160,60,0.28); }
-    .edition-ultimate    {
-      --ed-accent: #ffe066; --ed-glow: rgba(255,220,50,0.32);
-      border-top-color: rgba(255,230,100,0.55);
-      box-shadow: 0 8px 32px rgba(0,0,40,0.30), 0 0 0 1px rgba(255,200,50,0.12), inset 0 2px 0 rgba(255,240,180,0.55);
-    }
   </style>
 </head>
 
@@ -1958,38 +1853,38 @@
   <!-- Mechanized HUD corners -->
   <div class="mech-corner mech-corner--tl">
     <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,220,255,0.75)" stroke-width="2" fill="none"/>
-      <polyline points="6,0 6,6 0,6" stroke="rgba(0,255,200,0.5)" stroke-width="1" fill="none"/>
-      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <rect x="2" y="2" width="4" height="4" fill="rgba(0,255,200,0.6)"/>
+      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,230,100,0.75)" stroke-width="2" fill="none"/>
+      <polyline points="6,0 6,6 0,6" stroke="rgba(100,255,80,0.5)" stroke-width="1" fill="none"/>
+      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,210,90,0.35)" stroke-width="1"/>
+      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,210,90,0.35)" stroke-width="1"/>
+      <rect x="2" y="2" width="4" height="4" fill="rgba(100,255,80,0.6)"/>
     </svg>
   </div>
   <div class="mech-corner mech-corner--tr">
     <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,220,255,0.75)" stroke-width="2" fill="none"/>
-      <polyline points="6,0 6,6 0,6" stroke="rgba(0,255,200,0.5)" stroke-width="1" fill="none"/>
-      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <rect x="2" y="2" width="4" height="4" fill="rgba(0,255,200,0.6)"/>
+      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,230,100,0.75)" stroke-width="2" fill="none"/>
+      <polyline points="6,0 6,6 0,6" stroke="rgba(100,255,80,0.5)" stroke-width="1" fill="none"/>
+      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,210,90,0.35)" stroke-width="1"/>
+      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,210,90,0.35)" stroke-width="1"/>
+      <rect x="2" y="2" width="4" height="4" fill="rgba(100,255,80,0.6)"/>
     </svg>
   </div>
   <div class="mech-corner mech-corner--bl">
     <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,220,255,0.75)" stroke-width="2" fill="none"/>
-      <polyline points="6,0 6,6 0,6" stroke="rgba(0,255,200,0.5)" stroke-width="1" fill="none"/>
-      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <rect x="2" y="2" width="4" height="4" fill="rgba(0,255,200,0.6)"/>
+      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,230,100,0.75)" stroke-width="2" fill="none"/>
+      <polyline points="6,0 6,6 0,6" stroke="rgba(100,255,80,0.5)" stroke-width="1" fill="none"/>
+      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,210,90,0.35)" stroke-width="1"/>
+      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,210,90,0.35)" stroke-width="1"/>
+      <rect x="2" y="2" width="4" height="4" fill="rgba(100,255,80,0.6)"/>
     </svg>
   </div>
   <div class="mech-corner mech-corner--br">
     <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,220,255,0.75)" stroke-width="2" fill="none"/>
-      <polyline points="6,0 6,6 0,6" stroke="rgba(0,255,200,0.5)" stroke-width="1" fill="none"/>
-      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,200,255,0.35)" stroke-width="1"/>
-      <rect x="2" y="2" width="4" height="4" fill="rgba(0,255,200,0.6)"/>
+      <polyline points="0,30 0,4 4,0 30,0" stroke="rgba(0,230,100,0.75)" stroke-width="2" fill="none"/>
+      <polyline points="6,0 6,6 0,6" stroke="rgba(100,255,80,0.5)" stroke-width="1" fill="none"/>
+      <line x1="30" y1="0" x2="38" y2="0" stroke="rgba(0,210,90,0.35)" stroke-width="1"/>
+      <line x1="0" y1="30" x2="0" y2="38" stroke="rgba(0,210,90,0.35)" stroke-width="1"/>
+      <rect x="2" y="2" width="4" height="4" fill="rgba(100,255,80,0.6)"/>
     </svg>
   </div>
 
@@ -2034,14 +1929,8 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarMain">
         <ul class="navbar-nav gap-1">
           <li class="nav-item"><a class="nav-link tm-nav-link" href="#hero">Home</a></li>
-          <li class="nav-item"><a class="nav-link tm-nav-link" href="#download-win7">Downloads</a></li>
-          <li class="nav-item"><a class="nav-link tm-nav-link" href="#win7-editions">Editions</a></li>
-          <li class="nav-item"><a class="nav-link tm-nav-link" href="#recommended-pcs">PCs</a></li>
           <li class="nav-item"><a class="nav-link tm-nav-link" href="#whatwedo">Explore</a></li>
           <li class="nav-item"><a class="nav-link tm-nav-link" href="#reviews">Reviews</a></li>
-          <li class="nav-item"><a class="nav-link tm-nav-link" href="#gallery">App Store</a></li>
-          <li class="nav-item"><a class="nav-link tm-nav-link" href="#community">Community</a></li>
-          <li class="nav-item"><a class="nav-link tm-nav-link" href="#contact">Support</a></li>
         </ul>
       </div>
     </div>
@@ -2056,16 +1945,16 @@
       <div class="row align-items-center min-vh-100">
         <div class="col-lg-8 py-5">
           <div class="hero-badge">&#x25C6; Most Legendary and Oldest Operating System Ever &#x25C6;</div>
-          <h2 class="hero-title-t2">Welcome to the world of</h2>
+          <h2 class="hero-title-t2">Welcome to the World of </h2>
           <h1 class="hero-title">
-            <img class="textw" src="pngegg.png" alt="Windows logo">Windows 7
+            <img class="textw" src="pngegg.png" alt="Windows logo">Windows 7 Home Premium
           </h1>
           <br>
           <p class="hero-sub">Your PC Simplified</p>
           <p class="hero-url">&#x276F; Windows 7 can be the most legendary OS thats ever made unlike Windows 11</p>
           <div class="d-flex flex-wrap gap-3">
             <a href="#whatwedo" class="btn-aero btn-aero-primary">Explore Features<span class="btn-scan"></span></a>
-            <a href="#contact" class="btn-aero btn-aero-ghost">Learn More<span class="btn-scan"></span></a>
+            <a href="#whatwedo" class="btn-aero btn-aero-ghost">Learn More<span class="btn-scan"></span></a>
           </div>
         </div>
       </div>
@@ -2076,323 +1965,16 @@
     </div>
   </section>
 
-  <!-- ===================== DOWNLOAD WINDOWS 7 ===================== -->
-  <section id="download-win7" class="tm-section" style="padding:60px 0;">
-    <div class="container">
-      <div class="text-center mb-4">
-        <span class="section-label">// Get Windows 7</span>
-        <h2 class="section-title">Download Windows 7</h2>
-        <div class="tm-divider center"></div>
-        <p style="color:rgba(160,210,245,0.75);max-width:640px;margin:0 auto 2.2rem;">
-          Choose your preferred edition of Windows 7 — original, fully updated, or with modern hardware support baked in.
-        </p>
-      </div>
-      <div class="d-flex flex-wrap gap-3 justify-content-center">
-        <a href="https://web.archive.org/web/20160701202128/http://www.microsoft.com/en-us/software-download/windows7"
-           target="_blank" rel="noopener" class="btn-dl btn-dl-primary">
-          <span class="btn-dl-tick-tl"></span><span class="btn-dl-tick-br"></span>
-          <span class="btn-dl-icon"><i class="fab fa-windows"></i></span>
-          <span class="btn-dl-text"><span class="btn-dl-label">Download Windows 7 (Original)</span><span class="btn-dl-sub">Official Internet Web Archive</span></span>
-        </a>
-        <a href="https://archive.org/details/windows-7-ultimate-x-64-sp-1-fully-updated"
-           target="_blank" rel="noopener" class="btn-dl btn-dl-teal">
-          <span class="btn-dl-tick-tl"></span><span class="btn-dl-tick-br"></span>
-          <span class="btn-dl-icon"><i class="fab fa-windows"></i></span>
-          <span class="btn-dl-text"><span class="btn-dl-label">Download Windows 7 Fully Updated</span><span class="btn-dl-sub">SP1 + All Updates Included</span></span>
-        </a>
-        <a href="https://archive.org/details/windows-7-updated-2024-06-12"
-           target="_blank" rel="noopener" class="btn-dl btn-dl-green">
-          <span class="btn-dl-tick-tl"></span><span class="btn-dl-tick-br"></span>
-          <span class="btn-dl-icon"><i class="fab fa-windowsp"></i></span>
-          <span class="btn-dl-text"><span class="btn-dl-label">Download Windows 7 with Modern Hardware Support</span><span class="btn-dl-sub">Updated June 2024 — Intel/AMD Ready</span></span>
-        </a>
-        <a href="https://reloadedwin.neocities.org/"
-           target="_blank" rel="noopener" class="btn-dl btn-dl-purple">
-          <span class="btn-dl-tick-tl"></span><span class="btn-dl-tick-br"></span>
-          <span class="btn-dl-icon"><i class="fas fa-paint-brush"></i></span>
-          <span class="btn-dl-text"><span class="btn-dl-label">Download Windows 10 with Windows 7 Theme</span><span class="btn-dl-sub">ReloadedWin — Win7 Look on Win10</span></span>
-        </a>
-      </div>
-      <p style="text-align:center;margin-top:1.5rem;font-family:var(--font-mono);font-size:.68rem;color:rgba(0,200,255,0.35);letter-spacing:.1em;">
-        CAUTION: Windows 7 reached the end of support in 2020. Updates will continue, but Security Patches may be limited. Use at your own risk. 
-      </p>
-    </div>
-  </section>
 
-  <!-- ===================== WINDOWS 7 EDITIONS ===================== -->
-  <section id="win7-editions" class="tm-section" style="padding:70px 0;">
-    <div class="container">
-      <div class="text-center mb-5">
-        <span class="section-label">// Choose Your Edition</span>
-        <h2 class="section-title">Windows 7 Editions</h2>
-        <div class="tm-divider center"></div>
-        <p style="color:rgba(160,210,245,0.75);max-width:660px;margin:0 auto 2.5rem;">
-          Windows 7 was released in six distinct editions — each tailored to a different type of user. Click any edition to explore its dedicated page.
-        </p>
-      </div>
-
-      <div class="editions-grid">
-
-        <!-- Starter -->
-        <a href="starter.html" class="edition-card edition-starter">
-          <div class="edition-card-glow"></div>
-          <div class="edition-card-inner">
-            <div class="edition-icon"><i class="fas fa-seedling"></i></div>
-            <div class="edition-badge">Entry Level</div>
-            <h3 class="edition-name">Starter</h3>
-            <p class="edition-desc">The most basic edition, designed for low-powered netbooks and budget PCs. Limited to 32-bit only and restricted features.</p>
-            <div class="edition-features">
-              <span><i class="fas fa-check"></i> 32-bit only</span>
-              <span><i class="fas fa-check"></i> Netbook optimized</span>
-              <span><i class="fas fa-times"></i> No Aero Glass</span>
-            </div>
-            <div class="edition-cta">Explore Starter <i class="fas fa-arrow-right"></i></div>
-          </div>
-        </a>
-
-        <!-- Home Basic -->
-        <a href="home_basic.html" class="edition-card edition-homebasic">
-          <div class="edition-card-glow"></div>
-          <div class="edition-card-inner">
-            <div class="edition-icon"><i class="fas fa-home"></i></div>
-            <div class="edition-badge">Basic</div>
-            <h3 class="edition-name">Home Basic</h3>
-            <p class="edition-desc">A step above Starter, released in emerging markets. Includes basic networking and multi-monitor support, but still no full Aero.</p>
-            <div class="edition-features">
-              <span><i class="fas fa-check"></i> Multi-monitor</span>
-              <span><i class="fas fa-check"></i> Fast user switching</span>
-              <span><i class="fas fa-times"></i> No Aero Glass</span>
-            </div>
-            <div class="edition-cta">Explore Home Basic <i class="fas fa-arrow-right"></i></div>
-          </div>
-        </a>
-
-        <!-- Home Premium -->
-        <a href="index_homepremium.html" class="edition-card edition-homepremium">
-          <div class="edition-card-glow"></div>
-          <div class="edition-card-inner">
-            <div class="edition-icon"><i class="fas fa-star"></i></div>
-            <div class="edition-badge">Popular</div>
-            <h3 class="edition-name">Home Premium</h3>
-            <p class="edition-desc">The most popular consumer edition. Features full Aero Glass, Windows Media Center, and enhanced multimedia capabilities.</p>
-            <div class="edition-features">
-              <span><i class="fas fa-check"></i> Aero Glass</span>
-              <span><i class="fas fa-check"></i> Media Center</span>
-              <span><i class="fas fa-check"></i> Touch support</span>
-            </div>
-            <div class="edition-cta">Explore Home Premium <i class="fas fa-arrow-right"></i></div>
-          </div>
-        </a>
-
-        <!-- Professional -->
-        <a href="professional.html" class="edition-card edition-professional">
-          <div class="edition-card-glow"></div>
-          <div class="edition-card-inner">
-            <div class="edition-icon"><i class="fas fa-briefcase"></i></div>
-            <div class="edition-badge">Business</div>
-            <h3 class="edition-name">Professional</h3>
-            <p class="edition-desc">Built for business users. Adds domain join, Remote Desktop hosting, EFS encryption, and XP Mode for legacy app compatibility.</p>
-            <div class="edition-features">
-              <span><i class="fas fa-check"></i> Domain Join</span>
-              <span><i class="fas fa-check"></i> Remote Desktop</span>
-              <span><i class="fas fa-check"></i> XP Mode</span>
-            </div>
-            <div class="edition-cta">Explore Professional <i class="fas fa-arrow-right"></i></div>
-          </div>
-        </a>
-
-        <!-- Enterprise -->
-        <a href="enterprise.html" class="edition-card edition-enterprise">
-          <div class="edition-card-glow"></div>
-          <div class="edition-card-inner">
-            <div class="edition-icon"><i class="fas fa-building"></i></div>
-            <div class="edition-badge">Corporate</div>
-            <h3 class="edition-name">Enterprise</h3>
-            <p class="edition-desc">Designed for large organizations. Includes BitLocker, DirectAccess, AppLocker, and BranchCache for enterprise-grade deployments.</p>
-            <div class="edition-features">
-              <span><i class="fas fa-check"></i> BitLocker</span>
-              <span><i class="fas fa-check"></i> DirectAccess</span>
-              <span><i class="fas fa-check"></i> AppLocker</span>
-            </div>
-            <div class="edition-cta">Explore Enterprise <i class="fas fa-arrow-right"></i></div>
-          </div>
-        </a>
-
-        <!-- Ultimate -->
-        <a href="index_ultimate.html" class="edition-card edition-ultimate">
-          <div class="edition-card-glow"></div>
-          <div class="edition-card-inner">
-            <div class="edition-icon"><i class="fas fa-crown"></i></div>
-            <div class="edition-badge">Top Tier</div>
-            <h3 class="edition-name">Ultimate</h3>
-            <p class="edition-desc">The flagship edition with every feature unlocked. BitLocker, all languages, all multimedia tools — the complete Windows 7 experience.</p>
-            <div class="edition-features">
-              <span><i class="fas fa-check"></i> All Features</span>
-              <span><i class="fas fa-check"></i> All Languages</span>
-              <span><i class="fas fa-check"></i> BitLocker + MUI</span>
-            </div>
-            <div class="edition-cta">Explore Ultimate <i class="fas fa-arrow-right"></i></div>
-          </div>
-        </a>
-
-      </div><!-- /.editions-grid -->
-    </div>
-  </section>
-
-  <!-- ===================== RECOMMENDED PCs ===================== -->
-  <section id="recommended-pcs" class="tm-section" style="padding:70px 0;">
-    <div class="container-fluid px-4">
-      <div class="text-center mb-5">
-        <span class="section-label">// Real Hardware</span>
-        <h2 class="section-title">Recommended Windows 7 PCs And Desktops</h2>
-        <div class="tm-divider center"></div>
-        <p style="color:rgba(160,210,245,0.75);max-width:680px;margin:0 auto 1rem;">
-          Want to run Windows 7 on real hardware Scroll left or right to browse — we have <strong style="color:var(--aero-cyan);">7 PCs</strong> to choose from. Click a category to filter.
-        </p>
-        <div class="pc-filter-tabs">
-          <button class="pc-tab active" data-filter="all">All</button>
-          <button class="pc-tab" data-filter="laptop">Laptops</button>
-          <button class="pc-tab" data-filter="desktop">Desktops</button>
-          <button class="pc-tab" data-filter="server">Servers</button>
-        </div>
-      </div>
-      <div class="pc-carousel-wrapper">
-        <button class="pc-carousel-btn pc-carousel-btn--left" id="pcScrollLeft" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
-        <div class="pc-carousel" id="pcCarousel">
-
-          <!-- 1 -->
-          <div class="pc-card" data-type="laptop">
-            <div class="pc-card-badge">Laptop</div>
-            <div class="pc-card-icon"><i class="fas fa-laptop"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">ThinkPad T430</h4>
-              <div class="pc-card-sub">Lenovo · 2012</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Core i5-3320M</li>
-                <li><i class="fas fa-memory"></i> Up to 16 GB DDR3</li>
-                <li><i class="fas fa-hdd"></i> HDD / SSD upgradeable</li>
-                <li><i class="fas fa-check-circle"></i> Full Win 7 driver support</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-great">Best Pick</span>
-            </div>
-          </div>
-
-          <!-- 2 -->
-          <div class="pc-card" data-type="desktop">
-            <div class="pc-card-badge">Desktop</div>
-            <div class="pc-card-icon"><i class="fas fa-desktop"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">Dell OptiPlex 7010</h4>
-              <div class="pc-card-sub">Dell · 2012–2013</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Core i5/i7 3rd Gen</li>
-                <li><i class="fas fa-memory"></i> Up to 32 GB DDR3</li>
-                <li><i class="fas fa-hdd"></i> SSD + HDD bays</li>
-                <li><i class="fas fa-check-circle"></i> OEM Win 7 drivers available</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-great">Highly Recommended</span>
-            </div>
-          </div>
-
-          <!-- 3 -->
-          <div class="pc-card" data-type="laptop">
-            <div class="pc-card-badge">Laptop</div>
-            <div class="pc-card-icon"><i class="fas fa-laptop"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">HP EliteBook 8470p</h4>
-              <div class="pc-card-sub">HP · 2012</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Core i5/i7 Ivy Bridge</li>
-                <li><i class="fas fa-memory"></i> Up to 16 GB DDR3</li>
-                <li><i class="fas fa-hdd"></i> mSATA + HDD slot</li>
-                <li><i class="fas fa-check-circle"></i> HP official Win 7 drivers</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-good">Great Choice</span>
-            </div>
-          </div>
-
-          <!-- 4 -->
-          <div class="pc-card" data-type="desktop">
-            <div class="pc-card-badge">Desktop</div>
-            <div class="pc-card-icon"><i class="fas fa-desktop"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">HP Z230 Workstation</h4>
-              <div class="pc-card-sub">HP · 2013</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Xeon E3 / Core i7</li>
-                <li><i class="fas fa-memory"></i> Up to 32 GB ECC DDR3</li>
-                <li><i class="fas fa-hdd"></i> PCIe SSD + SATA bays</li>
-                <li><i class="fas fa-check-circle"></i> ECC memory for stability</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-good">Workstation Grade</span>
-            </div>
-          </div>
-
-          <!-- 5 -->
-          <div class="pc-card" data-type="server">
-            <div class="pc-card-badge">Server</div>
-            <div class="pc-card-icon"><i class="fas fa-server"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">Dell PowerEdge T130</h4>
-              <div class="pc-card-sub">Dell · 2016</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Xeon E3-1200 v5</li>
-                <li><i class="fas fa-memory"></i> Up to 64 GB ECC DDR4</li>
-                <li><i class="fas fa-hdd"></i> 4× SATA drive bays</li>
-                <li><i class="fas fa-check-circle"></i> Win 7 with ACPI patches</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-mod">Needs Patching</span>
-            </div>
-          </div>
-
-          <!-- 6 -->
-          <div class="pc-card" data-type="laptop">
-            <div class="pc-card-badge">Laptop</div>
-            <div class="pc-card-icon"><i class="fas fa-laptop"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">ThinkPad X220</h4>
-              <div class="pc-card-sub">Lenovo · 2011</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Core i5/i7 Sandy Bridge</li>
-                <li><i class="fas fa-memory"></i> Up to 16 GB DDR3</li>
-                <li><i class="fas fa-hdd"></i> mSATA + 2.5″ SSD</li>
-                <li><i class="fas fa-check-circle"></i> Classic Win 7 era laptop</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-great">Community Favorite</span>
-            </div>
-          </div>
-
-          <!-- 7 -->
-          <div class="pc-card" data-type="desktop">
-            <div class="pc-card-badge">Desktop</div>
-            <div class="pc-card-icon"><i class="fas fa-desktop"></i></div>
-            <div class="pc-card-body">
-              <h4 class="pc-card-name">Custom ATX Build</h4>
-              <div class="pc-card-sub">DIY · Intel 6th–8th Gen</div>
-              <ul class="pc-card-specs">
-                <li><i class="fas fa-microchip"></i> Intel Core i5/i7 Skylake–CFL</li>
-                <li><i class="fas fa-memory"></i> Up to 64 GB DDR4</li>
-                <li><i class="fas fa-hdd"></i> NVMe + SATA SSD</li>
-                <li><i class="fas fa-check-circle"></i> Win 7 via Modern HW image</li>
-              </ul>
-              <span class="pc-card-tag pc-tag-mod">Modern Hardware</span>
-            </div>
-          </div>
-
-        </div><!-- /.pc-carousel -->
-        <button class="pc-carousel-btn pc-carousel-btn--right" id="pcScrollRight" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
-      </div>
-    </div>
-  </section>
 
   <!-- ===================== WHAT WE DO ===================== -->
   <section id="whatwedo" class="tm-section">
     <div class="container">
       <span class="section-label">// Overview</span>
-      <h2 class="section-title-alt">What is Windows 7</h2>
+      <h2 class="section-title-alt">What is Windows 7 Home Premium?</h2>
       <div class="tm-divider"></div>
       <p class="mb-5" style="max-width:780px; color:rgba(170,220,255,0.85);">
-        Windows 7 is a major release of the Windows NT operating system developed by Microsoft<br> It was released to manufacturing on July 22 2009 and became generally available on October 22 2009
+        Windows 7 Home Premium is the most popular edition of Windows 7, designed for home users who want great multimedia features, Aero Glass interface, and full entertainment capabilities. It was released on October 22, 2009 and became the go-to edition for everyday PC users.
         <a href="https://www.microsoft.com/windows" target="_blank" rel="noopener">Learn more on Windows Webpage</a>.
       </p>
       <div class="row g-4">
@@ -2425,7 +2007,7 @@
             <div class="feature-icon"><i class="fas fa-users"></i></div>
             <h3>Extended Kernel</h3>
             <p>Windows 7 Extended Kernel supports modern apps and browsers like Mozilla Firefox 140 or above that support Windows 10.</p>
-            <a href="#contact" class="feature-link">Get help <i class="fas fa-arrow-right"></i></a>
+            <a href="#hp-features" class="feature-link">Get help <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -2484,85 +2066,107 @@
     </div>
   </section>
 
-  <!-- ===================== APP STORE ===================== -->
-  <section id="gallery" class="tm-section">
+
+
+
+
+  <!-- ===================== WINDOWS MEDIA CENTER ===================== -->
+  <section id="media-center" class="tm-section">
     <div class="container">
       <div class="text-center mb-5">
-        <span class="section-label">// Microsoft Store</span>
-        <h2 class="section-title">Windows App Store</h2>
+        <span class="section-label">// Entertainment Hub</span>
+        <h2 class="section-title">Windows Media Center</h2>
         <div class="tm-divider center"></div>
-        <p style="color:rgba(160,210,245,0.7);">Download these apps directly from the Microsoft Store on Windows 7.</p>
+        <p style="color:rgba(160,210,245,0.75);max-width:640px;margin:0 auto 2rem;">
+          Windows 7 Home Premium includes the full Windows Media Center experience — your living room entertainment hub built right into the OS.
+        </p>
       </div>
-      <div class="app-grid">
-        <div class="app-card" data-app="sidebar"><div class="app-card-placeholder"><i class="fas fa-th-large"></i><span>Sidebar</span></div><div class="app-card-label">Sidebar Gadgets</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
-        <div class="app-card" data-app="spotify"><div class="app-card-placeholder"><i class="fab fa-spotify"></i><span>Music</span></div><div class="app-card-label">Spotify for Windows 7</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
-        <div class="app-card" data-app="vscode"><div class="app-card-placeholder"><i class="fas fa-code"></i><span>Dev Tools</span></div><div class="app-card-label">Visual Studio Code</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
-        <div class="app-card" data-app="steam"><div class="app-card-placeholder"><i class="fab fa-steam"></i><span>Gaming</span></div><div class="app-card-label">Steam for Windows 7</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
-        <div class="app-card" data-app="vmware"><div class="app-card-placeholder"><i class="fas fa-laptop"></i><span>VMware</span></div><div class="app-card-label">VMware Workstation</div><div class="app-card-overlay"><i class="fas fa-book me-2"></i>View Guide</div></div>
-        <div class="app-card" data-app="office"><div class="app-card-placeholder"><i class="fas fa-file-word"></i><span>Office</span></div><div class="app-card-label">Microsoft Office 2010</div><div class="app-card-overlay"><i class="fas fa-search me-2"></i>Buy Office</div></div>
-        <div class="app-card" data-app="moviemaker"><div class="app-card-placeholder"><i class="fas fa-film"></i><span>Movie Maker</span></div><div class="app-card-label">Windows Movie Maker</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
-        <div class="app-card" data-app="wlm"><div class="app-card-placeholder"><i class="fas fa-comments"></i><span>Messaging</span></div><div class="app-card-label">Windows Live Messaging</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
-        <div class="app-card" data-app="xbox"><div class="app-card-placeholder"><i class="fas fa-gamepad"></i><span>Gaming</span></div><div class="app-card-label">Xbox Game Pass</div><div class="app-card-overlay"><i class="fas fa-download me-2"></i>Get App</div></div>
-        <div class="app-card" data-app="accessories"><div class="app-card-placeholder"><i class="fas fa-headphones"></i><span>Accessories</span></div><div class="app-card-label">Accessories</div><div class="app-card-overlay"><i class="fas fa-external-link-alt me-2"></i>Explore</div></div>
-        <div class="app-card" data-app="supermium"><div class="app-card-placeholder"><i class="fab fa-chrome"></i><span>Chrome</span></div><div class="app-card-label">Supermium Browser</div><div class="app-card-overlay"><i class="fas fa-external-link-alt me-2"></i>Get Browser</div></div>
-        <div class="app-card" data-app="firefox"><div class="app-card-placeholder"><i class="fab fa-firefox-browser"></i><span>Firefox</span></div><div class="app-card-label">Firefox for Windows 7</div><div class="app-card-overlay"><i class="fas fa-external-link-alt me-2"></i>Get Browser</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== COMMUNITY ===================== -->
-  <section id="community" class="tm-section">
-    <div class="container">
-      <span class="section-label">// Community</span>
-      <h2 class="section-title">Join the Windows 7 Community</h2>
-      <div class="tm-divider"></div>
       <div class="row g-4">
-        <div class="col-lg-8">
-          <div class="community-block"><p>Windows 7 devices are generally regarded as highly reliable, with modern hardware offering superior performance, build quality, and efficiency. The broad ecosystem of compatible hardware gives users unmatched flexibility.</p></div>
-          <div class="community-block"><p>Windows 7 stands as a cornerstone platform for both everyday users and power users alike. Its broad driver support, rich software library, and security updates make it the go-to OS for professionals and gamers worldwide.</p></div>
-          <div class="community-block"><p>Want to learn more about Windows 7? Explore the official Microsoft documentation, join the Windows Insider program, or visit community forums like Reddit's r/Windows7 for tips, tricks, and help from thousands of enthusiasts.</p></div>
-        </div>
-        <div class="col-lg-4">
-          <div class="feature-card" style="height:auto;">
-            <div class="feature-icon"><i class="fab fa-windows"></i></div>
-            <h3>Windows Insider</h3>
-            <p>Get early access to new Windows features before they ship to the public.</p>
-            <a href="https://insider.windows.com" target="_blank" rel="noopener" class="feature-link">Join Program <i class="fas fa-arrow-right"></i></a>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-tv"></i></div>
+            <h3>Live TV &amp; DVR</h3>
+            <p>Watch and record live television with a compatible TV tuner card. Pause, rewind, and schedule recordings with ease.</p>
           </div>
-          <div class="mt-3 feature-card" style="height:auto;">
-            <div class="feature-icon"><i class="fab fa-reddit"></i></div>
-            <h3>r/Windows7</h3>
-            <p>A thriving community of Windows users sharing guides, fixes, and news.</p>
-            <a href="https://reddit.com/r/Windows7" target="_blank" rel="noopener" class="feature-link">Visit Community <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-music"></i></div>
+            <h3>Music &amp; Radio</h3>
+            <p>Browse and play your entire music library, stream internet radio stations, and enjoy your playlists on any screen.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-film"></i></div>
+            <h3>Movies &amp; Photos</h3>
+            <p>Play DVD movies, browse your photo library, and create slideshows with background music from your collection.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-gamepad"></i></div>
+            <h3>Xbox Extender</h3>
+            <p>Stream your Media Center content to your Xbox 360 and enjoy your entertainment anywhere in the home.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== CONTACT ===================== -->
-  <section id="contact" class="tm-section">
+  <!-- ===================== HOME PREMIUM FEATURES ===================== -->
+  <section id="hp-features" class="tm-section">
     <div class="container">
       <div class="text-center mb-5">
-        <span class="section-label">// Support</span>
-        <h2 class="section-title">Need Help? Contact Support</h2>
+        <span class="section-label">// What You Get</span>
+        <h2 class="section-title">Windows 7 Home Premium Features</h2>
         <div class="tm-divider center"></div>
-        <p style="color:rgba(160,210,245,0.7);max-width:560px;margin:0 auto;">Our support team is available 24/7 to help you with any Windows 7 issue — from setup to troubleshooting.</p>
+        <p style="color:rgba(160,210,245,0.75);max-width:640px;margin:0 auto 2rem;">
+          Everything you need for a great home computing and entertainment experience — all included in Windows 7 Home Premium.
+        </p>
       </div>
-      <div class="row g-5">
-        <div class="col-md-7">
-          <form id="contactForm" novalidate>
-            <input type="text" id="name" name="name" placeholder="Your Name" class="tm-input" required />
-            <input type="email" name="email" id="email" placeholder="Your Email" class="tm-input" required />
-            <textarea name="message" id="message" rows="6" placeholder="Describe your issue…" class="tm-input" required></textarea>
-            <button type="submit" class="btn-submit">Send Message</button>
-          </form>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-magic"></i></div>
+            <h3>Aero Glass Interface</h3>
+            <p>Enjoy the stunning translucent glass window effects, live taskbar previews, and smooth Aero Snap window management.</p>
+          </div>
         </div>
-        <div class="col-md-5">
-          <div class="contact-info-item"><i class="fas fa-comments"></i><div><span>Support Chat</span><div style="font-size:.75rem;color:rgba(0,200,255,0.5);">Live chat available 24/7</div></div></div>
-          <div class="contact-info-item"><i class="fas fa-envelope"></i><div><span>support@microsoft.com</span><div style="font-size:.75rem;color:rgba(0,200,255,0.5);">Email response within 24h</div></div></div>
-          <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><div><span>One Microsoft Way, Redmond</span><div style="font-size:.75rem;color:rgba(0,200,255,0.5);">Washington, USA</div></div></div>
-          <div class="contact-info-item"><i class="fas fa-phone-square"></i><div><span>1-800-642-7676</span><div style="font-size:.75rem;color:rgba(0,200,255,0.5);">Mon–Fri 9am–9pm EST</div></div></div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>HomeGroup Networking</h3>
+            <p>Easily share files, printers, and media between all Windows 7 PCs on your home network with a simple password.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-hand-pointer"></i></div>
+            <h3>Multi-Touch Support</h3>
+            <p>Full support for touch screens — pinch, zoom, swipe, and interact naturally with touch-enabled displays.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-battery-full"></i></div>
+            <h3>Better Battery Life</h3>
+            <p>Smart power management improvements mean laptops running Home Premium last significantly longer on a single charge.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-desktop"></i></div>
+            <h3>Premium Themes</h3>
+            <p>Access stunning animated desktop backgrounds, beautiful Aero themes, and customize your desktop experience fully.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-wifi"></i></div>
+            <h3>Wireless Display</h3>
+            <p>Connect wirelessly to projectors and TVs, and extend your desktop across multiple displays without any cables.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -2573,7 +2177,7 @@
     <div class="container">
       <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:.5rem;">
         <div class="win7-logo-nav" style="width:22px;height:22px;"></div>
-        <span style="font-family:var(--font-display);font-size:.95rem;color:var(--aero-cyan);text-shadow:0 0 10px rgba(0,200,255,0.6);">The Windows<span style="color:rgba(0,255,200,0.9);">7 Team</span></span>
+        <span style="font-family:var(--font-display);font-size:.95rem;color:var(--aero-cyan);text-shadow:0 0 10px rgba(0,210,90,0.6);">The Windows<span style="color:rgba(100,255,80,0.9);">7 Team</span></span>
       </div>
       <p class="mb-0">
         &copy; 2026 Designed by <a href="#">TheWebpageExperimenter</a> &nbsp;|&nbsp;
@@ -2586,7 +2190,7 @@
 
   <!-- ===================== VIDEO BG ===================== -->
   <video id="bg-video" autoplay muted loop playsinline>
-    <source src="public.mp4" type="video/mp4">
+    <source src="publichomepre.mp4" type="video/mp4">
   </video>
   <div id="bg-video-overlay"></div>
 
@@ -2740,14 +2344,6 @@
           }
         });
       });
-    });
-
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = this.querySelector('.btn-submit');
-      btn.textContent = '✓ Message Sent!';
-      btn.style.background = 'linear-gradient(180deg,rgba(0,200,120,0.85),rgba(0,100,60,0.9))';
-      setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; this.reset(); }, 3000);
     });
 
     // ===================== APP STORE MODAL =====================
